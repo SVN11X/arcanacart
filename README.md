@@ -1,4 +1,9 @@
-# ArcanaCart 0.4.0
+# ArcanaCart 0.4.1
+
+La corrección [REANALISIS_0.4.1.md](REANALISIS_0.4.1.md) explica cómo reanalizar
+las ROMs que ya preparaste. El escáner valida sin expandir candidatos corruptos,
+prioriza cabeceras con referencias ROM y mide cuotas de trabajo real. Un escaneo
+interrumpido se informa como `partial` con código 3; no se presenta como completo.
 
 Herramienta **local y offline** para investigar archivos GBA: validación binaria,
 ZIP seguro, parches UPS1, mapa de memoria, recursos BIOS LZ10/RLE y extracción
@@ -107,6 +112,8 @@ Lee [INSTALLATION.md](INSTALLATION.md), [CLI_REFERENCE.md](CLI_REFERENCE.md),
 [EXTRACTION_FORMATS.md](EXTRACTION_FORMATS.md) y [GHIDRA_INTEGRATION.md](GHIDRA_INTEGRATION.md).
 La auditoría previa está en [docs/AUDIT_v0.2.md](docs/AUDIT_v0.2.md) y la evidencia
 final en [docs/TECHNICAL_REPORT.md](docs/TECHNICAL_REPORT.md).
+La verificación específica de esta corrección está en
+[docs/VERIFICACION_0.4.1.md](docs/VERIFICACION_0.4.1.md).
 
 No hay telemetría, APIs remotas ni subida de ROMs. Conserva entradas y resultados
 privados fuera de Git. MIT cubre este código, no los contenidos analizados.

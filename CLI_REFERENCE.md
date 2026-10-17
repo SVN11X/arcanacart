@@ -13,8 +13,9 @@ Los comandos terminan antes de informar éxito. Un dry-run informa `planned`.
 | 4 | Ghidra opcional ausente o instalación no verificable por el wrapper |
 | 130 | Interrupción de teclado |
 
-`completed` puede contener etapas `skipped` o escaneo `truncated`: consulta estados,
-razones y métricas. Nunca significa extracción completa de una campaña.
+Desde 0.4.1, `scan`, `extract --scan` y `pipeline` devuelven `partial` y código 3
+si se interrumpe el escaneo por una cuota. `completed` puede tener etapas no
+solicitadas como `skipped`; nunca significa extracción completa de una campaña.
 
 ## Comandos
 
@@ -88,7 +89,7 @@ La guía [EJECUTAR_FE7_FE8.md](EJECUTAR_FE7_FE8.md) detalla rutas y PowerShell.
 |---|---|---|
 | `--step` | 1 | Bytes entre candidatos |
 | `--max-bytes` | 2097152 | Máximo descomprimido de un bloque |
-| `--budget` | 67108864 | Suma de tamaños declarados de los intentos |
+| `--budget` | 67108864 | Bytes realmente producidos al descomprimir |
 | `--limit` | 1000 | Resultados, no una predicción sobre el juego |
 | `--max-candidates` | 100000 | Intentos de decodificación |
 
@@ -96,6 +97,21 @@ Admiten números enteros; tamaños/step permiten `0x...`. `scan-lz10` conserva s
 valor histórico `--limit 100`; su paso ahora también es 1. Para diagnósticos de
 truncamiento completos utiliza `scan`; el alias antiguo conserva su manifiesto.
 Los límites ZIP se configuran en la API `ArchiveLimits`; no todos se exponen en CLI.
+
+El escáner valida primero la estructura de un candidato sin expandir sus datos.
+La validación tiene una cuota independiente de tokens: el mayor entre dos veces
+`--max-bytes` y 64 veces `--max-candidates`. Si se alcanza, el motivo es
+`validation-budget`. Una declaración falsa de 2 MiB no consume automáticamente
+2 MiB de `--budget`. Los decodificadores siguen limitando el trabajo y la memoria.
+
+En ROMs con cabecera válida se priorizan cabeceras apuntadas por valores ROM de
+32 bits alineados, ordenadas por tamaño declarado y offset. Estas coincidencias
+son heurísticas. Después se recorre linealmente el resto, incluidos offsets sin
+referencias. `--step` aplica a ambas fases; no se eliminan offsets impares con el
+valor por defecto 1. El inventario de destinos también está acotado por candidatos.
+`search_progress_percent` solo mide la fase lineal. Los contadores
+`referenced_header_targets*` miden la fase priorizada; ninguno mide comprensión
+semántica ni cobertura de funciones. Los recursos se mantienen como candidatos.
 
 ### Pipeline
 
@@ -107,7 +123,9 @@ arcanacart pipeline --rom private/fe8.gba --profile fe8-us --tables private/fe8-
 `--no-scan` omite recursos. `--symbols symbols.json` agrega correlación de referencias.
 `--with-ghidra --ghidra-home DIR --loader-dir DIR` activa la herramienta opcional;
 si no está disponible se registra la omisión. Un fallo real produce `partial`.
-La reanudación sin cambios reutiliza el bundle; un archivo corrupto se regenera.
+La reanudación sin cambios reutiliza el bundle, incluso un escaneo parcial con
+sus límites explícitos; un archivo corrupto se regenera. No continúa un recorrido
+desde el último offset. Para cambiar cuotas o versión, usa otra carpeta de salida.
 
 ### Símbolos y variantes
 

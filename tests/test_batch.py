@@ -63,6 +63,14 @@ class NamingAndPatchsetTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.path, self.config, self.bases = create_inputs(self.root)
 
+    def test_resource_quota_makes_batch_partial_without_marking_patches_failed(self):
+        self.config["scan_limits"]["max_decode_bytes"] = 4
+        atomic_json(self.path, self.config, force=True)
+        result = run_batch(self.root, self.path)
+        self.assertEqual(result["status"], "partial")
+        self.assertTrue(all(job["status"] == "partial" for job in result["jobs"]))
+        self.assertTrue(all(job["scan_truncated"] for job in result["jobs"]))
+
     def test_canonical_names_preserve_version_and_timestamp(self):
         self.assertEqual(canonical_id("fe7", PALADIN), DEFAULT_CONFIG["selection"]["fe7"][0])
         self.assertEqual(canonical_id("fe8", FULL), "fe8-usa-sacred-trilogy-2.1.3-full")

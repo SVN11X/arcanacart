@@ -12,6 +12,7 @@ from test_ups import patch_from
 from arcanacart.cli import build_parser, main
 from arcanacart.core.io import atomic_json
 from arcanacart.pipeline import pipeline
+from arcanacart.reporting import render
 from arcanacart.schemas import validate
 from examples.generate_synthetic import fixture
 from feunpack.cli import main as legacy_main
@@ -251,3 +252,44 @@ class PipelineTests(unittest.TestCase):
         ):
             result = pipeline(self.rom, self.out, profile="fe8-us", tables=self.tables)
         self.assertEqual(result["status"], "completed")
+
+    def test_truncated_scan_has_partial_status_cli_exit_and_reusable_cache(self):
+        args = ["pipeline", "--rom", self.rom, "--out", self.out, "--budget", "4"]
+        code, text, error = call_cli(args)
+        self.assertEqual(code, 3, error)
+        state = json.loads(text)
+        self.assertEqual(state["status"], "partial")
+        self.assertTrue(state["scan_truncated"])
+        timestamp = (self.out / "air.json").stat().st_mtime_ns
+        code, text, error = call_cli([*args, "--resume"])
+        self.assertEqual(code, 3, error)
+        self.assertTrue(json.loads(text)["cache_hit"])
+        self.assertEqual((self.out / "air.json").stat().st_mtime_ns, timestamp)
+
+    def test_reports_show_search_progress_and_skipped_semantic_tables(self):
+        from arcanacart.compression import ScanLimits
+
+        pipeline(self.rom, self.out, limits=ScanLimits(max_decode_bytes=4))
+        doc = json.loads((self.out / "air.json").read_text())
+        for format in ["html", "markdown"]:
+            report = render(doc, format)
+            self.assertIn("parcial", report)
+            self.assertIn("Avance de búsqueda lineal de cabeceras", report)
+            self.assertIn("Bytes clasificados", report)
+            self.assertIn("Tablas de personajes/clases/objetos: omitidas", report)
+
+    def test_old_scan_document_report_can_derive_progress(self):
+        pipeline(self.rom, self.out)
+        doc = json.loads((self.out / "air.json").read_text())
+        del doc["scan"]["search_progress_percent"]
+        self.assertIn("100.000 %", render(doc, "html"))
+
+    def test_scan_and_extract_also_return_partial_when_quota_stops_scan(self):
+        for command in ["scan", "extract"]:
+            output = self.root / (command + "-partial")
+            args = [command, "--rom", self.rom, "--out", output, "--budget", "4"]
+            if command == "extract":
+                args += ["--scan"]
+            code, text, error = call_cli(args)
+            self.assertEqual(code, 3, error)
+            self.assertEqual(json.loads(text)["status"], "partial")

@@ -106,7 +106,7 @@ def build_parser(prog: str = "arcanacart") -> Parser:
             "--budget",
             type=number,
             default=64 * 1024 * 1024,
-            help="Presupuesto agregado de bytes de intentos de descompresión.",
+            help="Cuota de bytes realmente descomprimidos; incluye salidas de candidatos rechazados.",
         )
         cmd.add_argument(
             "--max-candidates", type=int, default=100_000, help="Máximo de intentos de decodificación."
@@ -404,7 +404,7 @@ def execute(args: argparse.Namespace) -> dict:
                 atomic_write(args.out / (hash_ + ".bin"), blob)
             atomic_json(args.out / "resources.json", {"rom": metadata, "resources": resources, "scan": stats})
         return {
-            "status": "planned" if dry else "completed",
+            "status": "planned" if dry else "partial" if stats["truncated"] else "completed",
             "dry_run": dry,
             "scan": stats,
             "output": str(args.out),
@@ -434,7 +434,7 @@ def execute(args: argparse.Namespace) -> dict:
         if not dry:
             export_json(result, args.out, force=force)
         return {
-            "status": "planned" if dry else "completed",
+            "status": "planned" if dry else "partial" if result["scan"].get("truncated") else "completed",
             "entities": len(result["entities"]),
             "extractors": result["extractors"],
             "output": str(args.out),

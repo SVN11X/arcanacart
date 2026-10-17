@@ -43,7 +43,7 @@ python -m pip install --no-index --no-deps --no-build-isolation .
 ```
 
 También puedes construir una rueda con `python -m build`, copiarla y ejecutar
-`python -m pip install --no-index --no-deps arcanacart-0.4.0-py3-none-any.whl`.
+`python -m pip install --no-index --no-deps arcanacart-0.4.1-py3-none-any.whl`.
 El wheel incluye el esquema AIR y el exportador Java.
 
 ## Desarrollo

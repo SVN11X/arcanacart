@@ -176,7 +176,10 @@ def analyze(
 
 
 def _cache_valid(out: Path, state: dict, fingerprint: str) -> bool:
-    if state.get("fingerprint") != fingerprint or state.get("status") != "completed":
+    if state.get("fingerprint") != fingerprint or state.get("status") not in {"completed", "partial"}:
+        return False
+    # A bounded partial scan is reusable, but failed optional stages must be retried.
+    if state.get("status") == "partial" and state.get("errors"):
         return False
     artifacts = state.get("artifacts")
     if (
@@ -309,7 +312,9 @@ def pipeline(
             for name in ["air.json", "entities.csv", "report.md", "report.html"]:
                 artifacts[name] = digest(read_bounded(out / name, 64 * 1024 * 1024))
             final = {
-                "status": "partial" if result["errors"] else "completed",
+                "status": "partial"
+                if result["errors"] or result["scan"].get("truncated", False)
+                else "completed",
                 "fingerprint": fingerprint,
                 "tool_version": __version__,
                 "rom_sha256": rom["sha256"],

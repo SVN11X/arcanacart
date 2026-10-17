@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.1 — Cuotas reales y reanálisis transparente
+
+- Validación LZ10/RLE sin expandir salidas falsas; cuota separada de tokens.
+- `--budget` mide bytes producidos, no tamaños anunciados por cabeceras rechazadas.
+- Cabeceras con referencias ROM se priorizan; el recorrido lineal sigue disponible.
+- Métricas separadas para referencias, recorrido lineal, validación y salida.
+- Escaneo truncado produce `partial` y código 3 en scan/extract/pipeline y en lotes.
+- Los informes muestran avance, clasificación y tablas omitidas en texto legible.
+- Caché verificable de resultados parciales sin errores de herramientas externas.
+- Reanálisis PowerShell directo de las ROMs ya generadas, con carpetas nuevas y CSV.
+
 ## 0.4.0 — FE7, FE8 y variantes
 
 - Importación de cuatro ZIP con nombres canónicos, copia verificada y registro de procedencia.
