@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcanacart.invalid/schemas/air-1.0.0.json",
+  "title": "Arcana Intermediate Representation 1.0.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "tool",
+    "tool_version",
+    "profile",
+    "rom",
+    "entities",
+    "extractors",
+    "resources",
+    "scan",
+    "coverage",
+    "stages",
+    "warnings",
+    "errors"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "tool": {
+      "const": "arcanacart"
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "rom": {
+      "type": "object",
+      "required": [
+        "sha256",
+        "size_bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 192
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/entity"
+      }
+    },
+    "extractors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "scan": {
+      "type": "object"
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "key",
+        "game",
+        "variant",
+        "schema_version",
+        "address",
+        "offset",
+        "size_bytes",
+        "parser",
+        "extractor_version",
+        "sha256",
+        "evidence",
+        "references",
+        "validation",
+        "confidence",
+        "unknown_fields",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^air:[0-9a-f]{64}$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "Game",
+            "ROMVariant",
+            "Character",
+            "Class",
+            "Item",
+            "Weapon",
+            "Skill",
+            "Chapter",
+            "Map",
+            "Terrain",
+            "Unit",
+            "Event",
+            "Dialogue",
+            "Animation",
+            "Asset",
+            "Function",
+            "Reference"
+          ]
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "game": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "variant": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "address": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "offset": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parser": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "extractor_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "minItems": 1
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^air:[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "validation": {
+          "enum": [
+            "confirmed",
+            "structural",
+            "inferred",
+            "unknown",
+            "failed"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "exact",
+            "documented",
+            "heuristic",
+            "unknown"
+          ]
+        },
+        "unknown_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "uniqueItems": true
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

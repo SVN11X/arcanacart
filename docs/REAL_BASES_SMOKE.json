@@ -1,0 +1,43 @@
+{
+  "test": "Real FE7U/FE8U bases; SYNTHETIC one-byte UPS, not author mods",
+  "status": "completed",
+  "job_count": 4,
+  "cache_reused": true,
+  "scan_decode_budget": 8388608,
+  "jobs": [
+    {
+      "id": "fe7-base",
+      "status": "completed",
+      "entity_count": 3,
+      "resource_count": 0,
+      "scan_truncated": true,
+      "rom_sha256": "f1200d19771b366b6ead15dec0eee4a7785b538d894c069c36f7592321ee799b"
+    },
+    {
+      "id": "fe7-usa-smoke-synthetic",
+      "status": "completed",
+      "entity_count": 3,
+      "resource_count": 0,
+      "scan_truncated": true,
+      "rom_sha256": "8d84e645567f9117fa7bfdac442d36708c5f67765ac069b06da05cc798d9412c"
+    },
+    {
+      "id": "fe8-base",
+      "status": "completed",
+      "entity_count": 3,
+      "resource_count": 0,
+      "scan_truncated": true,
+      "rom_sha256": "638cda9d9b72657220fbf7e7a500cd3b64d9686c36e8a56fca69d26d13886f2f"
+    },
+    {
+      "id": "fe8-usa-smoke-synthetic",
+      "status": "completed",
+      "entity_count": 3,
+      "resource_count": 0,
+      "scan_truncated": true,
+      "rom_sha256": "d0a9190feada4212fd9cacd293285ee22048ecc676bca0ac61cd6277750ad81f"
+    }
+  ],
+  "real_author_mods_tested": false,
+  "windows_powershell_executed": false
+}

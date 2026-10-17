@@ -1,0 +1,238 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>ArcanaCart — Informe local</title><style>body{font:16px system-ui;max-width:1100px;margin:2rem auto;padding:1rem;color:#152635;background:#fafcff}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f8;padding:1rem}td,th{padding:.45rem;border-bottom:1px solid #ccc;text-align:left}table{border-collapse:collapse;width:100%}</style><main><h1>ArcanaCart — Informe local</h1><p>Validación estructural y referencias heurísticas no equivalen a reconstrucción completa.</p><h2>Entidades</h2><table><thead><tr><th>Tipo</th><th>ID lógico</th><th>Offset</th><th>Validación</th></tr></thead><tbody><tr><td>Game</td><td>fe8-us</td><td>None</td><td>inferred</td></tr><tr><td>ROMVariant</td><td>b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640</td><td>None</td><td>confirmed</td></tr><tr><td>Asset</td><td>cartridge-header</td><td>0</td><td>structural</td></tr><tr><td>Character</td><td>1</td><td>512</td><td>inferred</td></tr><tr><td>Character</td><td>2</td><td>564</td><td>inferred</td></tr><tr><td>Class</td><td>1</td><td>768</td><td>inferred</td></tr><tr><td>Class</td><td>2</td><td>852</td><td>inferred</td></tr><tr><td>Item</td><td>1</td><td>1280</td><td>inferred</td></tr><tr><td>Item</td><td>2</td><td>1316</td><td>inferred</td></tr><tr><td>Asset</td><td>compressed:1793</td><td>1793</td><td>structural</td></tr><tr><td>Asset</td><td>compressed:1825</td><td>1825</td><td>structural</td></tr><tr><td>Asset</td><td>compressed:1857</td><td>1857</td><td>structural</td></tr></tbody></table><h2>Evidencias y cobertura</h2><pre>{
+  &quot;compatibility&quot;: {
+    &quot;air&quot;: true,
+    &quot;candidate_entity_types&quot;: [
+      &quot;Character&quot;,
+      &quot;Class&quot;,
+      &quot;Item&quot;
+    ],
+    &quot;csv&quot;: true,
+    &quot;json&quot;: true,
+    &quot;ltmaker_compatible_entities_verified&quot;: 0,
+    &quot;ltmaker_project&quot;: false,
+    &quot;reason&quot;: &quot;No se ha validado una versión ni campaña .ltproj en LT-Maker.&quot;,
+    &quot;requires_adaptation&quot;: [
+      &quot;IDs&quot;,
+      &quot;rules&quot;,
+      &quot;assets&quot;,
+      &quot;events&quot;,
+      &quot;progression&quot;
+    ]
+  },
+  &quot;coverage&quot;: {
+    &quot;by_category_bytes&quot;: {
+      &quot;compressed_candidates&quot;: 24,
+      &quot;header&quot;: 192,
+      &quot;table_records&quot;: 344
+    },
+    &quot;category_note&quot;: &quot;Categorías pueden solaparse; classified_bytes usa unión de intervalos.&quot;,
+    &quot;classified_bytes&quot;: 560,
+    &quot;classified_ranges&quot;: [
+      [
+        0,
+        192
+      ],
+      [
+        512,
+        616
+      ],
+      [
+        768,
+        936
+      ],
+      [
+        1280,
+        1352
+      ],
+      [
+        1793,
+        1802
+      ],
+      [
+        1825,
+        1834
+      ],
+      [
+        1857,
+        1863
+      ]
+    ],
+    &quot;denominator_bytes&quot;: 4096,
+    &quot;duplicated_classification_bytes&quot;: 0,
+    &quot;overlap_bytes&quot;: 0,
+    &quot;overlap_ranges&quot;: [],
+    &quot;unknown_bytes&quot;: 3536,
+    &quot;unknown_ranges&quot;: [
+      [
+        192,
+        512
+      ],
+      [
+        616,
+        768
+      ],
+      [
+        936,
+        1280
+      ],
+      [
+        1352,
+        1793
+      ],
+      [
+        1802,
+        1825
+      ],
+      [
+        1834,
+        1857
+      ],
+      [
+        1863,
+        4096
+      ]
+    ]
+  },
+  &quot;disassembly&quot;: {
+    &quot;exported_functions&quot;: null,
+    &quot;failed_functions&quot;: null,
+    &quot;identified_functions&quot;: null,
+    &quot;reason&quot;: &quot;No se ejecutó Ghidra. No hay denominador para cobertura de funciones.&quot;
+  },
+  &quot;entities_by_type&quot;: {
+    &quot;Asset&quot;: 4,
+    &quot;Character&quot;: 2,
+    &quot;Class&quot;: 2,
+    &quot;Game&quot;: 1,
+    &quot;Item&quot;: 2,
+    &quot;ROMVariant&quot;: 1
+  },
+  &quot;errors&quot;: [],
+  &quot;extractors&quot;: [
+    {
+      &quot;definition_sha256&quot;: &quot;d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97&quot;,
+      &quot;entities&quot;: 2,
+      &quot;id_mismatches&quot;: 0,
+      &quot;limitations&quot;: [
+        &quot;inventory&quot;,
+        &quot;support_relationships&quot;,
+        &quot;decoded_text&quot;,
+        &quot;recruitment&quot;,
+        &quot;reserved_bytes&quot;
+      ],
+      &quot;parser&quot;: &quot;fe8-us/Character&quot;,
+      &quot;records_declared&quot;: 2,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;validated_on_commercial_rom&quot;: false
+    },
+    {
+      &quot;definition_sha256&quot;: &quot;d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97&quot;,
+      &quot;entities&quot;: 2,
+      &quot;id_mismatches&quot;: 0,
+      &quot;limitations&quot;: [
+        &quot;animation&quot;,
+        &quot;terrain_tables&quot;,
+        &quot;unknown_50&quot;,
+        &quot;branch_promotions&quot;,
+        &quot;special_rules&quot;
+      ],
+      &quot;parser&quot;: &quot;fe8-us/Class&quot;,
+      &quot;records_declared&quot;: 2,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;validated_on_commercial_rom&quot;: false
+    },
+    {
+      &quot;definition_sha256&quot;: &quot;d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97&quot;,
+      &quot;entities&quot;: 2,
+      &quot;id_mismatches&quot;: 0,
+      &quot;limitations&quot;: [
+        &quot;decoded_text&quot;,
+        &quot;bonuses&quot;,
+        &quot;effectiveness&quot;,
+        &quot;effect_logic&quot;,
+        &quot;padding&quot;
+      ],
+      &quot;parser&quot;: &quot;fe8-us/Item&quot;,
+      &quot;records_declared&quot;: 2,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;validated_on_commercial_rom&quot;: false
+    }
+  ],
+  &quot;identification&quot;: {
+    &quot;crc32&quot;: &quot;35172f29&quot;,
+    &quot;game_code&quot;: &quot;BE8E&quot;,
+    &quot;gba_fixed_0x96&quot;: true,
+    &quot;header_checksum_expected&quot;: 167,
+    &quot;header_checksum_stored&quot;: 167,
+    &quot;header_checksum_valid&quot;: true,
+    &quot;header_version&quot;: 0,
+    &quot;maker_code&quot;: &quot;00&quot;,
+    &quot;reference&quot;: null,
+    &quot;region_hint&quot;: &quot;USA&quot;,
+    &quot;reserved_bytes_zero&quot;: true,
+    &quot;sha1&quot;: &quot;a09f9f10b69a57114d756f32ae2cf511b6130de4&quot;,
+    &quot;sha256&quot;: &quot;b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640&quot;,
+    &quot;size_bytes&quot;: 4096,
+    &quot;software_guess&quot;: &quot;FE8 USA&quot;,
+    &quot;source_name&quot;: &quot;synthetic.gba&quot;,
+    &quot;standard_rom_window&quot;: true,
+    &quot;title&quot;: &quot;ARCANATEST00&quot;,
+    &quot;type&quot;: &quot;gba&quot;,
+    &quot;verification&quot;: &quot;unknown-or-modified&quot;,
+    &quot;warning&quot;: &quot;Game code and header are hints, not proof of a clean or licensed ROM. Check SHA1 and patch CRC.&quot;
+  },
+  &quot;profile&quot;: &quot;fe8-us&quot;,
+  &quot;resources&quot;: 3,
+  &quot;scan&quot;: {
+    &quot;attempted&quot;: 3,
+    &quot;candidate_headers&quot;: 3,
+    &quot;decode_budget_used&quot;: 14,
+    &quot;decoded_blocks&quot;: 3,
+    &quot;excluded_header_bytes&quot;: 192,
+    &quot;references_truncated&quot;: false,
+    &quot;rejected&quot;: 0,
+    &quot;scanned_through_offset&quot;: 4092,
+    &quot;step&quot;: 1,
+    &quot;stop_reason&quot;: null,
+    &quot;truncated&quot;: false,
+    &quot;unique_outputs&quot;: 2
+  },
+  &quot;stages&quot;: [
+    {
+      &quot;name&quot;: &quot;identify&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;verification&quot;: &quot;unknown-or-modified&quot;
+    },
+    {
+      &quot;entities&quot;: 6,
+      &quot;name&quot;: &quot;tables&quot;,
+      &quot;reason&quot;: null,
+      &quot;status&quot;: &quot;completed&quot;
+    },
+    {
+      &quot;name&quot;: &quot;resources&quot;,
+      &quot;status&quot;: &quot;completed&quot;
+    },
+    {
+      &quot;name&quot;: &quot;symbols&quot;,
+      &quot;reason&quot;: &quot;No se proporcionó referencia local.&quot;,
+      &quot;status&quot;: &quot;skipped&quot;
+    },
+    {
+      &quot;name&quot;: &quot;ghidra&quot;,
+      &quot;reason&quot;: &quot;Integración opcional; habilitar con --with-ghidra.&quot;,
+      &quot;status&quot;: &quot;skipped&quot;
+    },
+    {
+      &quot;name&quot;: &quot;export&quot;,
+      &quot;status&quot;: &quot;completed&quot;
+    },
+    {
+      &quot;name&quot;: &quot;report&quot;,
+      &quot;status&quot;: &quot;completed&quot;
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Variante desconocida o modificada. Game Code no demuestra originalidad.&quot;
+  ]
+}</pre></main></html>

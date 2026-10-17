@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "inputs": {
+    "fe7_rom": "private/inputs/roms/fe7-usa-base.zip",
+    "fe8_rom": "private/inputs/roms/fe8-usa-base.zip",
+    "fe7_mods": "private/inputs/mods/fe7-remastered-patches.zip",
+    "fe8_mods": "private/inputs/mods/fe8-sacred-trilogy-patches.zip"
+  },
+  "prepared": "private/prepared/fire-emblem",
+  "workspace": "workspace/fire-emblem",
+  "selection": {
+    "fe7": [
+      "fe7-usa-remastered-x-qol-final-paladin-special-20251026t165125"
+    ],
+    "fe8": [
+      "fe8-usa-sacred-trilogy-2.1.3-full"
+    ]
+  },
+  "allow_unknown_bases": false,
+  "scan": true,
+  "scan_limits": {
+    "max_block_bytes": 2097152,
+    "max_decode_bytes": 67108864,
+    "max_results": 1000,
+    "max_candidates": 100000,
+    "step": 1
+  },
+  "compare": true,
+  "tables": {}
+}

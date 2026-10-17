@@ -1,0 +1,959 @@
+{
+  "coverage": {
+    "by_category_bytes": {
+      "compressed_candidates": 24,
+      "header": 192,
+      "table_records": 344
+    },
+    "category_note": "Categorías pueden solaparse; classified_bytes usa unión de intervalos.",
+    "classified_bytes": 560,
+    "classified_ranges": [
+      [
+        0,
+        192
+      ],
+      [
+        512,
+        616
+      ],
+      [
+        768,
+        936
+      ],
+      [
+        1280,
+        1352
+      ],
+      [
+        1793,
+        1802
+      ],
+      [
+        1825,
+        1834
+      ],
+      [
+        1857,
+        1863
+      ]
+    ],
+    "denominator_bytes": 4096,
+    "duplicated_classification_bytes": 0,
+    "overlap_bytes": 0,
+    "overlap_ranges": [],
+    "unknown_bytes": 3536,
+    "unknown_ranges": [
+      [
+        192,
+        512
+      ],
+      [
+        616,
+        768
+      ],
+      [
+        936,
+        1280
+      ],
+      [
+        1352,
+        1793
+      ],
+      [
+        1802,
+        1825
+      ],
+      [
+        1834,
+        1857
+      ],
+      [
+        1863,
+        4096
+      ]
+    ]
+  },
+  "entities": [
+    {
+      "address": null,
+      "confidence": "heuristic",
+      "data": {
+        "game_code_hint": "BE8E",
+        "profile": "fe8-us"
+      },
+      "evidence": [
+        "header-game-code",
+        "unknown-variant"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:bd48ae65303eeeea99b49eb149b470e07669380f0bf9e9094630c96565a400c5",
+      "key": "fe8-us",
+      "kind": "Game",
+      "offset": null,
+      "parser": "gba-header",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": null,
+      "size_bytes": 0,
+      "unknown_fields": [
+        "campaign",
+        "mechanics"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": null,
+      "confidence": "exact",
+      "data": {
+        "crc32": "35172f29",
+        "sha1": "a09f9f10b69a57114d756f32ae2cf511b6130de4"
+      },
+      "evidence": [
+        "whole-file-hashes"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:84adf3aa13300045c2dd5421eda4b883e6c01c1e58712a019c0f5acc19c0a542",
+      "key": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640",
+      "kind": "ROMVariant",
+      "offset": null,
+      "parser": "gba-header",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640",
+      "size_bytes": 0,
+      "unknown_fields": [],
+      "validation": "confirmed",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134217728,
+      "confidence": "documented",
+      "data": {
+        "type": "header"
+      },
+      "evidence": [
+        "fixed-size-header",
+        "checksum-calculation"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:0c890874e20eb25a2e02e1ff6403732eb6cce2503459b924a0a73667d97f5a3e",
+      "key": "cartridge-header",
+      "kind": "Asset",
+      "offset": 0,
+      "parser": "gba-header",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "15be0699cc3b1bf874b86a6b67d365238a7eb080af4cedc4f66bc4a43d11389e",
+      "size_bytes": 192,
+      "unknown_fields": [
+        "entrypoint_semantics"
+      ],
+      "validation": "structural",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134218240,
+      "confidence": "heuristic",
+      "data": {
+        "affinity": 0,
+        "attributes": 0,
+        "base_constitution": 0,
+        "base_defense": 0,
+        "base_hp": -2,
+        "base_level": 3,
+        "base_luck": 0,
+        "base_power": 0,
+        "base_resistance": 0,
+        "base_skill": 0,
+        "base_speed": 0,
+        "class_id": 1,
+        "description_text_id": 200,
+        "growth_defense": 0,
+        "growth_hp": 41,
+        "growth_luck": 0,
+        "growth_power": 0,
+        "growth_resistance": 0,
+        "growth_skill": 0,
+        "growth_speed": 0,
+        "mini_portrait_id": 0,
+        "name_text_id": 100,
+        "number": 1,
+        "pointer_evidence": [],
+        "portrait_id": 0,
+        "slot": 0,
+        "sort_order": 0,
+        "support_pointer": 0,
+        "table_index": 1,
+        "visit_group": 0,
+        "warnings": [],
+        "weapon_ranks": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmunit.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:09289d457b9e3573abf5bf61589d3bb72fb0069ed640bcc3912f578a1b8b17b1",
+      "key": "1",
+      "kind": "Character",
+      "offset": 512,
+      "parser": "fe8-us/Character",
+      "references": [
+        "air:8f8fe25023110a88fca8e2c3121959cd1e90ce3a655713d1f5a24957757f8f97"
+      ],
+      "schema_version": "1.0.0",
+      "sha256": "d2d2b6a29518eee19bf2f66909b368f7fbfec3bafd0c33d4cd26e70aace9ed02",
+      "size_bytes": 52,
+      "unknown_fields": [
+        "inventory",
+        "support_relationships",
+        "decoded_text",
+        "recruitment",
+        "reserved_bytes"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134218292,
+      "confidence": "heuristic",
+      "data": {
+        "affinity": 0,
+        "attributes": 0,
+        "base_constitution": 0,
+        "base_defense": 0,
+        "base_hp": -2,
+        "base_level": 4,
+        "base_luck": 0,
+        "base_power": 0,
+        "base_resistance": 0,
+        "base_skill": 0,
+        "base_speed": 0,
+        "class_id": 1,
+        "description_text_id": 201,
+        "growth_defense": 0,
+        "growth_hp": 42,
+        "growth_luck": 0,
+        "growth_power": 0,
+        "growth_resistance": 0,
+        "growth_skill": 0,
+        "growth_speed": 0,
+        "mini_portrait_id": 0,
+        "name_text_id": 101,
+        "number": 2,
+        "pointer_evidence": [],
+        "portrait_id": 0,
+        "slot": 1,
+        "sort_order": 0,
+        "support_pointer": 0,
+        "table_index": 2,
+        "visit_group": 0,
+        "warnings": [],
+        "weapon_ranks": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmunit.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:f5ab810a85c1aad9d9fe471dc5553ace947c798d03559e8ed2dc3de3ec108cea",
+      "key": "2",
+      "kind": "Character",
+      "offset": 564,
+      "parser": "fe8-us/Character",
+      "references": [
+        "air:8f8fe25023110a88fca8e2c3121959cd1e90ce3a655713d1f5a24957757f8f97"
+      ],
+      "schema_version": "1.0.0",
+      "sha256": "30b9628b32e42a4fbcc63aa7dd51cf4c56f5b825336ed7be7ac91d472bd926c8",
+      "size_bytes": 52,
+      "unknown_fields": [
+        "inventory",
+        "support_relationships",
+        "decoded_text",
+        "recruitment",
+        "reserved_bytes"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134218496,
+      "confidence": "heuristic",
+      "data": {
+        "animation_pointer": 0,
+        "attributes": 0,
+        "base_constitution": 0,
+        "base_defense": 0,
+        "base_hp": 0,
+        "base_movement": 5,
+        "base_power": 0,
+        "base_resistance": 0,
+        "base_skill": 0,
+        "base_speed": 0,
+        "description_text_id": 200,
+        "growth_defense": 0,
+        "growth_hp": 0,
+        "growth_luck": 0,
+        "growth_power": 0,
+        "growth_resistance": 0,
+        "growth_skill": 0,
+        "growth_speed": 0,
+        "map_sprite_id": 0,
+        "max_constitution": 0,
+        "max_defense": 0,
+        "max_hp": 61,
+        "max_power": 0,
+        "max_resistance": 0,
+        "max_skill": 0,
+        "max_speed": 0,
+        "movement_pointers": [
+          0,
+          0,
+          0
+        ],
+        "name_text_id": 100,
+        "number": 1,
+        "pointer_evidence": [],
+        "portrait_id": 0,
+        "promotion_bonus_defense": 0,
+        "promotion_bonus_hp": 0,
+        "promotion_bonus_power": 0,
+        "promotion_bonus_resistance": 0,
+        "promotion_bonus_skill": 0,
+        "promotion_bonus_speed": 0,
+        "promotion_id": 2,
+        "relative_power": 0,
+        "slot": 0,
+        "sort_order": 0,
+        "table_index": 1,
+        "terrain_avoid_pointer": 0,
+        "terrain_defense_pointer": 0,
+        "terrain_resistance_pointer": 0,
+        "unknown_50": 0,
+        "walk_speed": 0,
+        "warnings": [],
+        "weapon_ranks": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmunit.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:8f8fe25023110a88fca8e2c3121959cd1e90ce3a655713d1f5a24957757f8f97",
+      "key": "1",
+      "kind": "Class",
+      "offset": 768,
+      "parser": "fe8-us/Class",
+      "references": [
+        "air:168760e1228a3ddd4f5db34ffae376bf70c484463b130deda4f16c1aff087171"
+      ],
+      "schema_version": "1.0.0",
+      "sha256": "41a4f77510c1440bcce9188e5f84f6254f2b2400b4ac03973f05723c79f695bd",
+      "size_bytes": 84,
+      "unknown_fields": [
+        "animation",
+        "terrain_tables",
+        "unknown_50",
+        "branch_promotions",
+        "special_rules"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134218580,
+      "confidence": "heuristic",
+      "data": {
+        "animation_pointer": 0,
+        "attributes": 0,
+        "base_constitution": 0,
+        "base_defense": 0,
+        "base_hp": 0,
+        "base_movement": 6,
+        "base_power": 0,
+        "base_resistance": 0,
+        "base_skill": 0,
+        "base_speed": 0,
+        "description_text_id": 201,
+        "growth_defense": 0,
+        "growth_hp": 0,
+        "growth_luck": 0,
+        "growth_power": 0,
+        "growth_resistance": 0,
+        "growth_skill": 0,
+        "growth_speed": 0,
+        "map_sprite_id": 0,
+        "max_constitution": 0,
+        "max_defense": 0,
+        "max_hp": 62,
+        "max_power": 0,
+        "max_resistance": 0,
+        "max_skill": 0,
+        "max_speed": 0,
+        "movement_pointers": [
+          0,
+          0,
+          0
+        ],
+        "name_text_id": 101,
+        "number": 2,
+        "pointer_evidence": [],
+        "portrait_id": 0,
+        "promotion_bonus_defense": 0,
+        "promotion_bonus_hp": 0,
+        "promotion_bonus_power": 0,
+        "promotion_bonus_resistance": 0,
+        "promotion_bonus_skill": 0,
+        "promotion_bonus_speed": 0,
+        "promotion_id": 2,
+        "relative_power": 0,
+        "slot": 1,
+        "sort_order": 0,
+        "table_index": 2,
+        "terrain_avoid_pointer": 0,
+        "terrain_defense_pointer": 0,
+        "terrain_resistance_pointer": 0,
+        "unknown_50": 0,
+        "walk_speed": 0,
+        "warnings": [],
+        "weapon_ranks": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmunit.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:168760e1228a3ddd4f5db34ffae376bf70c484463b130deda4f16c1aff087171",
+      "key": "2",
+      "kind": "Class",
+      "offset": 852,
+      "parser": "fe8-us/Class",
+      "references": [
+        "air:168760e1228a3ddd4f5db34ffae376bf70c484463b130deda4f16c1aff087171"
+      ],
+      "schema_version": "1.0.0",
+      "sha256": "c153e7e10b7fcbe02f1ec08e73aa63299702034766b83cfdb631408d0b2336be",
+      "size_bytes": 84,
+      "unknown_fields": [
+        "animation",
+        "terrain_tables",
+        "unknown_50",
+        "branch_promotions",
+        "special_rules"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134219008,
+      "confidence": "heuristic",
+      "data": {
+        "attributes": 0,
+        "bonuses_pointer": 0,
+        "cost_per_use": 0,
+        "critical": 3,
+        "description_text_id": 0,
+        "durability": 25,
+        "effectiveness_pointer": 0,
+        "hit": 80,
+        "icon_id": 0,
+        "might": 7,
+        "name_text_id": 0,
+        "number": 1,
+        "pointer_evidence": [],
+        "range_encoded": 18,
+        "range_max": 2,
+        "range_min": 1,
+        "required_exp": 0,
+        "slot": 0,
+        "table_index": 1,
+        "use_description_text_id": 0,
+        "use_effect_id": 0,
+        "warnings": [],
+        "weapon_effect_id": 0,
+        "weapon_exp": 0,
+        "weapon_type": 0,
+        "weight": 9
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmitem.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:e19f81c95b2e83ea97d8248503dd3c3d24baca99c286fd932dbe97876dddc4a7",
+      "key": "1",
+      "kind": "Item",
+      "offset": 1280,
+      "parser": "fe8-us/Item",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "9da2983004dc7f493a154d9fb341ce9c44db91c97cf3c0a82c7cecdbcb65deaf",
+      "size_bytes": 36,
+      "unknown_fields": [
+        "decoded_text",
+        "bonuses",
+        "effectiveness",
+        "effect_logic",
+        "padding"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134219044,
+      "confidence": "heuristic",
+      "data": {
+        "attributes": 0,
+        "bonuses_pointer": 0,
+        "cost_per_use": 0,
+        "critical": 3,
+        "description_text_id": 0,
+        "durability": 25,
+        "effectiveness_pointer": 0,
+        "hit": 80,
+        "icon_id": 0,
+        "might": 8,
+        "name_text_id": 0,
+        "number": 2,
+        "pointer_evidence": [],
+        "range_encoded": 18,
+        "range_max": 2,
+        "range_min": 1,
+        "required_exp": 0,
+        "slot": 1,
+        "table_index": 2,
+        "use_description_text_id": 0,
+        "use_effect_id": 0,
+        "warnings": [],
+        "weapon_effect_id": 0,
+        "weapon_exp": 0,
+        "weapon_type": 0,
+        "weight": 9
+      },
+      "evidence": [
+        "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmitem.h",
+        "table-definition-sha256:d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+        "bounded-little-endian-read",
+        "synthetic-generated-by-ArcanaCart; not a commercial ROM"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:9f1346913c2987874065d86d66c2173ae63dbb92f4b9adcff63805065f0ba096",
+      "key": "2",
+      "kind": "Item",
+      "offset": 1316,
+      "parser": "fe8-us/Item",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "90dd437ab6bd13efffa7e933a951f8ab2d5c8e0e14a998e94f4693bf97f837c0",
+      "size_bytes": 36,
+      "unknown_fields": [
+        "decoded_text",
+        "bonuses",
+        "effectiveness",
+        "effect_logic",
+        "padding"
+      ],
+      "validation": "inferred",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134219521,
+      "confidence": "heuristic",
+      "data": {
+        "address": 134219521,
+        "compressed_bytes": 9,
+        "compression": "lz10",
+        "confidence": "heuristic",
+        "decompressed_bytes": 4,
+        "encoded_sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+        "offset": 1793,
+        "possible_type": null,
+        "sha256": "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e",
+        "unknown_fields": [
+          "resource_type",
+          "semantic_use"
+        ],
+        "validation": "structural"
+      },
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:687a3ac7d4aefc9f6c188cbad1f4707eb732e60887a92ea8d2fb4ed9394775ac",
+      "key": "compressed:1793",
+      "kind": "Asset",
+      "offset": 1793,
+      "parser": "bios-compression",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+      "size_bytes": 9,
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134219553,
+      "confidence": "heuristic",
+      "data": {
+        "address": 134219553,
+        "compressed_bytes": 9,
+        "compression": "lz10",
+        "confidence": "heuristic",
+        "decompressed_bytes": 4,
+        "encoded_sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+        "offset": 1825,
+        "possible_type": null,
+        "sha256": "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e",
+        "unknown_fields": [
+          "resource_type",
+          "semantic_use"
+        ],
+        "validation": "structural"
+      },
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:1b4346b569054b052cba3abe0a0f5c0ce6e68fc3e16bb080b473544a61fc5b9e",
+      "key": "compressed:1825",
+      "kind": "Asset",
+      "offset": 1825,
+      "parser": "bios-compression",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+      "size_bytes": 9,
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    },
+    {
+      "address": 134219585,
+      "confidence": "heuristic",
+      "data": {
+        "address": 134219585,
+        "compressed_bytes": 6,
+        "compression": "rle",
+        "confidence": "heuristic",
+        "decompressed_bytes": 6,
+        "encoded_sha256": "8fd654a599dcb45c26a6104cf50745341b47bbd66cbfcae14dc5ab90f737c14c",
+        "offset": 1857,
+        "possible_type": null,
+        "sha256": "9282a4baa5dc8f7f96f9a100ef11a6105978b86562471ac39127619fd5ae6614",
+        "unknown_fields": [
+          "resource_type",
+          "semantic_use"
+        ],
+        "validation": "structural"
+      },
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "extractor_version": "0.3.0",
+      "game": "fe8-us",
+      "id": "air:17e1b0d25682b226a2a2f5b5db3cd83cf0be74a741219b6ce316d158c79d97aa",
+      "key": "compressed:1857",
+      "kind": "Asset",
+      "offset": 1857,
+      "parser": "bios-compression",
+      "references": [],
+      "schema_version": "1.0.0",
+      "sha256": "8fd654a599dcb45c26a6104cf50745341b47bbd66cbfcae14dc5ab90f737c14c",
+      "size_bytes": 6,
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural",
+      "variant": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640"
+    }
+  ],
+  "errors": [],
+  "extractors": [
+    {
+      "definition_sha256": "d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+      "entities": 2,
+      "id_mismatches": 0,
+      "limitations": [
+        "inventory",
+        "support_relationships",
+        "decoded_text",
+        "recruitment",
+        "reserved_bytes"
+      ],
+      "parser": "fe8-us/Character",
+      "records_declared": 2,
+      "status": "completed",
+      "validated_on_commercial_rom": false
+    },
+    {
+      "definition_sha256": "d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+      "entities": 2,
+      "id_mismatches": 0,
+      "limitations": [
+        "animation",
+        "terrain_tables",
+        "unknown_50",
+        "branch_promotions",
+        "special_rules"
+      ],
+      "parser": "fe8-us/Class",
+      "records_declared": 2,
+      "status": "completed",
+      "validated_on_commercial_rom": false
+    },
+    {
+      "definition_sha256": "d474785aa2c9095476edd31a017a663ea6154478e617d63e904ceb94d2427b97",
+      "entities": 2,
+      "id_mismatches": 0,
+      "limitations": [
+        "decoded_text",
+        "bonuses",
+        "effectiveness",
+        "effect_logic",
+        "padding"
+      ],
+      "parser": "fe8-us/Item",
+      "records_declared": 2,
+      "status": "completed",
+      "validated_on_commercial_rom": false
+    }
+  ],
+  "profile": "fe8-us",
+  "resources": [
+    {
+      "address": 134219521,
+      "compressed_bytes": 9,
+      "compression": "lz10",
+      "confidence": "heuristic",
+      "decompressed_bytes": 4,
+      "encoded_sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "offset": 1793,
+      "possible_type": null,
+      "references": [
+        {
+          "evidence": [
+            "aligned-u32-le",
+            "selected-target-in-rom"
+          ],
+          "limitation": "Coincidencia de valor; no demuestra uso como puntero en código.",
+          "location": 2048,
+          "target": {
+            "address": 134219521,
+            "canonical": 134219521,
+            "file_offset": 1793,
+            "region": "ROM",
+            "thumb": false
+          },
+          "target_offset": 1793,
+          "validation": "inferred"
+        }
+      ],
+      "sha256": "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e",
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural"
+    },
+    {
+      "address": 134219553,
+      "compressed_bytes": 9,
+      "compression": "lz10",
+      "confidence": "heuristic",
+      "decompressed_bytes": 4,
+      "encoded_sha256": "cdadb6b8ce6aa4eaae45be4b7a2d1e62a7f8086052078e79e5eebc6389b9829a",
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "offset": 1825,
+      "possible_type": null,
+      "references": [],
+      "sha256": "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e",
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural"
+    },
+    {
+      "address": 134219585,
+      "compressed_bytes": 6,
+      "compression": "rle",
+      "confidence": "heuristic",
+      "decompressed_bytes": 6,
+      "encoded_sha256": "8fd654a599dcb45c26a6104cf50745341b47bbd66cbfcae14dc5ab90f737c14c",
+      "evidence": [
+        "signature",
+        "bounded-decode",
+        "output-size-matches-header"
+      ],
+      "offset": 1857,
+      "possible_type": null,
+      "references": [],
+      "sha256": "9282a4baa5dc8f7f96f9a100ef11a6105978b86562471ac39127619fd5ae6614",
+      "unknown_fields": [
+        "resource_type",
+        "semantic_use"
+      ],
+      "validation": "structural"
+    }
+  ],
+  "rom": {
+    "crc32": "35172f29",
+    "game_code": "BE8E",
+    "gba_fixed_0x96": true,
+    "header_checksum_expected": 167,
+    "header_checksum_stored": 167,
+    "header_checksum_valid": true,
+    "header_version": 0,
+    "maker_code": "00",
+    "reference": null,
+    "region_hint": "USA",
+    "reserved_bytes_zero": true,
+    "sha1": "a09f9f10b69a57114d756f32ae2cf511b6130de4",
+    "sha256": "b766051839f1f9aa68b52c6440b6bc4f61b6b1e34be3c99b440bbbbcb4f4a640",
+    "size_bytes": 4096,
+    "software_guess": "FE8 USA",
+    "source_name": "synthetic.gba",
+    "standard_rom_window": true,
+    "title": "ARCANATEST00",
+    "type": "gba",
+    "verification": "unknown-or-modified",
+    "warning": "Game code and header are hints, not proof of a clean or licensed ROM. Check SHA1 and patch CRC."
+  },
+  "scan": {
+    "attempted": 3,
+    "candidate_headers": 3,
+    "decode_budget_used": 14,
+    "decoded_blocks": 3,
+    "excluded_header_bytes": 192,
+    "references_truncated": false,
+    "rejected": 0,
+    "scanned_through_offset": 4092,
+    "step": 1,
+    "stop_reason": null,
+    "truncated": false,
+    "unique_outputs": 2
+  },
+  "schema_version": "1.0.0",
+  "stages": [
+    {
+      "name": "identify",
+      "status": "completed",
+      "verification": "unknown-or-modified"
+    },
+    {
+      "entities": 6,
+      "name": "tables",
+      "reason": null,
+      "status": "completed"
+    },
+    {
+      "name": "resources",
+      "status": "completed"
+    },
+    {
+      "name": "symbols",
+      "reason": "No se proporcionó referencia local.",
+      "status": "skipped"
+    },
+    {
+      "name": "ghidra",
+      "reason": "Integración opcional; habilitar con --with-ghidra.",
+      "status": "skipped"
+    },
+    {
+      "name": "export",
+      "status": "completed"
+    },
+    {
+      "name": "report",
+      "status": "completed"
+    }
+  ],
+  "tool": "arcanacart",
+  "tool_version": "0.3.0",
+  "warnings": [
+    "Variante desconocida o modificada. Game Code no demuestra originalidad."
+  ]
+}

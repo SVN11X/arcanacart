@@ -1,0 +1,56 @@
+[
+  {
+    "source": "https://github.com/StanHash/fe7_us/blob/5c8b3c5e254e00f0f3458b9772c27e1a5a326e3b/include/unit.h",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "c005855c23a36c3a759f1c41221b8f0388cff4e34232efa284c48d3876d93299",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmunit.h",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "b3353c8e8f5a62213eeee22119d8059c6cbab43d5f99b9c0df6e5222d258e3c3",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/f2e1f060dbe5b0cc35285df5a0f6659860644a04/include/bmitem.h",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "c8b7cec1bd8978efa769e2a4c7a7923538e5986b93ff70b81969f03eb842e073",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/Features/Base/src/main/java/ghidra/app/util/headless/HeadlessScript.java",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "422cbfe4be0f4e0b0079ba929429ac60ef7b77c6a47fa6a83a5389d804f0e31f",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/Framework/SoftwareModeling/src/main/java/ghidra/program/model/listing/Program.java",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "171d8b5a4b45864e07149686e1fc892b83b4eaea8f53a89817f9bebf90e34169",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/Features/Decompiler/src/main/java/ghidra/app/decompiler/DecompInterface.java",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "21f99f62b7a1112389539d6bbbdfdee804cb4461b9c5fd80ea06e1fef3011a88",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/pudii/gba-ghidra-loader/blob/main/src/main/java/gba/GBALoader.java",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "225939bb347f70d264483c12f643706684817fec09af8e21491fc55a39bb7c25",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/pudii/gba-ghidra-loader/blob/main/data/GBA.opinion",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "e11464e06555d8a933ddd57fa633517a5fdc79ab478d85a835dbc0f04ec840c3",
+    "redistributed_source": false
+  },
+  {
+    "source": "https://github.com/mgba-emu/mgba/blob/master/src/gba/bios.c",
+    "retrieved_utc": "2026-10-16",
+    "sha256": "bc20e3598c823118cc9933395239ba7826fb6614ded46d4e922ee926ede15ee5",
+    "redistributed_source": false
+  }
+]

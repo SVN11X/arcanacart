@@ -1,0 +1,61 @@
+{
+  "release": "0.4.0",
+  "baseline_tests": 11,
+  "previous_tests": 118,
+  "new_batch_tests": 35,
+  "final_tests": 153,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "original_test_bodies_ast_preserved": 11,
+  "python": "3.12.14",
+  "os": "Linux",
+  "ruff_check": "passed",
+  "ruff_format_check": "passed",
+  "mypy": {
+    "status": "passed",
+    "source_files": 28
+  },
+  "build": {
+    "wheel": "passed",
+    "sdist": "passed"
+  },
+  "wheel_smoke": {
+    "status": "passed",
+    "version": "ArcanaCart 0.4.0",
+    "installation": "isolated venv, --no-index --no-deps",
+    "outside_source_tree": true,
+    "runtime_dependencies": [],
+    "schema_packaged": true,
+    "java_script_packaged": true,
+    "sdist_windows_scripts_packaged": true,
+    "sdist_guide_packaged": true,
+    "imported_mod_archives": 2,
+    "default_jobs": 4,
+    "all_variant_jobs": 8,
+    "resume_cache_hit": true,
+    "fixtures": "synthetic; unknown bases explicitly allowed only in QA config"
+  },
+  "real_base_smoke": {
+    "base_rom_count": 2,
+    "size_bytes_each": 16777216,
+    "exact_reference_sha1": true,
+    "patches": "synthetic one-byte UPS; not actual author mods",
+    "job_count": 4,
+    "changed_bytes_each_mod": 1,
+    "resume_cache_hit": true,
+    "scan_decode_budget": 8388608,
+    "scan_truncated": true,
+    "resources_each_job": 0,
+    "air_entities_each_job": 3
+  },
+  "pending_real_validation": [
+    "actual FE7 Remastered and Sacred Trilogy UPS archives",
+    "Windows PowerShell launchers",
+    "Windows/WSL/macOS runtime",
+    "Ghidra compilation/execution",
+    "commercial ROM table extraction"
+  ],
+  "network_disabled_in_core_pipeline_test": true,
+  "network_and_subprocesses_disabled_in_batch_test": true
+}
