@@ -1,9 +1,9 @@
-# ArcanaCart 0.4.1
+# ArcanaCart 0.4.2
 
-La corrección [REANALISIS_0.4.1.md](REANALISIS_0.4.1.md) explica cómo reanalizar
-las ROMs que ya preparaste. El escáner valida sin expandir candidatos corruptos,
-prioriza cabeceras con referencias ROM y mide cuotas de trabajo real. Un escaneo
-interrumpido se informa como `partial` con código 3; no se presenta como completo.
+La guía [REANALISIS_0.4.2.md](REANALISIS_0.4.2.md) integra el flujo comprobado en
+terminal: selección LZ10/RLE, AIR e informes con alcance explícito y comparación
+de candidatos por contenido. Un escaneo interrumpido se informa como `partial`
+con código 3. Un barrido finalizado se refiere a los formatos y límites elegidos.
 
 Herramienta **local y offline** para investigar archivos GBA: validación binaria,
 ZIP seguro, parches UPS1, mapa de memoria, recursos BIOS LZ10/RLE y extracción
@@ -21,8 +21,9 @@ formales, estructura, selección de versiones y solución de errores.
 Descomprime el proyecto, abre PowerShell en su carpeta y, con Python 3.10+ instalado:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\windows\Prepare-Inputs.ps1 -PickFiles
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\windows\Run-ArcanaCart.ps1 -OpenReport
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+& .\scripts\windows\Prepare-Inputs.ps1 -PickFiles
+& .\scripts\windows\Run-ArcanaCart.ps1 -OpenReport
 ```
 
 El primer comando permite elegir los cuatro ZIP originales y crea copias con sus
@@ -30,6 +31,17 @@ nombres canónicos. El segundo analiza FE7 y FE8 base, FE7 Remastered X QoL Fina
 Paladin Special de 2025-10-26 y Sacred Trilogy 2.1.3 Full. Cada mod se aplica a su
 base limpia, con verificación de CRC. `-AllVariants` procesa todos los UPS encontrados.
 No requiere instalar el paquete con pip ni activar un entorno.
+
+Para las ROMs **ya preparadas** en `C:\FireEmblem`, usa directamente:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+& .\scripts\windows\Reanalizar-Resultados.ps1 -Datos 'C:\FireEmblem' -Compression lz10 -CompareBase -PythonExe 'C:\FireEmblem\entorno-arcanacart\Scripts\python.exe'
+```
+
+Este comando analiza las `.gba` existentes. La organización previa de los ZIP es
+independiente. Cada ejecución guarda su propio resumen y cada configuración usa
+una carpeta de análisis distinta.
 
 El índice queda en `workspace/fire-emblem/index.html`. El lote reúne análisis,
 aplicación de parches e informes; para jugar, abre la `.gba` preparada en tu emulador.
@@ -113,7 +125,7 @@ Lee [INSTALLATION.md](INSTALLATION.md), [CLI_REFERENCE.md](CLI_REFERENCE.md),
 La auditoría previa está en [docs/AUDIT_v0.2.md](docs/AUDIT_v0.2.md) y la evidencia
 final en [docs/TECHNICAL_REPORT.md](docs/TECHNICAL_REPORT.md).
 La verificación específica de esta corrección está en
-[docs/VERIFICACION_0.4.1.md](docs/VERIFICACION_0.4.1.md).
+[docs/VERIFICACION_0.4.2.md](docs/VERIFICACION_0.4.2.md).
 
 No hay telemetría, APIs remotas ni subida de ROMs. Conserva entradas y resultados
 privados fuera de Git. MIT cubre este código, no los contenidos analizados.

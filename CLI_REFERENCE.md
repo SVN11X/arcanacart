@@ -30,6 +30,7 @@ solicitadas como `skipped`; nunca significa extracción completa de una campaña
 | `pipeline --rom FILE --out DIRECTORY` | AIR, CSV, informes, recursos y estado reanudable |
 | `symbols --reference DIR --file MAP --out symbols.json` | Símbolos de referencia local, commit y hash del mapa |
 | `compare --left FILE --right FILE --out diff.json` | Cambios binarios; con `--air`, comparación de campos AIR |
+| `compare-resources --left BASE.json --right MOD.json --out DIRECTORY` | Hashes de candidatos descomprimidos; resumen JSON y catálogo CSV |
 | `export --input AIR.json --format json/csv --out FILE` | Valida AIR y exporta |
 | `export --format schema --out air.schema.json` | Copia del esquema distribuido |
 | `report --input AIR.json --format markdown/html --out FILE` | Informe local verificable |
@@ -92,6 +93,36 @@ La guía [EJECUTAR_FE7_FE8.md](EJECUTAR_FE7_FE8.md) detalla rutas y PowerShell.
 | `--budget` | 67108864 | Bytes realmente producidos al descomprimir |
 | `--limit` | 1000 | Resultados, no una predicción sobre el juego |
 | `--max-candidates` | 100000 | Intentos de decodificación |
+| `--compression` | `lz10 rle` | Formatos seleccionados, también en `batch` |
+
+`--compression lz10` permite terminar la búsqueda LZ10 aunque el barrido RLE
+encuentre candidatos especulativos costosos. RLE sigue disponible de forma
+explícita con `--compression rle` o junto con LZ10. La selección queda registrada
+en el AIR y en la identidad de caché. El alias antiguo `scan-lz10` conserva su
+contrato y no usa esta opción; para métricas completas usa `scan --compression lz10`.
+
+### Comparación de candidatos comprimidos
+
+```powershell
+python -m arcanacart compare-resources --left base/air.json --right mod/air.json --out comparacion
+```
+
+Acepta AIR o `resources.json` con ROM, candidatos y estadísticas. También acepta
+los manifiestos independientes que registran `methods` en el nivel superior.
+No vuelve a escanear ni abre rutas de archivos incluidas en el JSON. Compara por
+SHA-256 de salida descomprimida, con independencia de la posición en la ROM.
+
+Genera `resumen.json` y `catalogo-comparado.csv`. El catálogo incluye nombre de
+blob por hash; los blobs están en `resources/` para pipeline y junto al manifiesto
+para scan. Prioriza salidas sin coincidencia, aparta patrones 00/FF conocidos y
+ordena por referencias detectadas. Una celda vacía en `patron_uniforme` no implica
+un tipo conocido: esa comprobación tiene un presupuesto propio de 128 MiB de
+hashing y un máximo de 2 MiB por patrón.
+
+Una comparación de escaneos truncados, muestreados o con selecciones distintas o
+desconocidas devuelve `partial` y código 3. `--dry-run` valida y calcula sin escribir.
+La salida debe ser una carpeta vacía o nueva. Ausencia de coincidencia no prueba
+que exista un recurso nuevo ni identifica su función en el juego.
 
 Admiten números enteros; tamaños/step permiten `0x...`. `scan-lz10` conserva su
 valor histórico `--limit 100`; su paso ahora también es 1. Para diagnósticos de

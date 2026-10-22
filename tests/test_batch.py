@@ -71,6 +71,17 @@ class NamingAndPatchsetTests(unittest.TestCase):
         self.assertTrue(all(job["status"] == "partial" for job in result["jobs"]))
         self.assertTrue(all(job["scan_truncated"] for job in result["jobs"]))
 
+    def test_selected_compression_has_separate_namespace_without_changing_config(self):
+        before = self.path.read_bytes()
+        first = run_batch(self.root, self.path, compression_methods=("lz10",))
+        self.assertEqual(first["compression_methods"], ["lz10"])
+        self.assertTrue(all(job["resource_count"] == 2 for job in first["jobs"]))
+        second = run_batch(self.root, self.path, compression_methods=("rle",), resume=True)
+        self.assertEqual(second["compression_methods"], ["rle"])
+        self.assertTrue(all(job["resource_count"] == 1 for job in second["jobs"]))
+        self.assertNotEqual(first["jobs"][0]["air"], second["jobs"][0]["air"])
+        self.assertEqual(self.path.read_bytes(), before)
+
     def test_canonical_names_preserve_version_and_timestamp(self):
         self.assertEqual(canonical_id("fe7", PALADIN), DEFAULT_CONFIG["selection"]["fe7"][0])
         self.assertEqual(canonical_id("fe8", FULL), "fe8-usa-sacred-trilogy-2.1.3-full")

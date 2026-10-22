@@ -26,6 +26,7 @@ from arcanacart.exporters import export_csv, export_json, export_schema
 from arcanacart.integrations.symbols import import_symbols
 from arcanacart.pipeline import analyze, load_rom, pipeline
 from arcanacart.reporting import write_report
+from arcanacart.resource_compare import catalog_csv, compare_resources
 from arcanacart.schemas import validate
 from feunpack.archives import inspect_zip, prepare_zip
 from feunpack.gba import header_info
@@ -115,6 +116,15 @@ def build_parser(prog: str = "arcanacart") -> Parser:
             "--step", type=int, default=1, help="Paso del escaneo en bytes; 1 incluye bloques no alineados."
         )
 
+    def compression_options(cmd: argparse.ArgumentParser) -> None:
+        cmd.add_argument(
+            "--compression",
+            nargs="+",
+            choices=["lz10", "rle"],
+            default=["lz10", "rle"],
+            help="Formatos buscados; el recorrido completo se refiere solo a esta selección.",
+        )
+
     def ghidra_options(cmd: argparse.ArgumentParser) -> None:
         cmd.add_argument(
             "--ghidra-home", type=Path, help="Instalación local de Ghidra; alternativamente GHIDRA_HOME."
@@ -146,6 +156,7 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     batch.add_argument(
         "--no-scan", action="store_true", help="Identificar y aplicar UPS; omitir descompresión."
     )
+    compression_options(batch)
     importer = command(
         "batch-import", "Copiar ZIP originales con nombres canónicos y comprobar su integridad."
     )
@@ -186,16 +197,20 @@ def build_parser(prog: str = "arcanacart") -> Parser:
         rom(scanner)
         output(scanner, force=False)
         scan_options(scanner, default=100 if name == "scan-lz10" else 1000)
+        if name != "scan-lz10":
+            compression_options(scanner)
     extract = command("extract", "Exportar tablas documentadas a AIR, con evidencia y campos desconocidos.")
     rom(extract)
     profile(extract)
     extract.add_argument("--scan", action="store_true", help="Añadir escaneo de recursos al AIR.")
     scan_options(extract)
+    compression_options(extract)
     output(extract)
     full = command("pipeline", "Analizar, extraer y generar AIR, CSV e informes; reanudación por hashes.")
     rom(full)
     profile(full)
     scan_options(full)
+    compression_options(full)
     ghidra_options(full)
     full.add_argument("--symbols", type=Path, help="JSON de símbolos importado con symbols.")
     full.add_argument(
@@ -241,6 +256,12 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     )
     compare.add_argument("--max-ranges", type=int, default=10000)
     output(compare)
+    resource_diff = command(
+        "compare-resources", "Comparar candidatos de AIR/resources.json por hash descomprimido; JSON y CSV."
+    )
+    resource_diff.add_argument("--left", type=Path, required=True, help="AIR o manifiesto de la base.")
+    resource_diff.add_argument("--right", type=Path, required=True, help="AIR o manifiesto de la variante.")
+    output(resource_diff, force=False)
     export = command("export", "Validar y exportar AIR JSON, CSV o su esquema JSON.")
     export.add_argument("--input", type=Path)
     export.add_argument("--format", choices=["json", "csv", "schema"], default="json")
@@ -322,6 +343,7 @@ def execute(args: argparse.Namespace) -> dict:
             catalog_only=args.catalog_only,
             resume=args.resume,
             no_scan=args.no_scan,
+            compression_methods=tuple(args.compression),
             progress=progress,
         )
     if cmd == "doctor":
@@ -397,12 +419,20 @@ def execute(args: argparse.Namespace) -> dict:
                 "output": str(args.out),
                 "warning": "Escaneo heurístico, limitado por presupuesto; usa scan para métricas completas.",
             }
-        resources, blobs, stats = scan_resources(data, limits)
+        resources, blobs, stats = scan_resources(data, limits, methods=tuple(args.compression))
         if not dry:
             args.out.mkdir(parents=True, exist_ok=True)
             for hash_, blob in blobs.items():
                 atomic_write(args.out / (hash_ + ".bin"), blob)
-            atomic_json(args.out / "resources.json", {"rom": metadata, "resources": resources, "scan": stats})
+            atomic_json(
+                args.out / "resources.json",
+                {
+                    "rom": metadata,
+                    "methods": stats["methods"],
+                    "resources": resources,
+                    "scan": stats,
+                },
+            )
         return {
             "status": "planned" if dry else "partial" if stats["truncated"] else "completed",
             "dry_run": dry,
@@ -419,6 +449,7 @@ def execute(args: argparse.Namespace) -> dict:
                 profile=args.profile,
                 tables=tables,
                 limits=_limits(args),
+                compression_methods=tuple(args.compression),
                 scan=not args.no_scan,
                 resume=args.resume,
                 dry_run=dry,
@@ -429,7 +460,13 @@ def execute(args: argparse.Namespace) -> dict:
             )
         data, metadata = load_rom(args.rom, args.member)
         result, _ = analyze(
-            data, metadata, profile=args.profile, tables=tables, limits=_limits(args), scan=args.scan
+            data,
+            metadata,
+            profile=args.profile,
+            tables=tables,
+            limits=_limits(args),
+            compression_methods=tuple(args.compression),
+            scan=args.scan,
         )
         if not dry:
             export_json(result, args.out, force=force)
@@ -468,6 +505,21 @@ def execute(args: argparse.Namespace) -> dict:
         if not dry:
             atomic_json(args.out, result, force=force)
         return result
+    if cmd == "compare-resources":
+        result, rows = compare_resources(
+            read_json(args.left, 64 * 1024 * 1024), read_json(args.right, 64 * 1024 * 1024)
+        )
+        _empty_directory(args.out)
+        if not dry:
+            args.out.mkdir(parents=True, exist_ok=True)
+            atomic_write(args.out / "catalogo-comparado.csv", catalog_csv(rows))
+            atomic_json(args.out / "resumen.json", result)
+        return {
+            **result,
+            "status": "planned" if dry else result["status"],
+            "dry_run": dry,
+            "output": str(args.out),
+        }
     if cmd == "disasm":
         return ghidra.run(
             args.rom,

@@ -7,7 +7,7 @@ from pathlib import Path
 from zipfile import ZipFile
 
 from arcanacart import __version__
-from arcanacart.compression import ScanLimits, scan_resources
+from arcanacart.compression import ScanLimits, normalize_methods, scan_resources
 from arcanacart.core.io import (
     atomic_json,
     atomic_write,
@@ -52,9 +52,11 @@ def analyze(
     profile: str = "auto",
     tables: dict | None = None,
     limits: ScanLimits | None = None,
+    compression_methods: tuple[str, ...] = ("lz10", "rle"),
     scan: bool = True,
     symbols: dict | None = None,
 ) -> tuple[dict, dict[str, bytes]]:
+    compression_methods = normalize_methods(compression_methods)
     profile = select_profile(rom, profile)
     result = document(rom, profile)
     result["stages"].append({"name": "identify", "status": "completed", "verification": rom["verification"]})
@@ -123,7 +125,7 @@ def analyze(
     )
     blobs: dict[str, bytes] = {}
     if scan:
-        resources, blobs, stats = scan_resources(data, limits)
+        resources, blobs, stats = scan_resources(data, limits, methods=compression_methods)
         result.update(resources=resources, scan=stats)
         for record in resources:
             result["entities"].append(
@@ -208,6 +210,7 @@ def pipeline(
     profile: str = "auto",
     tables: dict | None = None,
     limits: ScanLimits | None = None,
+    compression_methods: tuple[str, ...] = ("lz10", "rle"),
     symbols: dict | None = None,
     scan: bool = True,
     resume: bool = False,
@@ -216,6 +219,7 @@ def pipeline(
     ghidra_home: Path | None = None,
     loader_dir: Path | None = None,
 ) -> dict:
+    compression_methods = normalize_methods(compression_methods)
     data, rom = load_rom(rom_path, member)
     options = {
         "version": __version__,
@@ -223,6 +227,7 @@ def pipeline(
         "profile": profile,
         "tables": tables,
         "limits": asdict(limits or ScanLimits()),
+        "compression_methods": list(compression_methods),
         "symbols": symbols,
         "scan": scan,
         "ghidra": ghidra.detect(ghidra_home, loader_dir) if with_ghidra else None,
@@ -271,7 +276,14 @@ def pipeline(
         )
         try:
             result, blobs = analyze(
-                data, rom, profile=profile, tables=tables, limits=limits, scan=scan, symbols=symbols
+                data,
+                rom,
+                profile=profile,
+                tables=tables,
+                limits=limits,
+                compression_methods=compression_methods,
+                scan=scan,
+                symbols=symbols,
             )
             if with_ghidra:
                 try:
@@ -321,6 +333,7 @@ def pipeline(
                 "artifacts": artifacts,
                 "entity_count": len(result["entities"]),
                 "resource_count": len(result["resources"]),
+                "compression_methods": list(compression_methods) if scan else [],
                 "scan_truncated": result["scan"].get("truncated", False),
                 "warnings": result["warnings"],
                 "errors": result["errors"],

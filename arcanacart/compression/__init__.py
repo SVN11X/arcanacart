@@ -77,6 +77,14 @@ DECODERS: dict[int, tuple[str, Decoder, Measurer]] = {
 }
 
 
+def normalize_methods(methods: tuple[str, ...]) -> tuple[str, ...]:
+    """Validate and canonicalize formats so equivalent selections share a cache."""
+    supported = tuple(entry[0] for entry in DECODERS.values())
+    if not methods or any(not isinstance(m, str) for m in methods) or set(methods) - set(supported):
+        raise ValueError("Método no soportado; disponibles: lz10, rle.")
+    return tuple(method for method in supported if method in methods)
+
+
 @dataclass(frozen=True)
 class ScanLimits:
     max_block_bytes: int = 2_097_152
@@ -128,14 +136,14 @@ def scan_resources(
     data: bytes, limits: ScanLimits | None = None, *, methods: tuple[str, ...] = ("lz10", "rle")
 ) -> tuple[list[dict], dict[str, bytes], dict]:
     limits = limits or ScanLimits()
-    if not methods or set(methods) - {name for name, _, _ in DECODERS.values()}:
-        raise ValueError("Método no soportado; disponibles: lz10, rle.")
+    methods = normalize_methods(methods)
     resources: list[dict] = []
     blobs: dict[str, bytes] = {}
     budget = DecodeBudget(limits.max_decode_bytes)
     # Bound unsuccessful token walks as well as actual output allocation.
     validation = DecodeBudget(max(limits.max_block_bytes * 2, limits.max_candidates * 64))
     stats: dict[str, Any] = {
+        "methods": list(methods),
         "candidate_headers": 0,
         "attempted": 0,
         "rejected": 0,

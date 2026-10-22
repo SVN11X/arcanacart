@@ -13,7 +13,7 @@ from zipfile import BadZipFile
 
 from arcanacart import __version__
 from arcanacart.compare import binary_compare, semantic_compare
-from arcanacart.compression import ScanLimits
+from arcanacart.compression import ScanLimits, normalize_methods
 from arcanacart.core.io import (
     atomic_json,
     atomic_write,
@@ -219,9 +219,15 @@ def _tables(root: Path, config: dict, key: str) -> dict | None:
 
 
 def _analysis_path(
-    root: Path, config: dict, game: str, identity: str, rom_hash: str, tables: dict | None
+    root: Path,
+    config: dict,
+    game: str,
+    identity: str,
+    rom_hash: str,
+    tables: dict | None,
+    compression_methods: tuple[str, ...] = ("lz10", "rle"),
 ) -> Path:
-    options = [__version__, rom_hash, config["scan"], config["scan_limits"], tables]
+    options = [__version__, rom_hash, config["scan"], config["scan_limits"], tables, compression_methods]
     namespace = digest(json_bytes(options))[:12]
     return local_path(root, config["workspace"], "workspace") / game / (identity + "--" + namespace)
 
@@ -292,8 +298,10 @@ def run_batch(
     catalog_only: bool = False,
     resume: bool = False,
     no_scan: bool = False,
+    compression_methods: tuple[str, ...] = ("lz10", "rle"),
     progress: Progress | None = None,
 ) -> dict:
+    compression_methods = normalize_methods(compression_methods)
     root = root.resolve()
     if game not in {"all", "fe7", "fe8"}:
         raise ValueError("Juego desconocido; usa all, fe7 o fe8.")
@@ -311,6 +319,7 @@ def run_batch(
         "jobs": [],
         "catalogs": [],
         "limits": {"scan": config["scan_limits"], "patchset_max_bytes": 2 * 1024**3},
+        "compression_methods": list(compression_methods) if config["scan"] else [],
         "limitations": [
             "Ghidra no se ejecuta en este lote.",
             "Extracción semántica requiere tables por variante.",
@@ -334,7 +343,7 @@ def run_batch(
 
     def analyze_job(game_id: str, identity: str, source: Path, rom_hash: str) -> dict:
         tables = _tables(root, config, identity)
-        dest = _analysis_path(root, config, game_id, identity, rom_hash, tables)
+        dest = _analysis_path(root, config, game_id, identity, rom_hash, tables, compression_methods)
         notify(identity + ": analizando ROM e informes…")
         state = pipeline(
             source,
@@ -342,6 +351,7 @@ def run_batch(
             profile=game_id + "-us" if tables is not None else "auto",
             tables=tables,
             limits=ScanLimits(**config["scan_limits"]),
+            compression_methods=compression_methods,
             scan=config["scan"],
             resume=resume,
         )

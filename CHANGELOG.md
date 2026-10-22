@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.4.2 — Selección de formatos y comparación integrada
+
+- `--compression lz10`, `rle` o ambos en scan/extract/pipeline/batch; las llamadas
+  existentes siguen buscando ambos formatos si no se indica selección.
+- El AIR, manifiesto, estado del pipeline e informe registran el alcance. Un
+  barrido LZ10 finalizado deja RLE y la identificación semántica pendientes.
+- La selección se incluye en caché y carpetas del lote sin cambiar los JSON de
+  configuración existentes. `--resume` sigue reutilizando bundles verificados;
+  no es un cursor incremental del escáner.
+- `compare-resources` acepta AIR y manifiestos de las pruebas de terminal,
+  compara hashes descomprimidos y genera resumen JSON y catálogo CSV sin repetir
+  descompresión. Se marcan patrones 00/FF conocidos con trabajo acotado.
+- Reanálisis Windows de ROMs preparadas: LZ10, 20.000 resultados, 500.000 intentos
+  por defecto; `-CompareBase` añade las bases y compara cada variante. Prioriza el
+  entorno local de Datos y crea un CSV resumen nuevo por ejecución.
+- La organización previa de ZIP se mantiene como un paso independiente. Este
+  reanálisis opera sobre las `.gba` ya preparadas.
+
 ## 0.4.1 — Cuotas reales y reanálisis transparente
 
 - Validación LZ10/RLE sin expandir salidas falsas; cuota separada de tokens.

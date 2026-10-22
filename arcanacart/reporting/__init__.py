@@ -44,6 +44,14 @@ def overview(document: dict) -> list[str]:
     status = "parcial" if document["errors"] or scan.get("truncated") else "finalizado"
     lines = [f"Estado de las etapas solicitadas: {status}."]
     if scan:
+        methods = scan.get("methods")
+        if methods:
+            lines.append("Formatos buscados: " + ", ".join(methods) + ".")
+            omitted = [name for name in ("lz10", "rle") if name not in methods]
+            if omitted:
+                lines.append("Formatos fuera de este barrido: " + ", ".join(omitted) + ".")
+        else:
+            lines.append("Este informe anterior no registra los formatos seleccionados.")
         progress = scan.get("search_progress_percent")
         if progress is None:
             start = scan.get("excluded_header_bytes", 0)
@@ -70,6 +78,10 @@ def overview(document: dict) -> list[str]:
     total = document["rom"]["size_bytes"]
     percent = 100.0 * classified / total if total else 0.0
     lines.append(f"Bytes clasificados: {classified:,} de {total:,} ({percent:.5f} %).")
+    lines.append(
+        "Esa cifra une rangos de cabeceras, tablas y candidatos; los candidatos siguen siendo "
+        "heurísticos y sus rangos pueden solaparse. No mide comprensión del juego."
+    )
     table_stage: dict = next((s for s in document["stages"] if s["name"] == "tables"), {})
     if table_stage.get("status") == "skipped":
         lines.append(
