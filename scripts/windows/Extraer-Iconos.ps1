@@ -109,7 +109,14 @@ try {
     }
     if ($CrearZip) {
         $Zip = $Out + '.zip'
-        Compress-Archive -Path (Join-Path $Out '*') -DestinationPath $Zip -CompressionLevel Optimal
+        $PackageText = (& $Python -m arcanacart.icon_package --input $Out --out $Zip | Out-String)
+        if ($LASTEXITCODE -ne 0) {
+            throw "Los iconos estan en $Out, pero no se pudo crear el ZIP portable. No repitas la extraccion."
+        }
+        $PackageResult = $PackageText | ConvertFrom-Json
+        if ($PackageResult.status -ne 'completed' -or -not $PackageResult.portable_paths) {
+            throw 'El empaquetador no confirmo un ZIP portable.'
+        }
         Write-Host "ZIP para revisar: $Zip"
     }
     if ($Abrir) {
