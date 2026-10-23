@@ -1,4 +1,8 @@
-# ArcanaCart 0.6.2
+# ArcanaCart 0.6.3
+
+Si ya completaste la extracción de las variantes, continúa con
+[CATALOGO_RETRATOS_0.6.3.md](CATALOGO_RETRATOS_0.6.3.md): reúne los PNG por contenido,
+conserva todas sus variantes e IDs y genera una galería local con filtros.
 
 Para las 43 variantes ya comparadas, sigue [RETRATOS_VARIANTES_0.6.2.md](RETRATOS_VARIANTES_0.6.2.md).
 Incluye planes por SHA-256, validación puntual de los componentes, extracción por lotes,

@@ -27,6 +27,13 @@ Este programa imprime progreso legible y escribe el resultado estructurado en
 Devuelve 0 al completar los rangos, 2 si requieren revisión y 130 ante `Ctrl+C`.
 Consulta [RETRATOS_VARIANTES_0.6.2.md](RETRATOS_VARIANTES_0.6.2.md).
 
+El catálogo consolidado se ejecuta con `scripts/windows/Consolidar-Retratos.ps1 -Lote RUTA`
+o `python scripts/variantes/consolidar_retratos.py --repo . --input RUTA --crear-zip`.
+Acepta la carpeta de resultados de ese lote o su ZIP. Imprime progreso legible y
+escribe CSV/JSON, PNG únicos, paletas y galería local en una carpeta nueva.
+`--dry-run` verifica y calcula los conteos sin publicar archivos. Devuelve 0 al
+terminar, 2 si la entrada o salida no son válidas y 130 ante `Ctrl+C`.
+
 | Comando | Entrada y resultado |
 |---|---|
 | `doctor` | Diagnóstico básico y disponibilidad opcional de Java/Ghidra/layout ARMv4T |

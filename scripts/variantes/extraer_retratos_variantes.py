@@ -77,6 +77,15 @@ def plan_text_hash(path: Path) -> str:
     return check.digest(path.read_bytes().replace(b"\r\n", b"\n"))
 
 
+def compatible_version(actual: str, minimum: str) -> bool:
+    """Allow patch releases of the same API without changing the saved plan hash."""
+    if not all(re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", v) for v in (actual, minimum)):
+        return False
+    current = tuple(map(int, actual.split(".")))
+    required = tuple(map(int, minimum.split(".")))
+    return current[:2] == required[:2] and current >= required
+
+
 def read_plan(path: Path) -> tuple[dict, str]:
     plan = small_json(path)
     if plan.get("format") != "arcanacart-bounded-face-batch-1" or plan.get("plan_version") != 1:
@@ -416,8 +425,10 @@ def run(
     plan, plan_hash = read_plan(plan_path)
     api = api or check.load_api(repo)
     api.faces = importlib.import_module("arcanacart.faces")
-    if api.version != plan["required_tool_version"]:
-        raise ValueError("Este lote se ha preparado para ArcanaCart " + plan["required_tool_version"] + ".")
+    if not compatible_version(api.version, plan["required_tool_version"]):
+        raise ValueError(
+            "Este lote requiere una versión compatible con ArcanaCart " + plan["required_tool_version"] + "."
+        )
     base_roms = {}
     for game, base in plan["bases"].items():
         print("Verificando base " + game.upper() + "...", flush=True)

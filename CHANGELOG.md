@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.3 — Catálogo de retratos sin copias repetidas
+
+- Añade `Consolidar-Retratos.ps1` para procesar la carpeta o el ZIP de un lote completado. Comprueba los informes, las tablas, los PNG y las paletas antes de publicar una salida nueva.
+- Guarda una copia de cada PNG por SHA-256 y conserva todas las apariciones por juego, variante e ID, con ROM, AIR, offset, bloque y paleta de origen.
+- Incluye una galería local paginada con filtros por juego, tipo, variante e ID; las imágenes transparentes se conservan y quedan ocultas por defecto. Exporta CSV/JSON, paletas únicas, hashes de salida y ZIP opcional.
+- Acepta resultados 0.6.2 y mantiene la identidad de sus planes y la reanudación al actualizar a una corrección compatible de la misma rama de versión.
+
 ## 0.6.2 — Retratos de las 43 variantes revisadas
 
 - Corrige el falso aviso «Cambió una definición» cuando Git guarda los planes y definiciones con CRLF en Windows. Su identidad normaliza únicamente CRLF a LF; los hashes de AIR, ROM, recursos y resultados siguen verificando sus bytes exactos. La reanudación conserva su identidad al cambiar solo esos finales de línea.
