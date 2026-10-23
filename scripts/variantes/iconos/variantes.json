@@ -1,0 +1,395 @@
+{
+  "format": "arcanacart-item-icon-variant-plan-1",
+  "reviewed_ranges": {},
+  "scope": "Revisar bancos raw de iconos de 43 variantes identificadas; no heredar limites por nombre o Game Code.",
+  "source_comparison_zip_sha256": "b06ea5b773421fa1396c23eaa3cc0c290d21e2dda5c6f790640aa650ab030f35",
+  "variants": [
+    {
+      "air_relative_path": "fe7/001-fe7uremaster-x-qol-challenge.patch.20230818164709/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "7009a44ed020ab938b90bd10e8f3bb802708a6fe9697fa3a208ef533bfc3e627",
+      "game": "fe7",
+      "rom_relative_path": "fe7/001-fe7uremaster-x-qol-challenge.patch.20230818164709/fe7-mod.gba",
+      "rom_sha256": "b399e43de3fd51ff215ed0efd15bf321d6cd9d0a415d516ed72dea6a0c9fad2e",
+      "variant": "001-fe7uremaster-x-qol-challenge.patch.20230818164709",
+      "variant_id": "fe7-001"
+    },
+    {
+      "air_relative_path": "fe7/002-fe7uremaster-x-qol-final-paladin-special.patch.20251026165125/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "8f40c476ae33aef211b8f226f7c5ab358117ba195a5278bfdf9b5a36591b603b",
+      "game": "fe7",
+      "rom_relative_path": "fe7/002-fe7uremaster-x-qol-final-paladin-special.patch.20251026165125/fe7-mod.gba",
+      "rom_sha256": "e9136026805b32ad165a6859f76132ffd0f9d6bd5c1ccf10d92c41399375bf67",
+      "variant": "002-fe7uremaster-x-qol-final-paladin-special.patch.20251026165125",
+      "variant_id": "fe7-002"
+    },
+    {
+      "air_relative_path": "fe7/003-fe7uremaster-x-qol-final.patch.20230730120539/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "9b1039d0acd911fb3cd205e34e9973320b78a0bbb73fa2ed076fec642063cb4d",
+      "game": "fe7",
+      "rom_relative_path": "fe7/003-fe7uremaster-x-qol-final.patch.20230730120539/fe7-mod.gba",
+      "rom_sha256": "75a00308b9ee4d27664af065c643371686fb77c6b9f61db204a40a5fd817ebcf",
+      "variant": "003-fe7uremaster-x-qol-final.patch.20230730120539",
+      "variant_id": "fe7-003"
+    },
+    {
+      "air_relative_path": "fe7/004-fe7uremaster.patch.20230114165323/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "611f81cf09fcef339263b2ee7ab844fb82b7e74db495f4bcfe38e6cb041a4ecb",
+      "game": "fe7",
+      "rom_relative_path": "fe7/004-fe7uremaster.patch.20230114165323/fe7-mod.gba",
+      "rom_sha256": "1fa108a12832d5db230025962516c549092802313d96cabbd21e2867675314dd",
+      "variant": "004-fe7uremaster.patch.20230114165323",
+      "variant_id": "fe7-004"
+    },
+    {
+      "air_relative_path": "fe7/005-fe7uremaster-x-qol-fun-emblem.patch.20231228165309/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "04a68f26895f73b7308baf823caea244a03ab2524ee727bb8e50454f60e3a8e5",
+      "game": "fe7",
+      "rom_relative_path": "fe7/005-fe7uremaster-x-qol-fun-emblem.patch.20231228165309/fe7-mod.gba",
+      "rom_sha256": "c9650af16c1c0095b20fb4613afd110e603e332f77da97237793498ca0398c93",
+      "variant": "005-fe7uremaster-x-qol-fun-emblem.patch.20231228165309",
+      "variant_id": "fe7-005"
+    },
+    {
+      "air_relative_path": "fe7/006-antiguo-fe7u-pme-nayru.patch.20260614125706/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "e67aa020399061ab3f0aeee1568819794289347d717c4f6de24ed310001dd64f",
+      "game": "fe7",
+      "rom_relative_path": "fe7/006-antiguo-fe7u-pme-nayru.patch.20260614125706/fe7-mod.gba",
+      "rom_sha256": "d97b34c2c93193478f288304f660cf5d102f0dee1741e291afe5a11c87503484",
+      "variant": "006-antiguo-fe7u-pme-nayru.patch.20260614125706",
+      "variant_id": "fe7-006"
+    },
+    {
+      "air_relative_path": "fe7/007-fe7u-pme-nayru-casual.patch.20260823150604/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "78a7d927b573663a31a94476b8e0292c35e7cc704470f7d683e1423486008517",
+      "game": "fe7",
+      "rom_relative_path": "fe7/007-fe7u-pme-nayru-casual.patch.20260823150604/fe7-mod.gba",
+      "rom_sha256": "a93be029248b2686f4ca13eb5842c320dad53e3f7ec153273b06d93ff6963dd3",
+      "variant": "007-fe7u-pme-nayru-casual.patch.20260823150604",
+      "variant_id": "fe7-007"
+    },
+    {
+      "air_relative_path": "fe7/008-fe7u-pme-nayru.patch.20260823150401/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "bf88f7ace4e1b00112289f4aceebd09efb79fa34a969b0e95c3d29739308cead",
+      "game": "fe7",
+      "rom_relative_path": "fe7/008-fe7u-pme-nayru.patch.20260823150401/fe7-mod.gba",
+      "rom_sha256": "4eaf0dd03afb7579623ac88012d9efd2205337ed5289f9da94b16833e6a5d568",
+      "variant": "008-fe7u-pme-nayru.patch.20260823150401",
+      "variant_id": "fe7-008"
+    },
+    {
+      "air_relative_path": "fe8/001-beta-patch/analisis-0.4.2-lz10-b128-r20000-c500000/air.json",
+      "air_sha256": "f1b240c99303b3cc08896e409f300fa0ab6eb127a74cbb6355eeeffede088ecd",
+      "game": "fe8",
+      "rom_relative_path": "fe8/001-beta-patch/fe8-mod.gba",
+      "rom_sha256": "b87e33e06392dd61c228de83cd8df3fb440cfa194edb8edc6d049731c65f690c",
+      "variant": "001-beta-patch",
+      "variant_id": "fe8-001"
+    },
+    {
+      "air_relative_path": "fe8/002-sacred-trilogy-full-fixed-growths-no-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "a2d33e59a2f59858be9af06091fefc8bfbcf8bfa0006c3b4448396cec623b609",
+      "game": "fe8",
+      "rom_relative_path": "fe8/002-sacred-trilogy-full-fixed-growths-no-ai/fe8-mod.gba",
+      "rom_sha256": "9ab47d6c7aabf11c83af55a7b129c919daa11b78b27bad84c79936fd1c31eb2e",
+      "variant": "002-sacred-trilogy-full-fixed-growths-no-ai",
+      "variant_id": "fe8-002"
+    },
+    {
+      "air_relative_path": "fe8/003-sacred-trilogy-full-fixed-growths-with-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "c4d0b59a557456bed3eed9f1829bca46ca4073a230ee7a14135ffdbbb13c0d0d",
+      "game": "fe8",
+      "rom_relative_path": "fe8/003-sacred-trilogy-full-fixed-growths-with-ai/fe8-mod.gba",
+      "rom_sha256": "21636affb40f285f3905ee1c5b4768e06cb8f9ab5b9e1af635107853f030208a",
+      "variant": "003-sacred-trilogy-full-fixed-growths-with-ai",
+      "variant_id": "fe8-003"
+    },
+    {
+      "air_relative_path": "fe8/004-sacred-trilogy-full-random-growths-no-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "484c89849662a0fc4aaf3eaf257d64a8e8175a44ab2a10ca4bbfdce177947f5d",
+      "game": "fe8",
+      "rom_relative_path": "fe8/004-sacred-trilogy-full-random-growths-no-ai/fe8-mod.gba",
+      "rom_sha256": "9388f0a4617b35c77e5c06372700e3bb2d0afbe4ada9c0bd8f8ca39c0d452bc0",
+      "variant": "004-sacred-trilogy-full-random-growths-no-ai",
+      "variant_id": "fe8-004"
+    },
+    {
+      "air_relative_path": "fe8/005-sacred-trilogy-full-random-growths-with-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "d415de258e17cfeea2d08669d60521be1dc905945232da8f384b90c01ddc41f0",
+      "game": "fe8",
+      "rom_relative_path": "fe8/005-sacred-trilogy-full-random-growths-with-ai/fe8-mod.gba",
+      "rom_sha256": "89639cbf087b3a563819ed92494ca08f89a805b82030e2ffb85cc2e369fcc5f2",
+      "variant": "005-sacred-trilogy-full-random-growths-with-ai",
+      "variant_id": "fe8-005"
+    },
+    {
+      "air_relative_path": "fe8/006-sacred-trilogy-lite-fixed-growths-no-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "3871131f0fc50f0ff7f530526b83cebfecbcf0f9e9e7ef8caab27e3c123b63dd",
+      "game": "fe8",
+      "rom_relative_path": "fe8/006-sacred-trilogy-lite-fixed-growths-no-ai/fe8-mod.gba",
+      "rom_sha256": "cad2ac6a5210d7746dcb6ec452303686f9a128163ce0679e29445fb82cddbd88",
+      "variant": "006-sacred-trilogy-lite-fixed-growths-no-ai",
+      "variant_id": "fe8-006"
+    },
+    {
+      "air_relative_path": "fe8/007-sacred-trilogy-lite-fixed-growths-with-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "9e92c233edc0e4cec780af6e40b1c6e03c6330ff1224f91c8743b5d9bc3d8aaa",
+      "game": "fe8",
+      "rom_relative_path": "fe8/007-sacred-trilogy-lite-fixed-growths-with-ai/fe8-mod.gba",
+      "rom_sha256": "59a63d5dfe4fa39dabefccab33687573fb2db0b8f67771e9621648409abd154b",
+      "variant": "007-sacred-trilogy-lite-fixed-growths-with-ai",
+      "variant_id": "fe8-007"
+    },
+    {
+      "air_relative_path": "fe8/008-sacred-trilogy-lite-random-growths-no-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "3e9cc6295407875b349495508a7d26bba6e157c11f0b74e8cfffa41d22e85452",
+      "game": "fe8",
+      "rom_relative_path": "fe8/008-sacred-trilogy-lite-random-growths-no-ai/fe8-mod.gba",
+      "rom_sha256": "211692c591171d16c176c8ac49f92194a3567a1d02fff0a03d558de0cc733bbe",
+      "variant": "008-sacred-trilogy-lite-random-growths-no-ai",
+      "variant_id": "fe8-008"
+    },
+    {
+      "air_relative_path": "fe8/009-sacred-trilogy-lite-random-growths-with-ai/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "c25433e03b42dfd62f2b983f1202caf4acfe6e8ef7eca3bbe967b71888fc386f",
+      "game": "fe8",
+      "rom_relative_path": "fe8/009-sacred-trilogy-lite-random-growths-with-ai/fe8-mod.gba",
+      "rom_sha256": "29aa486c5519d3163aee374452a147109be809b607cd9837d80e61d4ceeb7eef",
+      "variant": "009-sacred-trilogy-lite-random-growths-with-ai",
+      "variant_id": "fe8-009"
+    },
+    {
+      "air_relative_path": "fe8/010-sacred-trilogy-1.0-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "bc6386ca40c21553a7deedfbf07fafe3b40e81ef37619d4a81798039225da045",
+      "game": "fe8",
+      "rom_relative_path": "fe8/010-sacred-trilogy-1.0-full/fe8-mod.gba",
+      "rom_sha256": "28d9b1e9259aba75dda4b2b71f2958f16b9fe52d1bced9331ddb5ffa402e3dd2",
+      "variant": "010-sacred-trilogy-1.0-full",
+      "variant_id": "fe8-010"
+    },
+    {
+      "air_relative_path": "fe8/011-sacred-trilogy-1.0-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "94c82c6eb621d756fb56dc1449cafffe72165cf1389ff87c3f5eb37362826609",
+      "game": "fe8",
+      "rom_relative_path": "fe8/011-sacred-trilogy-1.0-lite/fe8-mod.gba",
+      "rom_sha256": "ef1699787c0e8d5a2695cc4c421824457587acfdc5966296cefa64ba977bc89d",
+      "variant": "011-sacred-trilogy-1.0-lite",
+      "variant_id": "fe8-011"
+    },
+    {
+      "air_relative_path": "fe8/012-sacred-trilogy-1.0.1-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "ae358cee2bdae6da92143ff9a663be135cd38f2243e367cfe604221d22b0e669",
+      "game": "fe8",
+      "rom_relative_path": "fe8/012-sacred-trilogy-1.0.1-full/fe8-mod.gba",
+      "rom_sha256": "2b8d678d52ff73363851c603666e0f4226816571aa92ab2ec52d4f8716e3acd9",
+      "variant": "012-sacred-trilogy-1.0.1-full",
+      "variant_id": "fe8-012"
+    },
+    {
+      "air_relative_path": "fe8/013-sacred-trilogy-1.0.1-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "0b2fc166a3733fb652cc710b4697f4b9ec5d63f588fae267fa6925f2225b0815",
+      "game": "fe8",
+      "rom_relative_path": "fe8/013-sacred-trilogy-1.0.1-lite/fe8-mod.gba",
+      "rom_sha256": "9f1d96483f026e06559353a50d31f4b822555ec3783090c7920b8d258b667d1b",
+      "variant": "013-sacred-trilogy-1.0.1-lite",
+      "variant_id": "fe8-013"
+    },
+    {
+      "air_relative_path": "fe8/014-sacred-trilogy-1.1-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "728df1d70e38bfc52edbef335ab0bf9da86887781225aabb50494d125e20b83e",
+      "game": "fe8",
+      "rom_relative_path": "fe8/014-sacred-trilogy-1.1-full/fe8-mod.gba",
+      "rom_sha256": "ac3b924c43c40bca983dde141e7fb693c1b186beaac3bcd33ae0819f8bca2875",
+      "variant": "014-sacred-trilogy-1.1-full",
+      "variant_id": "fe8-014"
+    },
+    {
+      "air_relative_path": "fe8/015-sacred-trilogy-1.1-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "ba4f6c484b3ad5f7b9165fa07a55811042e4b93af957df43643ee4cd48f98447",
+      "game": "fe8",
+      "rom_relative_path": "fe8/015-sacred-trilogy-1.1-lite/fe8-mod.gba",
+      "rom_sha256": "6e6ee1d2ca3677180d9f587afa4d86d11060643a2e8bb9768586715a11f73e34",
+      "variant": "015-sacred-trilogy-1.1-lite",
+      "variant_id": "fe8-015"
+    },
+    {
+      "air_relative_path": "fe8/016-sacred-trilogy-1.2-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "556268f8d25b5f44c7d168a0529af65f31a2cd089603bb4e3a0723d0c56c0555",
+      "game": "fe8",
+      "rom_relative_path": "fe8/016-sacred-trilogy-1.2-full/fe8-mod.gba",
+      "rom_sha256": "06fdfad9fa6aa616eecbc0bb8ee9bbfa7140570580c2ec177d882923f1babe8f",
+      "variant": "016-sacred-trilogy-1.2-full",
+      "variant_id": "fe8-016"
+    },
+    {
+      "air_relative_path": "fe8/017-sacred-trilogy-1.2-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "55d0689c5056ed670ca5d7d7930ced1885c01ce8ce1927f4f5009744e2df97cc",
+      "game": "fe8",
+      "rom_relative_path": "fe8/017-sacred-trilogy-1.2-lite/fe8-mod.gba",
+      "rom_sha256": "bbf57dab65e484363b49dccdc9cdaede69e3f844d16031716f7b2f959ee6d722",
+      "variant": "017-sacred-trilogy-1.2-lite",
+      "variant_id": "fe8-017"
+    },
+    {
+      "air_relative_path": "fe8/018-sacred-trilogy-1.2.1-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "2199c663554d0471b291f23d027f402e3150529209891c3692f36b8a5c20eb16",
+      "game": "fe8",
+      "rom_relative_path": "fe8/018-sacred-trilogy-1.2.1-full/fe8-mod.gba",
+      "rom_sha256": "329567a503d73e43e4574322b957be5c7f2fdbe520987fa0157f356e2268d656",
+      "variant": "018-sacred-trilogy-1.2.1-full",
+      "variant_id": "fe8-018"
+    },
+    {
+      "air_relative_path": "fe8/019-sacred-trilogy-1.2.1-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "d6f8ee0be6bebe68c8a421c825f0bfc8032b06ddb5ec0d6fae0c87d6cb0ab3eb",
+      "game": "fe8",
+      "rom_relative_path": "fe8/019-sacred-trilogy-1.2.1-lite/fe8-mod.gba",
+      "rom_sha256": "57514e7e3edc1314eb6de68aed07c5d707d604bee6395b2b7875404b4009495e",
+      "variant": "019-sacred-trilogy-1.2.1-lite",
+      "variant_id": "fe8-019"
+    },
+    {
+      "air_relative_path": "fe8/020-sacred-trilogy-1.2.2-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "98544d13ae6f7266c592778cdeaffda798cdcd520932c48cd2f10546eedf28ff",
+      "game": "fe8",
+      "rom_relative_path": "fe8/020-sacred-trilogy-1.2.2-full/fe8-mod.gba",
+      "rom_sha256": "497a4273b826989aa2ae2b9bb6525476740971dc638cf4eee37069d3d872155b",
+      "variant": "020-sacred-trilogy-1.2.2-full",
+      "variant_id": "fe8-020"
+    },
+    {
+      "air_relative_path": "fe8/021-sacred-trilogy-1.2.2-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "6a25bdea9e83beda7b4e0074a4b67fc5d430327d918f5ec2d343dfb3e20f7f7b",
+      "game": "fe8",
+      "rom_relative_path": "fe8/021-sacred-trilogy-1.2.2-lite/fe8-mod.gba",
+      "rom_sha256": "fccfc72c9cf3c856e8a3f3268de37b249b3531af272de55d8c5193d5eb41e78d",
+      "variant": "021-sacred-trilogy-1.2.2-lite",
+      "variant_id": "fe8-021"
+    },
+    {
+      "air_relative_path": "fe8/022-sacred-trilogy-1.3-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "fbeeae9416b2cc2e334f032be02edd71260b657dc5333c5207f8f9d8d7f106b2",
+      "game": "fe8",
+      "rom_relative_path": "fe8/022-sacred-trilogy-1.3-full/fe8-mod.gba",
+      "rom_sha256": "970d83be28f421a55958e572701d08db6a901890c8a50f6244324edad4e1c207",
+      "variant": "022-sacred-trilogy-1.3-full",
+      "variant_id": "fe8-022"
+    },
+    {
+      "air_relative_path": "fe8/023-sacred-trilogy-1.3-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "848f551e760857beb1993dc5a9a04631154bc9cb5202d8e3ffad74ff5425a1de",
+      "game": "fe8",
+      "rom_relative_path": "fe8/023-sacred-trilogy-1.3-lite/fe8-mod.gba",
+      "rom_sha256": "f2cb8b4542cc722f07b4ae58ab86494f512ab692df9a30ff0fb02d50fed83a92",
+      "variant": "023-sacred-trilogy-1.3-lite",
+      "variant_id": "fe8-023"
+    },
+    {
+      "air_relative_path": "fe8/024-sacred-trilogy-1.3.1-full/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "8833fb34fc9271d9f2f2312b4dc66c72b2fe641773a7066b9c35a42362aa69ee",
+      "game": "fe8",
+      "rom_relative_path": "fe8/024-sacred-trilogy-1.3.1-full/fe8-mod.gba",
+      "rom_sha256": "199aafbd5f60cdcc5a09b68269f5c04d525ca0720547807575ac9054040dbedc",
+      "variant": "024-sacred-trilogy-1.3.1-full",
+      "variant_id": "fe8-024"
+    },
+    {
+      "air_relative_path": "fe8/025-sacred-trilogy-1.3.1-lite/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "710ef0af13c02cb5df63c87cf9c90e986c0cb873929b4178d1ee0b76063ab398",
+      "game": "fe8",
+      "rom_relative_path": "fe8/025-sacred-trilogy-1.3.1-lite/fe8-mod.gba",
+      "rom_sha256": "11934261b5100ec8f567d3e1d90db9af41f011951330b5b4074c784a91597112",
+      "variant": "025-sacred-trilogy-1.3.1-lite",
+      "variant_id": "fe8-025"
+    },
+    {
+      "air_relative_path": "fe8/026-sacred-trilogy-2.0-full-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "cd57def6c28db6697aaa37099a9f059ce2f11baf7cd330bade1c18f21478a585",
+      "game": "fe8",
+      "rom_relative_path": "fe8/026-sacred-trilogy-2.0-full-version/fe8-mod.gba",
+      "rom_sha256": "497f8ce4c134c9ce234cc8d3a34900f1dd04aed48b9f5738039e1ea52066b560",
+      "variant": "026-sacred-trilogy-2.0-full-version",
+      "variant_id": "fe8-026"
+    },
+    {
+      "air_relative_path": "fe8/027-sacred-trilogy-2.0-lite-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "ec1427c7cf8836a086ace095813105c62f177eae20e59ce27ff04524ee1fef2a",
+      "game": "fe8",
+      "rom_relative_path": "fe8/027-sacred-trilogy-2.0-lite-version/fe8-mod.gba",
+      "rom_sha256": "762499230b32954f61ce868325650e7b8773eb540f54d6b73fbc3f5a02fda3cf",
+      "variant": "027-sacred-trilogy-2.0-lite-version",
+      "variant_id": "fe8-027"
+    },
+    {
+      "air_relative_path": "fe8/028-sacred-trilogy-2.1-full-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "7ed63ed2351853f85d34a37ee17b0aaa235ea0e2e8b16741c69854d6f4d6e406",
+      "game": "fe8",
+      "rom_relative_path": "fe8/028-sacred-trilogy-2.1-full-version/fe8-mod.gba",
+      "rom_sha256": "5e3d3a7f29bfa14797568c4d4ddf2081b05b802ef959277bb2e4696c530ccca5",
+      "variant": "028-sacred-trilogy-2.1-full-version",
+      "variant_id": "fe8-028"
+    },
+    {
+      "air_relative_path": "fe8/029-sacred-trilogy-2.1-lite-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "87d9834491709a6fa87bdc8a46412b930aaa4fcb6d9b4eaa8cbacdd6e3a8f531",
+      "game": "fe8",
+      "rom_relative_path": "fe8/029-sacred-trilogy-2.1-lite-version/fe8-mod.gba",
+      "rom_sha256": "6f4d3c3de5f61e4495e5ee94c7d01b4e4e3fd1767ab27de9b10170dbcad3d93c",
+      "variant": "029-sacred-trilogy-2.1-lite-version",
+      "variant_id": "fe8-029"
+    },
+    {
+      "air_relative_path": "fe8/030-sacred-trilogy-2.1.1-full-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "b9ea0f35d54d9838aead33570382605414d00dae06c3eccdd97dbdbf4e9e54b0",
+      "game": "fe8",
+      "rom_relative_path": "fe8/030-sacred-trilogy-2.1.1-full-version/fe8-mod.gba",
+      "rom_sha256": "1fe97f164906fd5ba0f030d50a1525585b41cc9be43a0d91a972076c5a5f6bd7",
+      "variant": "030-sacred-trilogy-2.1.1-full-version",
+      "variant_id": "fe8-030"
+    },
+    {
+      "air_relative_path": "fe8/031-sacred-trilogy-2.1.1-lite-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "97d8355378023139d0b3e2857a1a5d67831a9f38e7198105d6171deca7eeac49",
+      "game": "fe8",
+      "rom_relative_path": "fe8/031-sacred-trilogy-2.1.1-lite-version/fe8-mod.gba",
+      "rom_sha256": "866b6751c9c0143bf1c4a766c9920f34e0eefb7c87a20bdb7ed68c4f750bd9d2",
+      "variant": "031-sacred-trilogy-2.1.1-lite-version",
+      "variant_id": "fe8-031"
+    },
+    {
+      "air_relative_path": "fe8/032-sacred-trilogy-2.1.2-full-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "30128f0990117b0b112cc4d2f8f2d2577fba7cecd275ffa344f4e428bbd62c75",
+      "game": "fe8",
+      "rom_relative_path": "fe8/032-sacred-trilogy-2.1.2-full-version/fe8-mod.gba",
+      "rom_sha256": "40395bc10a70c7f9c8f94c7981de91581b5a23517367068009eaf197e8df6f6e",
+      "variant": "032-sacred-trilogy-2.1.2-full-version",
+      "variant_id": "fe8-032"
+    },
+    {
+      "air_relative_path": "fe8/033-sacred-trilogy-2.1.2-lite-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "fa8f6cb501a03ba864b457aaf719026c2ab76fc8a8edb4e0c313c9b759977166",
+      "game": "fe8",
+      "rom_relative_path": "fe8/033-sacred-trilogy-2.1.2-lite-version/fe8-mod.gba",
+      "rom_sha256": "f83af57693f702d80544215a064b1381b12f2fe7be125dc915fc8c0adbe74d79",
+      "variant": "033-sacred-trilogy-2.1.2-lite-version",
+      "variant_id": "fe8-033"
+    },
+    {
+      "air_relative_path": "fe8/034-sacred-trilogy-2.1.3-full-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "359dbb27d394b5803f6d38cfb06a226d77ae38329c33e477cdf4a2ef809cd080",
+      "game": "fe8",
+      "rom_relative_path": "fe8/034-sacred-trilogy-2.1.3-full-version/fe8-mod.gba",
+      "rom_sha256": "a665ac03d3c74907ad762f16baafdf6a646acb2136e005debafa16f1db447ca1",
+      "variant": "034-sacred-trilogy-2.1.3-full-version",
+      "variant_id": "fe8-034"
+    },
+    {
+      "air_relative_path": "fe8/035-sacred-trilogy-2.1.3-lite-version/analisis-0.4.2-lz10-b64-r20000-c500000/air.json",
+      "air_sha256": "81ccd456142d1d93ad260a30e0d0bcf3fad790a94b2121e075a7eee3846bf3c7",
+      "game": "fe8",
+      "rom_relative_path": "fe8/035-sacred-trilogy-2.1.3-lite-version/fe8-mod.gba",
+      "rom_sha256": "196e3743d1a11d2991350814b967b794aef4a582e657c28fa2267e4e51119487",
+      "variant": "035-sacred-trilogy-2.1.3-lite-version",
+      "variant_id": "fe8-035"
+    }
+  ]
+}
