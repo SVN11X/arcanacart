@@ -72,6 +72,11 @@ def inside(root: Path, relative: str) -> Path:
     return path
 
 
+def plan_text_hash(path: Path) -> str:
+    """Hash repository plans/definitions as LF; input AIR/ROM hashes stay exact."""
+    return check.digest(path.read_bytes().replace(b"\r\n", b"\n"))
+
+
 def read_plan(path: Path) -> tuple[dict, str]:
     plan = small_json(path)
     if plan.get("format") != "arcanacart-bounded-face-batch-1" or plan.get("plan_version") != 1:
@@ -103,7 +108,7 @@ def read_plan(path: Path) -> tuple[dict, str]:
             if not re.fullmatch(r"[0-9a-f]{64}", job[key]):
                 raise ValueError("SHA-256 de plan inválido.")
         layout_file = inside(path.parent, job["layout_file"])
-        if check.digest(layout_file.read_bytes()) != job["layout_sha256"]:
+        if plan_text_hash(layout_file) != job["layout_sha256"]:
             raise ValueError("Cambió una definición: " + str(layout_file))
         layout = small_json(layout_file)
         if layout["rom_sha256"] != job["rom_sha256"] or layout["entry_count"] != job["last_id"] + 1:
@@ -111,7 +116,7 @@ def read_plan(path: Path) -> tuple[dict, str]:
         totals.update(job["expected_counts"])
     if dict(totals) != plan["expected_total_counts"] or sum(totals.values()) != plan["expected_total_pngs"]:
         raise ValueError("El total del lote no coincide con sus variantes.")
-    return plan, check.digest(path.read_bytes())
+    return plan, plan_text_hash(path)
 
 
 def verify_job_inputs(job: dict, layout: dict, api) -> tuple[dict, bytes]:

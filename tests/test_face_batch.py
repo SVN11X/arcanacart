@@ -113,7 +113,15 @@ class BatchTests(unittest.TestCase):
     def save_plan(self):
         counts = {k: sum(j["expected_counts"][k] for j in self.plan["jobs"]) for k in batch.KINDS}
         self.plan.update(expected_total_counts=counts, expected_total_pngs=sum(counts.values()))
-        self.plan_path.write_text(json.dumps(self.plan))
+        self.plan_path.write_bytes((json.dumps(self.plan, indent=2) + "\n").encode("utf-8"))
+
+    def convert_plan_files_to_crlf(self):
+        files = [self.plan_path, *(self.tools / job["layout_file"] for job in self.plan["jobs"])]
+        for path in files:
+            data = path.read_bytes()
+            self.assertIn(b"\n", data)
+            self.assertNotIn(b"\r\n", data)
+            path.write_bytes(data.replace(b"\n", b"\r\n"))
 
     def add_job(self, card_size=2880, empty=False, missing_compressed=False, bad_palette=False):
         n = len(self.plan["jobs"]) + 1
@@ -151,7 +159,7 @@ class BatchTests(unittest.TestCase):
             FACES.FE8_LAYOUT, rom_sha256=air["rom"]["sha256"], table_offset=0x11000, entry_count=count
         )
         layout_path = self.tools / f"fe8-{n:03}.json"
-        layout_path.write_text(json.dumps(layout))
+        layout_path.write_bytes((json.dumps(layout, indent=2) + "\n").encode("utf-8"))
         job = {
             "id": f"fe8-{n:03}",
             "game": "fe8",
@@ -299,6 +307,64 @@ class BatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "definición"):
             self.run_batch()
         self.assertFalse(self.out.exists())
+
+    def test_crlf_plan_and_definitions_export_with_real_api(self):
+        expected_plan_hash = batch.file_hash(self.plan_path)
+        self.convert_plan_files_to_crlf()
+        self.assertEqual(self.run_batch()[0], 0)
+        summary = batch.small_json(self.out / "resumen.json")
+        self.assertEqual(summary["generated_component_pngs"], 3)
+        self.assertEqual(summary["plan_sha256"], expected_plan_hash)
+
+    def test_resume_after_lf_to_crlf_keeps_finished_exports(self):
+        self.assertEqual(self.run_batch()[0], 0)
+        report = self.out / "fe8-001/resultado.json"
+        original = report.read_bytes(), report.stat().st_mtime_ns
+        self.convert_plan_files_to_crlf()
+        with patch.object(FACES, "reconstruct_faces", wraps=FACES.reconstruct_faces) as renderer:
+            self.assertEqual(self.run_batch(resume=True)[0], 0)
+            renderer.assert_not_called()
+        self.assertEqual((report.read_bytes(), report.stat().st_mtime_ns), original)
+
+    def test_changed_definition_content_is_rejected_even_with_crlf(self):
+        path = self.tools / "fe8-001.json"
+        layout = json.loads(path.read_bytes())
+        layout["table_offset"] += 28
+        data = (json.dumps(layout, indent=2) + "\n").encode("utf-8")
+        path.write_bytes(data.replace(b"\n", b"\r\n"))
+        with self.assertRaisesRegex(ValueError, "definición"):
+            self.run_batch()
+        self.assertFalse(self.out.exists())
+
+    def test_air_crlf_conversion_still_requires_exact_input_hash(self):
+        path = Path(self.plan["jobs"][0]["air_path"])
+        data = (json.dumps(json.loads(path.read_bytes()), indent=2) + "\n").encode("utf-8")
+        path.write_bytes(data)
+        self.plan["jobs"][0]["air_sha256"] = batch.file_hash(path)
+        self.save_plan()
+        path.write_bytes(data.replace(b"\n", b"\r\n"))
+        with patch.object(FACES, "reconstruct_faces") as renderer:
+            self.assertEqual(self.run_batch()[0], 2)
+            renderer.assert_not_called()
+        self.assertIn("AIR cambió", batch.small_json(self.out / "resumen.json")["variants"][0]["Detalle"])
+
+    def test_all_43_delivered_definitions_accept_crlf_checkout(self):
+        source = PACKAGE / "planes.json"
+        original = source.read_bytes().replace(b"\r\n", b"\n")
+        plan = json.loads(original)
+        destination = self.root / "checkout-crlf"
+        destination.mkdir()
+        for job in plan["jobs"]:
+            path = destination / job["layout_file"]
+            path.parent.mkdir(parents=True, exist_ok=True)
+            data = (PACKAGE / job["layout_file"]).read_bytes().replace(b"\r\n", b"\n")
+            path.write_bytes(data.replace(b"\n", b"\r\n"))
+        plan_path = destination / "planes.json"
+        plan_path.write_bytes(original.replace(b"\n", b"\r\n"))
+        loaded, checksum = batch.read_plan(plan_path)
+        self.assertEqual(len(loaded["jobs"]), 43)
+        self.assertEqual(loaded["expected_total_pngs"], 17291)
+        self.assertEqual(checksum, batch.check.digest(original))
 
     def test_bad_palette_fails_preflight_before_rendering(self):
         self.plan["jobs"].clear()

@@ -1,0 +1,3 @@
+# Keep the distributed portrait plans consistent across Git checkouts.
+/scripts/variantes/planes.json text eol=lf
+/scripts/variantes/definiciones/*.json text eol=lf

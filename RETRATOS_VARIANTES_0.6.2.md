@@ -33,6 +33,11 @@ El comando Python equivalente es:
 Los programas utilizan la copia del paquete en el repositorio. Tras aplicar el
 parche puedes ejecutarlos con el entorno existente, sin reinstalar dependencias.
 
+Los planes y definiciones del repositorio admiten finales de línea LF y CRLF;
+su identidad y la reanudación se mantienen al convertir únicamente esos saltos.
+Los AIR, las ROM, los bloques y los resultados conservan la comprobación de sus
+bytes exactos. Git fija LF en los JSON distribuidos para las nuevas copias.
+
 ## Alcance y evidencia
 
 Se verificaron los 172 hashes de archivos y el estado completo de las 43

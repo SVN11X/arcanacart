@@ -2,6 +2,7 @@
 
 ## 0.6.2 — Retratos de las 43 variantes revisadas
 
+- Corrige el falso aviso «Cambió una definición» cuando Git guarda los planes y definiciones con CRLF en Windows. Su identidad normaliza únicamente CRLF a LF; los hashes de AIR, ROM, recursos y resultados siguen verificando sus bytes exactos. La reanudación conserva su identidad al cambiar solo esos finales de línea.
 - Integra `Extraer-Retratos-Variantes.ps1` y el lote Python en el repositorio, con 43 definiciones vinculadas a los SHA-256 exactos de las ROM y de sus AIR existentes.
 - Comprueba los rangos de exportación FE7 1–228 y FE8 1–254 contra la ROM local antes de generar PNG; valida paletas, datos raw y descompresiones puntuales, sin repetir el escáner.
 - Conserva los 28 IDs vacíos previstos de cuatro variantes FE8 y admite tarjetas de 80×80 en la validación; mantiene intactos los resúmenes originales de ArcanaCart.
