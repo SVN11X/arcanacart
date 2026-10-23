@@ -30,3 +30,12 @@ Las fuentes públicas pueden cambiar. Los layouts FE usan commits fijados; los
 archivos de API consultados por rama se identifican adicionalmente por el hash del
 registro. La compatibilidad real del script Java requiere ejecutar la versión de
 Ghidra elegida, no solo consultar su API.
+
+## Formatos gráficos de 0.5.0
+
+Se contrastó la organización de tiles, paletas y mapas BG con GBATEK, mantenido
+por mGBA: https://mgba-emu.github.io/gbatek/ (secciones LCD VRAM Character Data,
+BG Screen Data Format y Color Palettes; consulta del índice el 18 de octubre de 2026).
+El conversor es una implementación propia, comprobada con vectores sintéticos
+independientes; no se copian datos ni gráficos de ningún juego. No se añadió un
+layout FE7 Item sin documentación verificable; se habilitan layouts declarativos.

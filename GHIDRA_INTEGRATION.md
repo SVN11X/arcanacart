@@ -89,3 +89,19 @@ una ROM autorizada, interrumpir/reanudar un lote, verificar errores/timeouts y c
 una función con símbolos locales. El índice no es una medida de recuperación del
 código original; Auto Analysis puede no descubrir funciones o confundir datos.
 No se ha convertido automáticamente esta salida Ghidra a entidades AIR Function.
+
+## Índice documentado 0.5.0
+
+El script Java 0.5.0 registra `instruction_ranges` como pares de direcciones
+[start,end) por instrucción. Su fingerprint v2 evita reutilizar exports v1 como
+si ya contuvieran esa información.
+
+`code-index --input air.json --ghidra-summary ghidra/functions/summary.json
+--out indice-codigo` verifica la ROM y cada hash de assembly/pseudocódigo antes de
+incorporarlos al índice y al AIR. Los símbolos locales siguen siendo referencias,
+y se registran conflictos entre instrucciones recuperadas y datos/candidatos.
+Exports antiguos sin rangos pueden importarse, pero no aportan un intervalo
+contiguo de código supuesto. Un tamaño de cuerpo no describe sus huecos.
+
+Este índice documenta resultados del desensamblador; no desensambla por sí solo.
+La ejecución/compilación real del script requiere el entorno Ghidra compatible.

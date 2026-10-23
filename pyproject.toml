@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arcanacart"
-version = "0.4.2"
+version = "0.6.0"
 description = "Offline GBA binary analysis, safe UPS patching and evidence-driven semantic extraction"
 requires-python = ">=3.10"
 readme = "README.md"

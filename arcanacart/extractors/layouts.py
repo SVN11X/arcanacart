@@ -6,6 +6,8 @@ FE7 PInfo/JInfo are separately checked against unit.h; FE7 Item is not yet verif
 
 from __future__ import annotations
 
+import re
+import struct
 from dataclasses import dataclass
 from typing import Any, Protocol
 
@@ -174,7 +176,52 @@ LAYOUTS: dict[str, dict[str, Layout]] = {
 }
 
 
-def get_layout(profile: str, kind: str) -> Layout:
+def custom_layout(spec: dict) -> Layout:
+    """Parse a declarative record layout; no expressions, imports or executable plugins."""
+    if not isinstance(spec, dict) or set(spec) != {"size", "fields", "source", "unknown"}:
+        raise ValueError("Layout requiere size, fields, source y unknown.")
+    if type(spec["size"]) is not int or not 1 <= spec["size"] <= 65536:
+        raise ValueError("Tamaño de registro fuera de rango.")
+    if not isinstance(spec["source"], str) or not spec["source"].strip() or len(spec["source"]) > 2000:
+        raise ValueError("El layout requiere una fuente documental.")
+    if (
+        not isinstance(spec["unknown"], list)
+        or len(spec["unknown"]) > 128
+        or any(not isinstance(x, str) or len(x) > 200 for x in spec["unknown"])
+    ):
+        raise ValueError("Lista de campos desconocidos inválida.")
+    if not isinstance(spec["fields"], list) or not 1 <= len(spec["fields"]) <= 256:
+        raise ValueError("Se requieren 1..256 campos.")
+    fields: list[Field] = []
+    occupied: set[int] = set()
+    names: set[str] = set()
+    for item in spec["fields"]:
+        if not isinstance(item, dict) or set(item) != {"name", "offset", "fmt"}:
+            raise ValueError("Campo requiere name, offset y fmt.")
+        name, offset, fmt = item["name"], item["offset"], item["fmt"]
+        if not isinstance(name, str) or not re.fullmatch(r"[a-z][a-z0-9_]{0,63}", name) or name in names:
+            raise ValueError("Nombre de campo inválido o duplicado.")
+        if not isinstance(fmt, str) or not re.fullmatch(r"(?:[1-9][0-9]{0,3})?[bBhHiI]", fmt):
+            raise ValueError("fmt solo admite enteros b/B/h/H/i/I y repeticiones acotadas, little-endian.")
+        size = struct.calcsize("<" + fmt)
+        if name in {"number", "class_id", "promotion_id", "range_encoded"} and fmt not in {"B", "H", "I"}:
+            raise ValueError("Los campos de índices y rango requieren un entero escalar sin signo.")
+        if name == "range_encoded" and fmt != "B":
+            raise ValueError("range_encoded describe el rango FE de un byte.")
+        if type(offset) is not int or offset < 0 or offset + size > spec["size"]:
+            raise ValueError("Campo fuera del registro.")
+        positions = set(range(offset, offset + size))
+        if positions & occupied:
+            raise ValueError("Campos de layout solapados.")
+        occupied.update(positions)
+        names.add(name)
+        fields.append(Field(name, offset, fmt))
+    return Layout(spec["size"], tuple(fields), spec["source"], tuple(spec["unknown"]))
+
+
+def get_layout(profile: str, kind: str, custom: dict | None = None) -> Layout:
+    if custom and kind in custom:
+        return custom_layout(custom[kind])
     try:
         return LAYOUTS[profile][kind]
     except KeyError as exc:

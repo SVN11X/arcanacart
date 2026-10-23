@@ -118,7 +118,9 @@ def analyze(
     result["stages"].append(
         {
             "name": "tables",
-            "status": "completed" if tables is not None else "skipped",
+            "status": ("partial" if any(s["status"] == "partial" for s in statuses) else "completed")
+            if tables is not None
+            else "skipped",
             "entities": len(table_entities),
             "reason": None if tables is not None else "No hay definición de tablas ligada a este hash.",
         }
@@ -325,7 +327,9 @@ def pipeline(
                 artifacts[name] = digest(read_bounded(out / name, 64 * 1024 * 1024))
             final = {
                 "status": "partial"
-                if result["errors"] or result["scan"].get("truncated", False)
+                if result["errors"]
+                or result["scan"].get("truncated", False)
+                or any(s["status"] in {"partial", "failed"} for s in result["stages"])
                 else "completed",
                 "fingerprint": fingerprint,
                 "tool_version": __version__,

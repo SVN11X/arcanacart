@@ -6,7 +6,7 @@ from dataclasses import asdict
 
 from arcanacart.core.io import digest
 from arcanacart.core.memory import Reader, resolve
-from arcanacart.schemas import entity
+from arcanacart.schemas import KINDS, entity
 
 from .layouts import LAYOUTS, get_layout
 
@@ -23,7 +23,8 @@ def select_profile(rom: dict, requested: str = "auto") -> str:
 
 
 def validate_tables(config: dict, rom: dict, profile: str) -> None:
-    if not isinstance(config, dict) or set(config) != {"profile", "rom_sha256", "evidence", "tables"}:
+    required = {"profile", "rom_sha256", "evidence", "tables"}
+    if not isinstance(config, dict) or not required <= config.keys() or set(config) - required - {"layouts"}:
         raise ValueError("Definición de tablas requiere profile, rom_sha256, evidence y tables.")
     if config["rom_sha256"] != rom["sha256"] or config["profile"] != profile:
         raise ValueError("Las tablas no corresponden al SHA-256/perfil de esta ROM.")
@@ -35,8 +36,16 @@ def validate_tables(config: dict, rom: dict, profile: str) -> None:
         raise ValueError("Las tablas requieren evidencia de procedencia.")
     if not isinstance(config["tables"], list) or len(config["tables"]) > 256:
         raise ValueError("Lista de tablas inválida o excesiva.")
+    custom = config.get("layouts", {})
+    if not isinstance(custom, dict) or len(custom) > 32:
+        raise ValueError("layouts debe ser un objeto de hasta 32 definiciones.")
+    for kind in custom:
+        if kind not in KINDS or kind in {"Game", "ROMVariant", "Function"}:
+            raise ValueError("Tipo de tabla personalizada no permitido.")
+        get_layout(profile, kind, custom)
     keys = set()
     total = 0
+    ranges = []
     for table in config["tables"]:
         if not isinstance(table, dict) or set(table) != {"kind", "offset", "count", "first_id"}:
             raise ValueError("Cada tabla requiere kind, offset, count y first_id.")
@@ -46,7 +55,7 @@ def validate_tables(config: dict, rom: dict, profile: str) -> None:
             raise ValueError("La tabla debe contener al menos un registro.")
         if not isinstance(table["kind"], str):
             raise ValueError("El tipo de tabla debe ser una cadena.")
-        layout = get_layout(profile, table["kind"])
+        layout = get_layout(profile, table["kind"], custom)
         total += table["count"]
         if total > 50_000 or table["offset"] + layout.size * table["count"] > rom["size_bytes"]:
             raise ValueError("Tabla fuera de ROM o excede presupuesto de 50000 registros.")
@@ -54,6 +63,10 @@ def validate_tables(config: dict, rom: dict, profile: str) -> None:
         if key in keys:
             raise ValueError("Definiciones de tabla duplicadas para el mismo tipo.")
         keys.add(key)
+        ranges.append((table["offset"], table["offset"] + layout.size * table["count"]))
+    for left, right in zip(sorted(ranges), sorted(ranges)[1:], strict=False):
+        if left[1] > right[0]:
+            raise ValueError("Las tablas declaradas se solapan; revisa sus rangos.")
 
 
 def extract_tables(
@@ -76,30 +89,41 @@ def extract_tables(
     config_hash = digest(__import__("json").dumps(config, sort_keys=True).encode())
     for table in config["tables"]:
         kind = table["kind"]
-        layout = get_layout(profile, kind)
+        custom = config.get("layouts", {})
+        layout = get_layout(profile, kind, custom)
         mismatches = 0
+        invalid_pointers = 0
         for index in range(table["count"]):
             offset = table["offset"] + index * layout.size
             raw = reader.read(offset, layout.size)
             parsed = layout.parse(raw)
             expected_id = table["first_id"] + index
-            actual_id = parsed["number"]
+            actual_id = parsed.get("number")
             warnings = []
-            if actual_id not in {0, expected_id & 0xFF}:
+            if actual_id is not None and actual_id not in {
+                0,
+                expected_id if kind in custom else expected_id & 0xFF,
+            }:
                 mismatches += 1
                 warnings.append(
                     "ID interno no coincide con el índice declarado; revisar ubicación o variante."
                 )
             pointer_evidence = []
             for name, value in parsed.items():
-                if not name.endswith("_pointer") or not value:
+                if not name.endswith(("_pointer", "_pointers")) or not value:
                     continue
-                try:
-                    target = asdict(resolve(value, len(data)))
-                    pointer_evidence.append({"field": name, "target": target, "status": "structural"})
-                except ValueError:
-                    pointer_evidence.append({"field": name, "raw": value, "status": "invalid"})
-                    warnings.append(f"Puntero inválido en {name}.")
+                for pointer in value if isinstance(value, list) else [value]:
+                    if not pointer:
+                        continue
+                    try:
+                        target = asdict(resolve(pointer, len(data)))
+                        pointer_evidence.append(
+                            {"field": name, "raw": pointer, "target": target, "status": "structural"}
+                        )
+                    except ValueError:
+                        invalid_pointers += 1
+                        pointer_evidence.append({"field": name, "raw": pointer, "status": "invalid"})
+                        warnings.append(f"Puntero inválido en {name}.")
             parsed.update(
                 table_index=expected_id, slot=index, warnings=warnings, pointer_evidence=pointer_evidence
             )
@@ -120,18 +144,23 @@ def extract_tables(
                         "bounded-little-endian-read",
                         *config["evidence"],
                     ],
-                    validation="structural" if known_variant and not warnings else "inferred",
-                    confidence="documented" if known_variant else "heuristic",
+                    validation="structural"
+                    if known_variant and kind not in custom and not warnings
+                    else "inferred",
+                    confidence="documented" if known_variant and kind not in custom else "heuristic",
                     unknown=list(layout.unknown),
                 )
             )
         statuses.append(
             {
                 "parser": profile + "/" + kind,
-                "status": "completed",
+                "status": "partial" if mismatches or invalid_pointers else "completed",
                 "records_declared": table["count"],
                 "entities": table["count"],
                 "id_mismatches": mismatches,
+                "invalid_pointers": invalid_pointers,
+                "layout_source": layout.source,
+                "custom_layout": kind in custom,
                 "definition_sha256": config_hash,
                 "limitations": list(layout.unknown),
                 "validated_on_commercial_rom": False,
@@ -141,9 +170,9 @@ def extract_tables(
     by_key = {(e["kind"], e["key"]): e["id"] for e in entities}
     for record in entities:
         relation: tuple[str, str] | None = None
-        if record["kind"] == "Character":
+        if record["kind"] == "Character" and "class_id" in record["data"]:
             relation = ("Class", str(record["data"]["class_id"]))
-        elif record["kind"] == "Class" and record["data"]["promotion_id"]:
+        elif record["kind"] == "Class" and record["data"].get("promotion_id"):
             relation = ("Class", str(record["data"]["promotion_id"]))
         if relation and relation in by_key:
             record["references"].append(by_key[relation])

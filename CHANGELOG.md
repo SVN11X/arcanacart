@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.6.0 — Retratos reconstruidos y paletas verificadas
+
+- Añade `faces`: vincula componentes a una tabla documentada, ensambla retratos de 96×80 y exporta miniaturas y tarjetas de clase por ID.
+- La base FE7 USA exacta tiene un layout incorporado; otras ROMs requieren una definición explícita ligada a su hash.
+- La opción `--rom` verifica los punteros, los bloques comprimidos y sus descompresiones puntuales, y recupera paletas RGB555 sin compresión.
+- Genera una galería organizada, catálogos con trazabilidad y un resumen separado; conserva AIR, bloques y revisiones previas.
+- Incluye `Extraer-Retratos.ps1` para continuar desde el CSV de reparación, abrir la galería y empaquetar los recursos exportados.
+
+## 0.5.1 — Páginas gráficas y reparación de resultados existentes
+
+- Divide las hojas de tiles que exceden 1.048.576 píxeles en PNG completos por páginas, con rangos de tiles y bytes; conserva las imágenes pequeñas.
+- Añade navegación y descarga de cada página en la galería y distingue bloques con vista de archivos PNG.
+- Añade `repair-previews` y `Reparar-Previsualizaciones.ps1`: verifican el AIR y el catálogo, procesan solo errores de tamaño y conservan los PNG válidos, las recetas y los errores de otras causas.
+- Respalda los metadatos antes de publicar la reparación y recupera una publicación interrumpida en la siguiente ejecución.
+- Los presupuestos se comprueban para el bloque completo antes de dibujarlo. Los límites de reparación se aplican solo al trabajo nuevo.
+
+## 0.5.0 — Interpretación, gráficos y análisis documentado
+
+- `interpret` consume AIR/resources.json y bloques SHA256.bin existentes, sin
+  descomprimir de nuevo; verifica tamaño/hash, conserva offsets repetidos y compara
+  opcionalmente con la base sin convertir diferencias en recursos nuevos confirmados.
+- PNG sin dependencias: tiles 4/8 bpp, RGB555, transparencia opcional y mapas BG
+  con bancos, flips y distribución lineal/screenblocks. Paletas externas con hash.
+- Galería local con filtros, páginas de 48 bloques, trazabilidad y editor de recetas
+  exportables. Aceptar una interpretación requiere evidencia; el editor explica que
+  los PNG se regeneran al volver a ejecutar Python. CSP y texto escapado.
+- Cuotas de lectura/previsualización; los límites y errores mantienen entradas en
+  el catálogo y producen estado parcial. Escritura separada del bundle original.
+- `layouts` y `tables-define`: definiciones ligadas a ROM y símbolos locales;
+  layouts declarativos para estructuras adicionales sin ejecutar código. Rechazo
+  de solapamientos y comprobación de arrays de punteros. Tablas sospechosas: parcial.
+- `code-index`: valida exports Ghidra por ROM/hash y genera AIR Function, mapa
+  de instrucciones/datos/conflictos/desconocidos y archivos documentados. Símbolos
+  permanecen como referencias. Java exporta rangos de instrucciones sin rellenar huecos.
+- `report --review` separa recorrido, candidatos, PNG y decisiones documentadas.
+- `Interpretar-Resultados.ps1` procesa los análisis previos y genera un resumen
+  sin reorganizar ZIP, aplicar UPS ni repetir escaneos. Guía y demo sintética incluidas.
+
 ## 0.4.2 — Selección de formatos y comparación integrada
 
 - `--compression lz10`, `rle` o ambos en scan/extract/pipeline/batch; las llamadas

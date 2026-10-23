@@ -74,13 +74,18 @@ public class ArcanaExport extends HeadlessScript {
                 String name = f.getName();
                 Path recordFile = out.resolve(key+".json");
                 StringBuilder asm = new StringBuilder();
+                JsonArray instructionRanges = new JsonArray();
                 InstructionIterator instructions = currentProgram.getListing().getInstructions(f.getBody(), true);
                 while (instructions.hasNext()) {
                     if (monitor.isCancelled()) break;
                     Instruction instruction = instructions.next();
+                    JsonArray range = new JsonArray();
+                    long instructionAddress = instruction.getAddress().getOffset();
+                    range.add(instructionAddress); range.add(instructionAddress + instruction.getLength());
+                    instructionRanges.add(range);
                     asm.append(instruction.getAddress()).append("  ").append(instruction.toString()).append('\n');
                 }
-                String fingerprint = hash("arcana-export-v1\n"+Application.getApplicationVersion()+"\n"+asm.toString()+"\n"+name+"\n"+f.getSignature().toString());
+                String fingerprint = hash("arcana-export-v2\n"+Application.getApplicationVersion()+"\n"+asm.toString()+"\n"+name+"\n"+f.getSignature().toString());
                 if (resume && Files.isRegularFile(recordFile) && !Files.isSymbolicLink(recordFile) && Files.size(recordFile) < 1024*1024) {
                     try {
                         JsonObject old = JsonParser.parseString(Files.readString(recordFile)).getAsJsonObject();
@@ -106,6 +111,7 @@ public class ArcanaExport extends HeadlessScript {
                 record.addProperty("analysis_fingerprint", fingerprint);
                 record.addProperty("language", currentProgram.getLanguageID().toString());
                 record.addProperty("size_bytes", f.getBody().getNumAddresses());
+                record.add("instruction_ranges", instructionRanges);
                 record.addProperty("assembly", key+".s");
                 record.addProperty("pseudocode", key+".c");
                 JsonArray calls = new JsonArray();

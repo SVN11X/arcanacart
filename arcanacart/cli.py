@@ -269,7 +269,92 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     report = command("report", "Generar informe Markdown o HTML local desde AIR validado.")
     report.add_argument("--input", type=Path, required=True)
     report.add_argument("--format", choices=["markdown", "html"], default="markdown")
+    report.add_argument("--review", type=Path, help="summary.json de interpret, ligado a la misma ROM.")
     output(report)
+    interpreter = command(
+        "interpret", "Revisar bloques existentes y generar PNG, galería y recetas; no vuelve a escanear."
+    )
+    interpreter.add_argument("--input", type=Path, required=True, help="air.json o resources.json existente.")
+    interpreter.add_argument(
+        "--resources", type=Path, help="Carpeta de bloques SHA256.bin; se detecta junto al manifiesto."
+    )
+    interpreter.add_argument(
+        "--recipes", type=Path, help="Ajustes manuales de interpretación ligados a la ROM."
+    )
+    interpreter.add_argument(
+        "--base", type=Path, help="AIR o manifiesto de la base para comparar por contenido."
+    )
+    interpreter.add_argument(
+        "--max-previews", type=int, default=500, help="Máximo de archivos PNG, contando páginas."
+    )
+    interpreter.add_argument("--byte-budget", type=number, default=512 * 1024 * 1024)
+    interpreter.add_argument("--pixel-budget", type=number, default=64 * 1024 * 1024)
+    interpreter.add_argument(
+        "--palette",
+        action="append",
+        type=Path,
+        default=[],
+        help="Paleta RGB555 binaria externa (por ejemplo, extraída con dump); repetible.",
+    )
+    output(interpreter, force=False)
+    repair = command("repair-previews", "Reparar solo errores de tamaño de tiles en una galería existente.")
+    repair.add_argument("--input", type=Path, required=True, help="AIR original de esta interpretación.")
+    repair.add_argument(
+        "--review", type=Path, required=True, help="Carpeta existente con catalog.json y summary.json."
+    )
+    repair.add_argument("--resources", type=Path, help="Carpeta original de bloques SHA256.bin.")
+    repair.add_argument(
+        "--max-previews", type=int, default=20000, help="Límite de nuevos archivos PNG por reparación."
+    )
+    repair.add_argument("--byte-budget", type=number, default=512 * 1024 * 1024)
+    repair.add_argument("--pixel-budget", type=number, default=512 * 1024 * 1024)
+    repair.add_argument(
+        "--dry-run", action="store_true", help="Contar páginas pendientes sin modificar la galería."
+    )
+    faces = command("faces", "Reconstruir retratos, miniaturas y tarjetas desde una tabla documentada.")
+    faces.add_argument("--input", type=Path, required=True, help="AIR existente; se reutilizan sus bloques.")
+    faces.add_argument("--resources", type=Path, help="Carpeta de bloques SHA256.bin.")
+    faces.add_argument(
+        "--rom",
+        type=Path,
+        help="ROM local para verificar punteros y recuperar paletas RGB555 sin compresión.",
+    )
+    faces.add_argument(
+        "--definition",
+        type=Path,
+        help="Layout explícito ligado al hash de la ROM; por defecto, base FE7 USA.",
+    )
+    output(faces, force=False)
+    command("layouts", "Mostrar layouts incorporados, campos, tamaños, fuentes y limitaciones.")
+    tabledef = command(
+        "tables-define", "Crear una definición de tablas ligada a esta ROM, con offsets explícitos."
+    )
+    rom(tabledef)
+    tabledef.add_argument("--profile", choices=["auto", "generic-gba", "fe7-us", "fe8-us"], default="auto")
+    tabledef.add_argument(
+        "--table", action="append", default=[], help="Tipo:OFFSET_O_SIMBOLO:CONTEO:PRIMER_ID; repetible."
+    )
+    tabledef.add_argument(
+        "--evidence", action="append", required=True, help="Evidencia del rango; repetible."
+    )
+    tabledef.add_argument(
+        "--layouts", type=Path, help="Layouts JSON declarativos para estructuras o variantes adicionales."
+    )
+    tabledef.add_argument(
+        "--symbols", type=Path, help="Mapa JSON importado; sus ubicaciones siguen siendo pistas."
+    )
+    output(tabledef)
+    code = command("code-index", "Documentar exports Ghidra, datos, conflictos y rangos aún desconocidos.")
+    code.add_argument("--input", type=Path, required=True, help="AIR existente de esta ROM.")
+    code.add_argument(
+        "--ghidra-summary",
+        type=Path,
+        help="functions/summary.json de Ghidra; se verifican hashes de exports.",
+    )
+    code.add_argument(
+        "--symbols", type=Path, help="Símbolos locales; no se convierten automáticamente en código."
+    )
+    output(code, force=False)
     doctor = command("doctor", "Comprobar Python, esquemas y disponibilidad opcional de Ghidra.")
     ghidra_options(doctor)
     raw = command("dump", "Compatibilidad: extraer un rango binario explícito y acotado.")
@@ -301,7 +386,23 @@ def _guard_output(args: argparse.Namespace) -> None:
         return
     sources = [
         getattr(args, key, None)
-        for key in ["rom", "patch", "input", "file", "left", "right", "tables", "symbols", "zip"]
+        for key in [
+            "rom",
+            "patch",
+            "input",
+            "file",
+            "left",
+            "right",
+            "tables",
+            "symbols",
+            "zip",
+            "recipes",
+            "base",
+            "layouts",
+            "definition",
+            "review",
+            "ghidra_summary",
+        ]
     ]
     for source in sources:
         if isinstance(source, Path):
@@ -313,6 +414,69 @@ def execute(args: argparse.Namespace) -> dict:
     _guard_output(args)
     dry = getattr(args, "dry_run", False)
     force = getattr(args, "force", False)
+    if cmd == "interpret":
+        from arcanacart.interpret import interpret
+
+        return interpret(
+            args.input,
+            args.out,
+            resources=args.resources,
+            recipes=args.recipes,
+            palettes=args.palette,
+            base=args.base,
+            max_previews=args.max_previews,
+            byte_budget=args.byte_budget,
+            pixel_budget=args.pixel_budget,
+            dry_run=dry,
+        )
+    if cmd == "repair-previews":
+        from arcanacart.preview_repair import repair_previews
+
+        return repair_previews(
+            args.input,
+            args.review,
+            resources=args.resources,
+            max_previews=args.max_previews,
+            byte_budget=args.byte_budget,
+            pixel_budget=args.pixel_budget,
+            dry_run=dry,
+        )
+    if cmd == "faces":
+        from arcanacart.faces import reconstruct_faces
+
+        return reconstruct_faces(
+            args.input,
+            args.out,
+            resources=args.resources,
+            rom_path=args.rom,
+            definition=args.definition,
+            dry_run=dry,
+        )
+    if cmd == "layouts":
+        from arcanacart.tables import layout_catalog
+
+        return {"status": "completed", "layouts": layout_catalog()}
+    if cmd == "tables-define":
+        from arcanacart.tables import definition
+
+        result = definition(
+            load_rom(args.rom, args.member)[1],
+            args.profile,
+            args.table,
+            args.evidence,
+            symbols=read_json(args.symbols) if args.symbols else None,
+            layouts=read_json(args.layouts) if args.layouts else None,
+        )
+        check_destination(args.out, force)
+        if not dry:
+            atomic_json(args.out, result, force=force)
+        return {"status": "planned" if dry else "completed", "definition": result, "output": str(args.out)}
+    if cmd == "code-index":
+        from arcanacart.disassembly.index import code_index
+
+        return code_index(
+            args.input, args.out, ghidra_summary=args.ghidra_summary, symbols=args.symbols, dry_run=dry
+        )
     if cmd == "batch-import":
         from arcanacart.batch import import_inputs
 
@@ -471,7 +635,11 @@ def execute(args: argparse.Namespace) -> dict:
         if not dry:
             export_json(result, args.out, force=force)
         return {
-            "status": "planned" if dry else "partial" if result["scan"].get("truncated") else "completed",
+            "status": "planned"
+            if dry
+            else "partial"
+            if result["scan"].get("truncated") or any(s["status"] == "partial" for s in result["extractors"])
+            else "completed",
             "entities": len(result["entities"]),
             "extractors": result["extractors"],
             "output": str(args.out),
@@ -551,10 +719,11 @@ def execute(args: argparse.Namespace) -> dict:
             "dry_run": dry,
         }
     if cmd == "report":
-        result = read_json(args.input)
+        result = read_json(args.input, 64 * 1024 * 1024)
         validate(result)
+        review = read_json(args.review) if args.review else None
         if not dry:
-            write_report(result, args.out, format=args.format, force=force)
+            write_report(result, args.out, format=args.format, force=force, review=review)
         return {
             "status": "planned" if dry else "completed",
             "format": args.format,

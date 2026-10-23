@@ -7,18 +7,67 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from arcanacart.core.io import atomic_write
+from arcanacart.core.io import atomic_write, digest, json_bytes
 from arcanacart.exporters import target_compatibility
 from arcanacart.schemas import validate
 
 
-def summary(document: dict) -> dict:
+def resource_metrics(document: dict, review: dict | None = None) -> dict:
+    hashes = {r["sha256"] for r in document["resources"]}
+    result = {
+        "scanner_progress_percent": document["scan"].get("search_progress_percent"),
+        "candidates": len(document["resources"]),
+        "unique_blobs": len(hashes),
+        "identified_by_user_review": 0,
+        "pending_interpretation": len(hashes),
+        "generated_previews": 0,
+        "generated_png_files": 0,
+        "note": "El avance del escáner, las hipótesis y los recursos identificados son métricas distintas.",
+    }
+    if review is not None:
+        if isinstance(review, dict) and review.get("candidate_inventory_sha256") != digest(
+            json_bytes(document["resources"])
+        ):
+            raise ValueError(
+                "El inventario de candidatos cambió; se necesita una interpretación de estos resultados."
+            )
+        if (
+            not isinstance(review, dict)
+            or review.get("format") != "arcanacart-interpretation-1"
+            or review.get("rom_sha256") != document["rom"]["sha256"]
+            or review.get("candidates") != len(document["resources"])
+            or review.get("unique_blobs") != len(hashes)
+        ):
+            raise ValueError("El resumen de interpretación no corresponde a estos resultados y ROM.")
+        for key in (
+            "identified_by_user_review",
+            "pending_interpretation",
+            "generated_previews",
+            "rejected_by_user",
+        ):
+            value = review.get(key)
+            if type(value) is not int or not 0 <= value <= len(hashes):
+                raise ValueError("Métricas de interpretación inválidas.")
+            result[key] = value
+        png_files = review.get("generated_png_files", result["generated_previews"])
+        if type(png_files) is not int or not result["generated_previews"] <= png_files <= 100_000_000:
+            raise ValueError("Número de archivos PNG inválido.")
+        result["generated_png_files"] = png_files
+        if result["identified_by_user_review"] + result["pending_interpretation"] + result[
+            "rejected_by_user"
+        ] != len(hashes):
+            raise ValueError("Los estados de interpretación no suman el total de bloques únicos.")
+    return result
+
+
+def summary(document: dict, review: dict | None = None) -> dict:
     validate(document)
     return {
         "identification": document["rom"],
         "profile": document["profile"],
         "entities_by_type": dict(Counter(e["kind"] for e in document["entities"])),
         "resources": len(document["resources"]),
+        "resource_interpretation": resource_metrics(document, review),
         "scan": document["scan"],
         "extractors": document["extractors"],
         "coverage": document["coverage"],
@@ -41,7 +90,13 @@ def summary(document: dict) -> dict:
 def overview(document: dict) -> list[str]:
     """Keep execution, header-search progress and semantic classification distinct."""
     scan = document["scan"]
-    status = "parcial" if document["errors"] or scan.get("truncated") else "finalizado"
+    status = (
+        "parcial"
+        if document["errors"]
+        or scan.get("truncated")
+        or any(s["status"] in {"partial", "failed"} for s in document["stages"])
+        else "finalizado"
+    )
     lines = [f"Estado de las etapas solicitadas: {status}."]
     if scan:
         methods = scan.get("methods")
@@ -91,9 +146,16 @@ def overview(document: dict) -> list[str]:
     return lines
 
 
-def render(document: dict, format: str = "markdown") -> str:
-    report = summary(document)
+def render(document: dict, format: str = "markdown", *, review: dict | None = None) -> str:
+    report = summary(document, review)
     explanations = overview(document)
+    metrics = report["resource_interpretation"]
+    explanations.append(
+        f"Candidatos: {metrics['candidates']}; bloques únicos: {metrics['unique_blobs']}; "
+        f"bloques con vista: {metrics['generated_previews']}; archivos PNG: {metrics['generated_png_files']}; "
+        f"aceptados por revisión con evidencia: "
+        f"{metrics['identified_by_user_review']}; pendientes de interpretar: {metrics['pending_interpretation']}."
+    )
     serialized = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True)
     if format == "html":
         rows = "".join(
@@ -149,5 +211,7 @@ def render(document: dict, format: str = "markdown") -> str:
     )
 
 
-def write_report(document: dict, out: Path, *, format: str = "markdown", force: bool = False) -> None:
-    atomic_write(out, render(document, format).encode("utf-8"), force=force)
+def write_report(
+    document: dict, out: Path, *, format: str = "markdown", force: bool = False, review: dict | None = None
+) -> None:
+    atomic_write(out, render(document, format, review=review).encode("utf-8"), force=force)

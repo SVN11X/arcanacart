@@ -107,3 +107,20 @@ protege campos de texto frente a fórmulas de hojas de cálculo. HTML escapa ent
 funciona localmente sin scripts/CDNs e incluye una política CSP restrictiva.
 Los datos son privados por defecto; una exportación no constituye autorización
 para redistribuir contenido de terceros.
+
+## Interpretación gráfica 0.5.0
+
+La descompresión sigue separada de la identificación. `interpret` verifica los
+blobs existentes y conserva hipótesis no exclusivas. Su catálogo registra cada
+hash único con todos sus offsets. Las decisiones manuales quedan en recetas por
+ROM/hash; no se promueven tipos AIR por tamaño ni por generar un PNG.
+
+Se renderizan tiles 4/8 bpp, paletas RGB555 y mapas BG de texto con flips/bancos,
+en filas o screenblocks de hardware. Los mapas de metatiles FE solo se detectan
+como hipótesis; requieren una definición de metatiles para renderizarlos.
+`--palette` admite archivos RGB555 externos, incluido contenido extraído sin
+compresión mediante `dump`. Sus hashes y copias quedan en el bundle de revisión.
+
+Las definiciones de tablas admiten opcionalmente `layouts`. El formato, validaciones
+y ejemplos sintéticos figuran en `CONTINUAR_0.5.0.md`. No hay un layout FE7 Item
+incorporado sin verificar: se proporciona uno documentado con ese mecanismo.

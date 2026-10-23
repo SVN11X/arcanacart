@@ -31,6 +31,10 @@ solicitadas como `skipped`; nunca significa extracción completa de una campaña
 | `symbols --reference DIR --file MAP --out symbols.json` | Símbolos de referencia local, commit y hash del mapa |
 | `compare --left FILE --right FILE --out diff.json` | Cambios binarios; con `--air`, comparación de campos AIR |
 | `compare-resources --left BASE.json --right MOD.json --out DIRECTORY` | Hashes de candidatos descomprimidos; resumen JSON y catálogo CSV |
+| `interpret --input AIR.json --out DIRECTORY` | Reutiliza bloques, verifica hashes y genera galería, PNG, catálogo y recetas |
+| `layouts` | Enumera layouts incorporados, tamaños, campos y fuentes |
+| `tables-define --rom ROM --table Tipo:OFFSET:CONTEO:PRIMER_ID --evidence TEXTO --out FILE` | Define rangos ligados a la ROM; símbolos/layouts opcionales |
+| `code-index --input AIR.json --out DIRECTORY` | Documenta rangos; con `--ghidra-summary` verifica e incorpora exports reales |
 | `export --input AIR.json --format json/csv --out FILE` | Valida AIR y exporta |
 | `export --format schema --out air.schema.json` | Copia del esquema distribuido |
 | `report --input AIR.json --format markdown/html --out FILE` | Informe local verificable |
@@ -190,3 +194,25 @@ feunpack inventory private/listing.txt
 inspect puede describir una cabecera dañada sin prohibir investigación genérica;
 prepare requiere checksum y constante válidos. `inventory` solo inventaría el texto
 code2text: un listado no contiene los binarios omitidos que menciona.
+
+## Interpretación de resultados existentes (0.5.0)
+
+`interpret` acepta AIR o `resources.json` con `rom`, `resources` y `scan`.
+Detecta `resources/` junto al AIR o usa la misma carpeta del manifiesto de scan.
+`--resources` lo selecciona explícitamente. `--recipes` carga decisiones manuales;
+`--palette` añade paletas binarias externas (repetible); `--base` compara candidatos.
+Los límites predeterminados son 500 previsualizaciones, 512 MiB de lectura y
+64 Mi píxeles por trabajo. `--max-previews`, `--byte-budget` y `--pixel-budget`
+aceptan sus límites explícitos. La salida debe ser una carpeta nueva.
+
+`report --review summary.json` incorpora las métricas de una interpretación que
+coincida en ROM e inventario de candidatos.
+
+`tables-define` admite `--layouts layouts.json` declarativos y `--symbols symbols.json`.
+No hereda ubicaciones de otra ROM. `extract` sin `--scan` no repite el barrido.
+
+`code-index --ghidra-summary functions/summary.json` verifica hashes de exports y
+registra rangos reales de instrucciones. `--symbols` solo añade pistas de referencia.
+Sin resumen Ghidra devuelve parcial y deja la cobertura de código sin inventar.
+
+Consulta [CONTINUAR_0.5.0.md](CONTINUAR_0.5.0.md) para comandos Windows y formatos.

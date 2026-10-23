@@ -72,3 +72,16 @@ IDs AIR deterministas incluyen juego, hash de variante, tipo, clave y offset;
 la comparación entre variantes usa tipo y clave lógica, conservando ambos offsets.
 Los inventarios iniciales pertenecen a definiciones de unidades/eventos, y no se
 inventan a partir de una tabla de personajes.
+
+## Revisión posterior al escaneo (0.5.0)
+
+`interpret.py` consume manifiestos y blobs verificados por hash; no llama al scanner.
+`graphics.py` convierte tiles/RGB555/mapas BG a PNG usando solo stdlib. `gallery.py`
+produce una página sin red, con CSP por hash de script, filtros, paginación y recetas
+descargables. Los estados, catálogos y PNG se escriben en una salida separada; los
+AIR 0.4.2 y sus fingerprints no se modifican.
+
+`tables.py` crea definiciones de rangos por ROM; los layouts personalizados son
+JSON acotado de campos enteros. No se cargan plugins ejecutables.
+`disassembly/index.py` comprueba exports Ghidra y conserva las instrucciones en
+rangos separados de datos/candidatos y de los símbolos no verificados.

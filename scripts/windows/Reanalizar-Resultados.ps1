@@ -55,8 +55,8 @@ $PSNativeCommandUseErrorActionPreference = $false
 Push-Location -LiteralPath $ProjectRoot
 try {
     $Version = (& $Python -c 'import arcanacart; print(arcanacart.__version__)' | Out-String).Trim()
-    if ($LASTEXITCODE -ne 0 -or $Version -ne '0.4.2') {
-        throw 'Aplica primero la actualizacion ArcanaCart 0.4.2 a este proyecto.'
+    if ($LASTEXITCODE -ne 0 -or [version]$Version -lt [version]'0.4.2') {
+        throw 'Aplica primero ArcanaCart 0.4.2 o posterior a este proyecto.'
     }
     $Number = 0
     foreach ($Job in $Jobs) {

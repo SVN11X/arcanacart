@@ -1,4 +1,18 @@
-# ArcanaCart 0.4.2
+# ArcanaCart 0.6.0
+
+La extracción organizada de retratos empieza en [RECURSOS_0.6.0.md](RECURSOS_0.6.0.md): reconstruye retratos, miniaturas y tarjetas, y recupera sus paletas desde la ROM local.
+
+Para corregir las vistas grandes de resultados existentes, sigue [REPARAR_0.5.1.md](REPARAR_0.5.1.md).
+
+La guía [CONTINUAR_0.5.0.md](CONTINUAR_0.5.0.md) continúa desde los resultados
+existentes: identifica hipótesis por bloque, genera PNG 4/8 bpp y paletas RGB555,
+ofrece una galería local paginada con recetas revisables y registra evidencia.
+Añade definiciones de tablas por ROM, layouts declarativos para variantes e
+índice documentado de exports Ghidra con separación de código, datos y pendientes.
+
+Si ya terminaste los barridos 0.4.2, ejecuta `Interpretar-Resultados.ps1` según esa
+guía. No necesitas volver a ejecutar la importación ni el escáner. Los PNG y las
+hipótesis no se contabilizan automáticamente como recursos identificados.
 
 La guía [REANALISIS_0.4.2.md](REANALISIS_0.4.2.md) integra el flujo comprobado en
 terminal: selección LZ10/RLE, AIR e informes con alcance explícito y comparación
@@ -15,6 +29,9 @@ automática el código C original ni una campaña completa. Los resultados seña
 qué se leyó, qué se infirió y qué queda desconocido.
 
 ## FE7, FE8 y sus mods en Windows
+
+Los pasos de preparación siguientes son para entradas nuevas. Los resultados
+ya existentes se procesan con la guía 0.5.0 indicada arriba.
 
 La guía [EJECUTAR_FE7_FE8.md](EJECUTAR_FE7_FE8.md) contiene los cuatro nombres
 formales, estructura, selección de versiones y solución de errores.

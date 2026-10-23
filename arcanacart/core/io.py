@@ -92,7 +92,7 @@ def atomic_json(out: str | Path, value: Any, *, force: bool = False) -> None:
 
 def read_json(path: str | Path, limit: int = 32 * 1024 * 1024) -> Any:
     try:
-        return json.loads(read_bounded(path, limit).decode("utf-8"))
+        return json.loads(read_bounded(path, limit).decode("utf-8-sig"))
     except RecursionError as exc:
         raise ValueError("JSON excede profundidad segura.") from exc
 
