@@ -322,7 +322,7 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     faces.add_argument(
         "--definition",
         type=Path,
-        help="Layout explícito ligado al hash de la ROM; por defecto, base FE7 USA.",
+        help="Layout explícito ligado al hash de la ROM; por defecto, bases FE7/FE8 USA exactas.",
     )
     output(faces, force=False)
     command("layouts", "Mostrar layouts incorporados, campos, tamaños, fuentes y limitaciones.")

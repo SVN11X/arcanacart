@@ -5,6 +5,8 @@ matching local ROM for raw RGB555 palettes. No scanner, patching or ROM upload.
 [CmdletBinding()]
 param(
     [string]$Datos = 'C:\FireEmblem',
+    [ValidateSet('fe7', 'fe8')]
+    [string]$Game = 'fe7',
     [string]$ResumenCsv = '',
     [string]$AirPath = '',
     [string]$RomPath = '',
@@ -20,28 +22,28 @@ $Python = Get-ArcanaPython -Requested $PythonExe
 if (-not $AirPath) {
     if (-not $ResumenCsv) { throw 'Indica -ResumenCsv con el resumen de reparacion o -AirPath con un AIR exacto.' }
     $Base = Import-Csv -LiteralPath $ResumenCsv |
-        Where-Object { $_.Juego -eq 'fe7' -and $_.Variante -eq 'base' } |
+        Where-Object { $_.Juego -eq $Game -and $_.Variante -eq 'base' } |
         Select-Object -First 1
-    if ($null -eq $Base -or -not $Base.Galeria) { throw 'No se encuentra una galeria para la base FE7 en el CSV.' }
+    if ($null -eq $Base -or -not $Base.Galeria) { throw "No se encuentra una galeria para la base $Game en el CSV." }
     $Review = Split-Path -Parent $Base.Galeria
     $AirPath = Join-Path (Split-Path -Parent $Review) 'air.json'
 }
 $AirPath = (Resolve-Path -LiteralPath $AirPath).ProviderPath
 if ($SinRom -and $RomPath) { throw 'Elige -RomPath o -SinRom.' }
 if (-not $SinRom) {
-    if (-not $RomPath) { $RomPath = Join-Path $Datos 'resultados/fe7/fe7-usa-base.gba' }
+    if (-not $RomPath) { $RomPath = Join-Path $Datos "resultados/$Game/$Game-usa-base.gba" }
     if (-not (Test-Path -LiteralPath $RomPath -PathType Leaf)) {
         throw "No se encuentra la ROM local: $RomPath. Indica su ruta con -RomPath."
     }
     $RomPath = (Resolve-Path -LiteralPath $RomPath).ProviderPath
 }
 if ($Definition) { $Definition = (Resolve-Path -LiteralPath $Definition).ProviderPath }
-$Out = Join-Path (Split-Path -Parent $AirPath) ('retratos-0.6.0-' + (Get-Date -Format 'yyyyMMdd-HHmmss-fff') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 6))
+$Out = Join-Path (Split-Path -Parent $AirPath) ('retratos-0.6.1-' + (Get-Date -Format 'yyyyMMdd-HHmmss-fff') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 6))
 $PSNativeCommandUseErrorActionPreference = $false
 Push-Location -LiteralPath $ProjectRoot
 try {
     $Version = (& $Python -c 'import arcanacart; print(arcanacart.__version__)' | Out-String).Trim()
-    if ($LASTEXITCODE -ne 0 -or [version]$Version -lt [version]'0.6.0') { throw 'Este extractor requiere ArcanaCart 0.6.0.' }
+    if ($LASTEXITCODE -ne 0 -or [version]$Version -lt [version]'0.6.1') { throw 'Este extractor requiere ArcanaCart 0.6.1.' }
     $Arguments = @('-m', 'arcanacart', 'faces', '--input', $AirPath, '--out', $Out, '--verbose')
     if (-not $SinRom) { $Arguments += @('--rom', $RomPath) }
     if ($Definition) { $Arguments += @('--definition', $Definition) }
@@ -57,6 +59,8 @@ try {
     Write-Host "Estado: $($State.status)"
     Write-Host "Retratos: $($State.portraits); miniaturas: $($State.miniatures); tarjetas: $($State.classcards)."
     Write-Host "Bloques unicos vinculados: $($State.unique_classified_blobs); paletas reales: $($State.resolved_palettes)."
+    Write-Host "Componentes raw desde ROM: $($State.raw_rom_components); bloques raw unicos: $($State.unique_raw_rom_blobs)."
+    Write-Host "Componentes pendientes segun tabla documentada: $($State.pending_component_total)."
     Write-Host "Errores: $($State.errors); componentes sin paleta real: $($State.components_without_real_palette)."
     Write-Host "Galeria: $($State.gallery)"
     if ($CrearZip) {

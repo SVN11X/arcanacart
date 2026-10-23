@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1 — FE8 y componentes sin compresión
+
+- Incorpora el layout de la base FE8 USA exacta, con tabla virtual en `0x8ACBC4`, 172 entradas útiles y comprobación del puntero de código en `0x5524`.
+- Lee componentes raw `00` desde la ROM local verificada; su longitud incluye los cuatro bytes de cabecera. Exporta el payload en `raw-resources`, con hashes, offsets y tamaños trazables.
+- Mantiene separados los bloques identificados del AIR y los bloques raw para conservar el significado de las estadísticas del escaneo LZ10.
+- Añade `-Game fe8` al lanzador Windows. Se esperan 115 retratos, 111 miniaturas y 57 tarjetas en la tabla de esta base; la salida offline informa los pendientes.
+- Conserva los layouts personalizados por hash y la extracción anterior de FE7. No repite el escáner ni modifica resultados existentes.
+
 ## 0.6.0 — Retratos reconstruidos y paletas verificadas
 
 - Añade `faces`: vincula componentes a una tabla documentada, ensambla retratos de 96×80 y exporta miniaturas y tarjetas de clase por ID.
