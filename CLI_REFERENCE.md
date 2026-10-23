@@ -19,6 +19,14 @@ solicitadas como `skipped`; nunca significa extracción completa de una campaña
 
 ## Comandos
 
+El lote de retratos de las 43 variantes se ejecuta con
+`scripts/windows/Extraer-Retratos-Variantes.ps1` o con
+`python scripts/variantes/extraer_retratos_variantes.py --repo . --resume-latest`.
+Este programa imprime progreso legible y escribe el resultado estructurado en
+`resumen.json`; su contrato de salida es independiente de la CLI JSON principal.
+Devuelve 0 al completar los rangos, 2 si requieren revisión y 130 ante `Ctrl+C`.
+Consulta [RETRATOS_VARIANTES_0.6.2.md](RETRATOS_VARIANTES_0.6.2.md).
+
 | Comando | Entrada y resultado |
 |---|---|
 | `doctor` | Diagnóstico básico y disponibilidad opcional de Java/Ghidra/layout ARMv4T |

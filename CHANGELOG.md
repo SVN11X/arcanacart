@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.2 — Retratos de las 43 variantes revisadas
+
+- Integra `Extraer-Retratos-Variantes.ps1` y el lote Python en el repositorio, con 43 definiciones vinculadas a los SHA-256 exactos de las ROM y de sus AIR existentes.
+- Comprueba los rangos de exportación FE7 1–228 y FE8 1–254 contra la ROM local antes de generar PNG; valida paletas, datos raw y descompresiones puntuales, sin repetir el escáner.
+- Conserva los 28 IDs vacíos previstos de cuatro variantes FE8 y admite tarjetas de 80×80 en la validación; mantiene intactos los resúmenes originales de ArcanaCart.
+- Reanuda verificando entradas y archivos exportados; conserva intentos anteriores, guarda progreso ante `Ctrl+C` y genera un índice común, CSV/JSON y ZIP de resultados.
+- Documenta 17.291 PNG de componentes previstos, incluidas repeticiones; los rangos propuestos no certifican el tamaño total reservado de las tablas ni la extracción de todos los recursos del juego.
+
 ## 0.6.1 — FE8 y componentes sin compresión
 
 - Incorpora el layout de la base FE8 USA exacta, con tabla virtual en `0x8ACBC4`, 172 entradas útiles y comprobación del puntero de código en `0x5524`.

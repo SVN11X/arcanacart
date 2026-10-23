@@ -1,8 +1,10 @@
 include LICENSE README.md INSTALLATION.md EJECUTAR_FE7_FE8.md ARCHITECTURE.md CLI_REFERENCE.md EXTRACTION_FORMATS.md GHIDRA_INTEGRATION.md SECURITY.md COMPATIBILITY.md ROADMAP.md CHANGELOG.md CONTRIBUTING.md
 include RECURSOS_0.6.1.md RECURSOS_0.6.0.md CONTINUAR_0.5.0.md REPARAR_0.5.1.md REANALISIS_0.4.1.md REANALISIS_0.4.2.md
+include RETRATOS_VARIANTES_0.6.2.md
 recursive-include docs *.md *.json *.txt
 recursive-include examples *.py *.md *.json *.html
 recursive-include scripts *.py *.java *.ps1
+recursive-include scripts/variantes *.json *.csv *.md
 recursive-include tests *.py
 recursive-include arcanacart *.json *.java
 prune workspace
