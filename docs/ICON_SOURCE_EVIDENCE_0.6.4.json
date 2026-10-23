@@ -1,0 +1,56 @@
+{
+  "format": "arcanacart-icon-source-evidence-1",
+  "local_source_commit": "3866b32c504204c08754c1ab8a7473014c222c35",
+  "source_files": [
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE7U.cs",
+      "sha256": "943364f3340232b038dc4263be2dd705a69e8a3f29aec74b462b56ab29589b93",
+      "bytes": 39638
+    },
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE8U.cs",
+      "sha256": "832f7f2f997101f3b14ed04087f57cdafebd8cda27f647d3a2ca468e9f8f1ddd",
+      "bytes": 41375
+    },
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImageItemIconForm.cs",
+      "sha256": "8cdfbc2eab6c666696b77e9a8b8743b5b71d8e2de218f6bd7c32547d9f2fd852",
+      "bytes": 12362
+    },
+    {
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/icon.c",
+      "sha256": "dbf35eacaa3e31a9b7e92fe260b1ca90422682c625bc88823a896321d155094f",
+      "bytes": 2975
+    },
+    {
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/include/icon.h",
+      "sha256": "91d79e8a57ae488d7b72c6bcb80bfc8f2c767a926a7f7a2eae7853b1817c4069",
+      "bytes": 700
+    }
+  ],
+  "documented_banks": {
+    "fe7": {
+      "table_offset": 810660,
+      "pointer_location": 20000,
+      "palette_pointer_location": 19776,
+      "first_id": 0,
+      "last_id": 172,
+      "count": 173
+    },
+    "fe8": {
+      "table_offset": 5842676,
+      "pointer_location": 14004,
+      "palette_pointer_location": 13776,
+      "first_id": 0,
+      "last_id": 223,
+      "count": 224
+    }
+  },
+  "geometry": {
+    "width": 16,
+    "height": 16,
+    "bpp": 4,
+    "raw_bytes_per_icon": 128
+  },
+  "validation_limit": "Engine/editor source references and synthetic tests; no commercial ROM bytes were available in this preparation environment."
+}
