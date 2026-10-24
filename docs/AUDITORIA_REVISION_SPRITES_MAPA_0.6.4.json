@@ -1,0 +1,80 @@
+{
+  "format": "arcanacart-independent-standing-map-review-audit-1",
+  "status": "passed",
+  "zip_sha256": "e664e8cb885667776def8b7246400273fc2ef1973ff900e8e3eaa69ec53767cb",
+  "report_sha256": "fd75e5af3e8eca514e048ef397ff3d11cea85f667ac0da324a1900c805fcae2d",
+  "checks": {
+    "zip": 874,
+    "crc": 873,
+    "manifest": 1,
+    "hashes": 872,
+    "plan": 2,
+    "independent_lz_decode": 238,
+    "variants": 45,
+    "candidate": 45,
+    "table": 45,
+    "pointers": 225,
+    "thumb": 45,
+    "palettes": 315,
+    "entries": 5389,
+    "stored": 5379,
+    "decoded": 5379,
+    "identity": 43,
+    "air_inventory": 5184,
+    "csv": 1,
+    "counts": 1
+  },
+  "check_count": 24956,
+  "errors": [],
+  "counts": {
+    "roms": 45,
+    "bases": 2,
+    "variants": 43,
+    "table_entries_observed": 5389,
+    "sheet_occurrences": 5379,
+    "variant_sheet_occurrences": 5184,
+    "unique_stored_sheets": 238,
+    "unique_decoded_sheets": 193,
+    "three_frame_sizes": {
+      "1": 2543,
+      "0": 2335,
+      "2": 501
+    },
+    "index_masks": [
+      {
+        "game": "fe7",
+        "mask": "0x7f",
+        "roms": 9
+      },
+      {
+        "game": "fe8",
+        "mask": "0x7f",
+        "roms": 1
+      },
+      {
+        "game": "fe8",
+        "mask": "0xff",
+        "roms": 35
+      }
+    ]
+  },
+  "limits": [
+    "Full ROM/AIR hashes are matched to registered metadata; complete source files are not available here.",
+    "The 35 FE8 variants reach the 128-slot probe budget with observed 8-bit indexing.",
+    "Runtime palette loading is not present in the supplied 68-byte table-pointer contexts."
+  ],
+  "parser_refactor_replay": {
+    "status": "passed",
+    "captured_rom_windows_replayed": 45,
+    "evidence_payload_comparisons": 5864,
+    "differences": [],
+    "complete_roms_read": false,
+    "purpose": "Verify the interval parser refactor preserves every initial result and payload."
+  },
+  "initial_packet_preflight": {
+    "status": "passed",
+    "files": 873,
+    "selected_fe8_variants": 35,
+    "roms_opened": 0
+  }
+}
