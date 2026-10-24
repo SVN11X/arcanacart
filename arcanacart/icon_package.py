@@ -100,7 +100,7 @@ def _snapshot(source: Path) -> dict[str, bytes]:
         artifacts = manifest.get("artifacts")
         if not isinstance(artifacts, dict):
             raise ValueError("Falta el manifiesto de artefactos de " + game)
-        expected = {name[len(root):] for name in payloads if name.startswith(root)} - {"icons-state.json"}
+        expected = {name[len(root) :] for name in payloads if name.startswith(root)} - {"icons-state.json"}
         if set(artifacts) != expected:
             raise ValueError("Faltan artefactos o hay archivos adicionales en " + game)
         for name, hash_ in artifacts.items():
@@ -146,9 +146,14 @@ def pack_icons(source: Path, out: Path) -> dict:
             hasher.update(raw)
         zip_hash = hasher.hexdigest()
     return {
-        "status": "completed", "output": str(out), "files": len(payloads),
-        "sha256": zip_hash, "portable_paths": True, "crc_verified": True,
-        "rescanned": False, "inputs_modified": False,
+        "status": "completed",
+        "output": str(out),
+        "files": len(payloads),
+        "sha256": zip_hash,
+        "portable_paths": True,
+        "crc_verified": True,
+        "rescanned": False,
+        "inputs_modified": False,
     }
 
 

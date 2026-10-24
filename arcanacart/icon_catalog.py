@@ -17,7 +17,12 @@ from arcanacart import __version__
 from arcanacart.core.io import check_destination, digest, json_bytes, read_bounded
 from arcanacart.icon_package import _document, _relative
 from arcanacart.icon_variants import (
-    _destination, _hash, _publish, _sealed, _verify_snapshot, pack_variants,
+    _destination,
+    _hash,
+    _publish,
+    _sealed,
+    _verify_snapshot,
+    pack_variants,
 )
 from arcanacart.icons import FORMAT, ICON_BYTES, _csv, _integer, _safe
 
@@ -32,13 +37,16 @@ def _input_bundle(source: Path) -> tuple[dict[str, bytes], dict]:
             _safe(source / name)
             if not (source / name).is_file():
                 raise ValueError("Indica la carpeta de un lote terminado, con resumen y manifiesto.")
-        metadata = _document({"resumen.json": read_bounded(source / "resumen.json", 32 * 1024 * 1024)}, "resumen.json")
+        metadata = _document(
+            {"resumen.json": read_bounded(source / "resumen.json", 32 * 1024 * 1024)}, "resumen.json"
+        )
         if metadata.get("format") != "arcanacart-item-icon-variant-batch-1":
             raise ValueError("La carpeta no corresponde a un lote de iconos de variantes.")
         return _sealed(source), {"kind": "directory", "path": str(source), "zip_sha256": None}
     if source.suffix.lower() != ".zip" or not source.is_file() or source.stat().st_size > 256 * 1024 * 1024:
         raise ValueError("Indica una carpeta de lote o su ZIP portable de hasta 256 MiB.")
     import hashlib
+
     with source.open("rb") as stream:
         hasher = hashlib.sha256()
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
@@ -51,9 +59,14 @@ def _input_bundle(source: Path) -> tuple[dict[str, bytes], dict]:
             names = set()
             for entry in entries:
                 name = _relative(entry.filename)
-                if (name.casefold() in names or entry.is_dir() or entry.flag_bits & 1
-                    or stat.S_ISLNK(entry.external_attr >> 16) or entry.file_size > 32 * 1024 * 1024
-                    or entry.compress_type not in {ZIP_STORED, ZIP_DEFLATED}):
+                if (
+                    name.casefold() in names
+                    or entry.is_dir()
+                    or entry.flag_bits & 1
+                    or stat.S_ISLNK(entry.external_attr >> 16)
+                    or entry.file_size > 32 * 1024 * 1024
+                    or entry.compress_type not in {ZIP_STORED, ZIP_DEFLATED}
+                ):
                     raise ValueError("ZIP con rutas repetidas, enlaces o entradas no compatibles.")
                 names.add(name.casefold())
             payloads = {entry.filename: archive.read(entry) for entry in entries}
@@ -70,7 +83,7 @@ def _png_pixels(data: bytes) -> bytes:
         end = position + 12 + length
         if end > len(data):
             raise ValueError("Chunk PNG truncado.")
-        kind, content = data[position + 4:position + 8], data[position + 8:end - 4]
+        kind, content = data[position + 4 : position + 8], data[position + 8 : end - 4]
         if zlib.crc32(kind + content) != struct.unpack_from(">I", data, end - 4)[0]:
             raise ValueError("CRC de PNG incorrecto.")
         if kind == b"IHDR":
@@ -101,9 +114,13 @@ def _png_pixels(data: bytes) -> bytes:
         filter_ = decoded[y * 65]
         if filter_ > 4:
             raise ValueError("Filtro PNG desconocido.")
-        row = bytearray(decoded[y * 65 + 1:y * 65 + 65])
+        row = bytearray(decoded[y * 65 + 1 : y * 65 + 65])
         for x in range(64):
-            left, above, upper_left = row[x - 4] if x >= 4 else 0, previous[x], previous[x - 4] if x >= 4 else 0
+            left, above, upper_left = (
+                row[x - 4] if x >= 4 else 0,
+                previous[x],
+                previous[x - 4] if x >= 4 else 0,
+            )
             predictor = 0
             if filter_ == 1:
                 predictor = left
@@ -128,8 +145,14 @@ def _raw_pixels(raw: bytes, palette: bytes) -> bytes:
             value = raw[((y // 8) * 2 + x // 8) * 32 + (y % 8) * 4 + (x % 8) // 2]
             index = (value >> (4 * (x % 2))) & 15
             color = struct.unpack_from("<H", palette, index * 2)[0]
-            pixels.extend(((color & 31) * 255 // 31, ((color >> 5) & 31) * 255 // 31,
-                           ((color >> 10) & 31) * 255 // 31, 255 if index else 0))
+            pixels.extend(
+                (
+                    (color & 31) * 255 // 31,
+                    ((color >> 5) & 31) * 255 // 31,
+                    ((color >> 10) & 31) * 255 // 31,
+                    255 if index else 0,
+                )
+            )
     return bytes(pixels)
 
 
@@ -150,12 +173,18 @@ def _csv_row(row: dict) -> dict:
 def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str, bytes]]:
     summary = _document(files, "resumen.json")
     results = summary.get("results")
-    if (summary.get("format") != "arcanacart-item-icon-variant-batch-1" or summary.get("status") != "completed"
-        or not isinstance(results, list) or not 1 <= len(results) <= 100
-        or type(summary.get("processed_variants")) is not int or summary["processed_variants"] != len(results)
+    if (
+        summary.get("format") != "arcanacart-item-icon-variant-batch-1"
+        or summary.get("status") != "completed"
+        or not isinstance(results, list)
+        or not 1 <= len(results) <= 100
+        or type(summary.get("processed_variants")) is not int
+        or summary["processed_variants"] != len(results)
         or not _integer(summary.get("expected_variants"), len(results), 100)
-        or type(summary.get("partial_selection")) is not bool or not isinstance(summary.get("skipped_variants"), list)
-        or len(summary["skipped_variants"]) != summary["expected_variants"] - len(results)):
+        or type(summary.get("partial_selection")) is not bool
+        or not isinstance(summary.get("skipped_variants"), list)
+        or len(summary["skipped_variants"]) != summary["expected_variants"] - len(results)
+    ):
         raise ValueError("Se requiere un lote de iconos de variantes terminado y coherente.")
     if any(not _hash(summary.get(key)) for key in ("plan_canonical_sha256", "review_report_sha256")):
         raise ValueError("El lote no conserva los hashes del plan y de su revisión.")
@@ -166,9 +195,16 @@ def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str,
         if not isinstance(result, dict):
             raise ValueError("Resultado de variante inválido.")
         vid = result.get("variant_id")
-        if (not isinstance(vid, str) or len(vid) != 7 or vid[:4] not in {"fe7-", "fe8-"}
-            or not vid[4:].isascii() or not vid[4:].isdigit() or vid in seen
-            or result.get("game") != vid[:3] or not isinstance(result.get("variant"), str)):
+        if (
+            not isinstance(vid, str)
+            or len(vid) != 7
+            or vid[:4] not in {"fe7-", "fe8-"}
+            or not vid[4:].isascii()
+            or not vid[4:].isdigit()
+            or vid in seen
+            or result.get("game") != vid[:3]
+            or not isinstance(result.get("variant"), str)
+        ):
             raise ValueError("Identidad de variante inválida o repetida.")
         seen.add(vid)
         root = vid + "/"
@@ -177,57 +213,94 @@ def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str,
         state = _document(files, root + "icons-state.json")
         layout = _document(files, root + "definition.json")
         rows = catalog.get("icons")
-        if (local.get("format") != "arcanacart-item-icon-catalog-1" or local.get("status") != "completed"
-            or catalog.get("summary") != local or {k: result.get(k) for k in local} != local
-            or local.get("game") != vid[:3] or not _hash(local.get("rom_sha256"))
+        if (
+            local.get("format") != "arcanacart-item-icon-catalog-1"
+            or local.get("status") != "completed"
+            or catalog.get("summary") != local
+            or {k: result.get(k) for k in local} != local
+            or local.get("game") != vid[:3]
+            or not _hash(local.get("rom_sha256"))
             or not _hash(local.get("source_manifest_sha256"))
             or not _integer(local.get("rom_size_bytes"), 192, 32 * 1024 * 1024)
-            or not isinstance(rows, list) or not 1 <= len(rows) <= 4096):
+            or not isinstance(rows, list)
+            or not 1 <= len(rows) <= 4096
+        ):
             raise ValueError("Resumen, catálogo o identidad incoherentes: " + vid)
-        expected = {n[len(root):] for n in files if n.startswith(root)} - {"icons-state.json"}
-        if (state.get("status") != "completed" or not isinstance(state.get("artifacts"), dict)
+        expected = {n[len(root) :] for n in files if n.startswith(root)} - {"icons-state.json"}
+        if (
+            state.get("status") != "completed"
+            or not isinstance(state.get("artifacts"), dict)
             or set(state["artifacts"]) != expected
-            or any(hashes[root + name] != hash_ for name, hash_ in state["artifacts"].items())):
+            or any(hashes[root + name] != hash_ for name, hash_ in state["artifacts"].items())
+        ):
             raise ValueError("Manifiesto de variante incoherente: " + vid)
         size = local["rom_size_bytes"]
-        if (layout.get("format") != FORMAT or layout.get("game") != vid[:3]
-            or layout.get("rom_sha256") != local["rom_sha256"] or layout.get("icon_bytes") != ICON_BYTES
-            or not _integer(layout.get("first_id"), 0, 65535) or not _integer(layout.get("icon_count"), 1, 4096)
+        if (
+            layout.get("format") != FORMAT
+            or layout.get("game") != vid[:3]
+            or layout.get("rom_sha256") != local["rom_sha256"]
+            or layout.get("icon_bytes") != ICON_BYTES
+            or not _integer(layout.get("first_id"), 0, 65535)
+            or not _integer(layout.get("icon_count"), 1, 4096)
             or not _integer(layout.get("table_offset"), 0, size - 128)
             or layout["table_offset"] + 128 * layout["icon_count"] > size
             or not _integer(layout.get("palette_offset"), 0, size - 32)
-            or not _integer(local.get("first_id"), layout["first_id"], layout["first_id"] + layout["icon_count"] - 1)
-            or not _integer(local.get("last_id"), local["first_id"], layout["first_id"] + layout["icon_count"] - 1)
+            or not _integer(
+                local.get("first_id"), layout["first_id"], layout["first_id"] + layout["icon_count"] - 1
+            )
+            or not _integer(
+                local.get("last_id"), local["first_id"], layout["first_id"] + layout["icon_count"] - 1
+            )
             or local.get("icon_occurrences") != len(rows)
             or [r.get("icon_id") if isinstance(r, dict) else None for r in rows]
-               != list(range(local["first_id"], local["last_id"] + 1))):
+            != list(range(local["first_id"], local["last_id"] + 1))
+        ):
             raise ValueError("Definición o rango incoherente: " + vid)
         definition = files[root + "definition.json"]
         if layout["table_offset"] < layout["palette_offset"] + 32 and layout["palette_offset"] < (
-                layout["table_offset"] + 128 * layout["icon_count"]):
+            layout["table_offset"] + 128 * layout["icon_count"]
+        ):
             raise ValueError("La definición solapa el banco con la paleta: " + vid)
-        if (files.get("definiciones/" + vid + ".json") != definition
+        if (
+            files.get("definiciones/" + vid + ".json") != definition
             or digest(definition) != local.get("definition_file_sha256")
-            or digest(json_bytes(layout)) != local.get("resolved_layout_sha256")):
+            or digest(json_bytes(layout)) != local.get("resolved_layout_sha256")
+        ):
             raise ValueError("La definición no coincide con su SHA-256: " + vid)
         for name in ("summary.json", "definition.json", "icons-state.json"):
             retained["fuentes/" + root + name] = files[root + name]
         unique_png, unique_raw, unique_pal, visible_png = set(), set(), set(), set()
         visible_count = 0
         for row in rows:
-            reserved = {"variant_id", "variant", "source_png", "source_raw_file", "source_palette_file",
-                        "source_catalog", "definition_sha256"}
-            if (reserved.intersection(row) or row.get("game") != vid[:3] or row.get("rom_sha256") != local["rom_sha256"]
+            reserved = {
+                "variant_id",
+                "variant",
+                "source_png",
+                "source_raw_file",
+                "source_palette_file",
+                "source_catalog",
+                "definition_sha256",
+            }
+            if (
+                reserved.intersection(row)
+                or row.get("game") != vid[:3]
+                or row.get("rom_sha256") != local["rom_sha256"]
                 or row.get("air_sha256") != local["source_manifest_sha256"]
                 or not _integer(row.get("icon_id"), 0, 65535)
                 or not _integer(row.get("source_offset"), 0, size - 128)
                 or not _integer(row.get("palette_offset"), 0, size - 32)
                 or row.get("icon_id_hex") != f"0x{row['icon_id']:02X}"
-                or row.get("source_offset") != layout["table_offset"] + 128 * (row["icon_id"] - layout["first_id"])
+                or row.get("source_offset")
+                != layout["table_offset"] + 128 * (row["icon_id"] - layout["first_id"])
                 or row.get("palette_offset") != layout["palette_offset"]
-                or row.get("size_bytes") != 128 or row.get("width") != 16 or row.get("height") != 16
-                or row.get("kind") != "item-icon" or row.get("compression") != "none"
-                or row.get("data_origin") != "local-rom-raw" or type(row.get("visible")) is not bool):
+                or row.get("size_bytes") != 128
+                or row.get("width") != 16
+                or row.get("height") != 16
+                or row.get("kind") != "item-icon"
+                or row.get("compression") != "none"
+                or row.get("data_origin") != "local-rom-raw"
+                or type(row.get("visible")) is not bool
+            ):
                 raise ValueError("Procedencia o geometría incoherente: " + vid)
             for field, hash_field, prefix, suffix in (
                 ("file", "png_sha256", "imagenes/", ".png"),
@@ -235,8 +308,11 @@ def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str,
                 ("palette_file", "palette_sha256", "paletas/", ".bin"),
             ):
                 hash_ = row.get(hash_field)
-                if (not _hash(hash_) or row.get(field) != prefix + hash_ + suffix
-                    or hashes.get(root + row[field]) != hash_):
+                if (
+                    not _hash(hash_)
+                    or row.get(field) != prefix + hash_ + suffix
+                    or hashes.get(root + row[field]) != hash_
+                ):
                     raise ValueError("Recurso sin referencia o SHA-256 correcto: " + vid)
                 retained[row[field]] = files[root + row[field]]
             raw, pal = files[root + row["raw_file"]], files[root + row["palette_file"]]
@@ -260,16 +336,28 @@ def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str,
             for key in ("file", "raw_file", "palette_file"):
                 source_row[key] = root + row[key]
             source_csv_rows.append(_csv_row(source_row))
-            origins.append({**row, "variant_id": vid, "variant": result["variant"],
-                            "source_png": root + row["file"], "source_raw_file": root + row["raw_file"],
-                            "source_palette_file": root + row["palette_file"],
-                            "source_catalog": root + "catalog.json",
-                            "definition_sha256": local["definition_file_sha256"]})
-        counts = {"unique_images": len(unique_png), "unique_raw_resources": len(unique_raw),
-                  "unique_palettes": len(unique_pal), "visible_images": len(visible_png),
-                  "transparent_images": len(unique_png - visible_png), "visible_occurrences": visible_count,
-                  "transparent_occurrences": len(rows) - visible_count,
-                  "duplicate_png_copies_avoided": len(rows) - len(unique_png)}
+            origins.append(
+                {
+                    **row,
+                    "variant_id": vid,
+                    "variant": result["variant"],
+                    "source_png": root + row["file"],
+                    "source_raw_file": root + row["raw_file"],
+                    "source_palette_file": root + row["palette_file"],
+                    "source_catalog": root + "catalog.json",
+                    "definition_sha256": local["definition_file_sha256"],
+                }
+            )
+        counts = {
+            "unique_images": len(unique_png),
+            "unique_raw_resources": len(unique_raw),
+            "unique_palettes": len(unique_pal),
+            "visible_images": len(visible_png),
+            "transparent_images": len(unique_png - visible_png),
+            "visible_occurrences": visible_count,
+            "transparent_occurrences": len(rows) - visible_count,
+            "duplicate_png_copies_avoided": len(rows) - len(unique_png),
+        }
         if any(local.get(k) != v for k, v in counts.items()):
             raise ValueError("Conteos de variante incoherentes: " + vid)
         for sub, field in (("imagenes/", "file"), ("raw/", "raw_file"), ("paletas/", "palette_file")):
@@ -277,18 +365,31 @@ def _checked_batch(files: dict[str, bytes]) -> tuple[dict, list[dict], dict[str,
                 raise ValueError("Recursos ausentes o sin procedencia: " + vid)
         if _rows(files[root + "icons.csv"]) != [_csv_row(r) for r in rows]:
             raise ValueError("El CSV local no coincide con su catálogo: " + vid)
-    if (_rows(files["ocurrencias.csv"]) != source_csv_rows
+    if (
+        _rows(files["ocurrencias.csv"]) != source_csv_rows
         or summary.get("icon_occurrences") != len(origins)
-        or summary.get("unique_pngs_across_variants") != len(png_pixels)):
+        or summary.get("unique_pngs_across_variants") != len(png_pixels)
+    ):
         raise ValueError("El CSV o los conteos globales no conservan todas las procedencias.")
     skipped = summary["skipped_variants"]
-    if any(not isinstance(v, str) for v in skipped) or len(set(skipped)) != len(skipped) or set(skipped) & seen:
+    if (
+        any(not isinstance(v, str) for v in skipped)
+        or len(set(skipped)) != len(skipped)
+        or set(skipped) & seen
+    ):
         raise ValueError("Selección parcial de variantes incoherente.")
-    roots = seen | {"definiciones", "resumen.json", "ocurrencias.csv", "galerias.csv", "variant-icons-state.json"}
+    roots = seen | {
+        "definiciones",
+        "resumen.json",
+        "ocurrencias.csv",
+        "galerias.csv",
+        "variant-icons-state.json",
+    }
     if "index.html" in files:
         roots.add("index.html")
-    if ({n.split("/", 1)[0] for n in files} != roots
-        or {n for n in files if n.startswith("definiciones/")} != {"definiciones/" + vid + ".json" for vid in seen}):
+    if {n.split("/", 1)[0] for n in files} != roots or {
+        n for n in files if n.startswith("definiciones/")
+    } != {"definiciones/" + vid + ".json" for vid in seen}:
         raise ValueError("El lote contiene archivos raíz o definiciones ajenos a sus variantes.")
     retained["fuentes/resumen-original.json"] = files["resumen.json"]
     retained["fuentes/manifesto-original.json"] = files["variant-icons-state.json"]
@@ -306,44 +407,77 @@ def consolidate(source: Path, out: Path) -> dict:
     for origin in origins:
         key = origin["png_sha256"]
         if key not in grouped:
-            grouped[key] = {"png_sha256": key, "file": origin["file"], "width": 16, "height": 16,
-                            "visible": origin["visible"], "origins": []}
+            grouped[key] = {
+                "png_sha256": key,
+                "file": origin["file"],
+                "width": 16,
+                "height": 16,
+                "visible": origin["visible"],
+                "origins": [],
+            }
         grouped[key]["origins"].append(origin)
     images = []
     for key in sorted(grouped):
         image = grouped[key]
-        image.update(games=sorted({r["game"] for r in image["origins"]}),
-                     variant_ids=sorted({r["variant_id"] for r in image["origins"]}),
-                     occurrences=len(image["origins"]))
+        image.update(
+            games=sorted({r["game"] for r in image["origins"]}),
+            variant_ids=sorted({r["variant_id"] for r in image["origins"]}),
+            occurrences=len(image["origins"]),
+        )
         images.append(image)
     png_count = sum("/imagenes/" in n for n in files)
-    summary = {"format": CATALOG_FORMAT, "status": "completed", "tool_version": __version__,
-               "source": source_info, "source_summary_sha256": digest(files["resumen.json"]),
-               "source_manifest_sha256": digest(files["variant-icons-state.json"]),
-               "source_verified_files": len(files), "plan_canonical_sha256": original["plan_canonical_sha256"],
-               "review_report_sha256": original["review_report_sha256"],
-               "variants": original["processed_variants"], "source_expected_variants": original["expected_variants"],
-               "source_skipped_variants": original["skipped_variants"], "icon_occurrences": len(origins),
-               "unique_images": len(images), "visible_images": sum(i["visible"] for i in images),
-               "transparent_images": sum(not i["visible"] for i in images),
-               "transparent_occurrences": sum(not r["visible"] for r in origins),
-               "unique_raw_resources": len({r["source_sha256"] for r in origins}),
-               "unique_palettes": len({r["palette_sha256"] for r in origins}),
-               "source_png_files": png_count, "duplicate_png_copies_avoided": png_count - len(images),
-               "deduplication": "Exact file SHA-256; every variant/ID occurrence is retained.",
-               "roms_read": False, "rescanned": False, "assets_reencoded": False, "inputs_modified": False,
-               "scope": "Solo los rangos y la primera paleta del lote; capacidad total y uso en el juego sin confirmar."}
+    summary = {
+        "format": CATALOG_FORMAT,
+        "status": "completed",
+        "tool_version": __version__,
+        "source": source_info,
+        "source_summary_sha256": digest(files["resumen.json"]),
+        "source_manifest_sha256": digest(files["variant-icons-state.json"]),
+        "source_verified_files": len(files),
+        "plan_canonical_sha256": original["plan_canonical_sha256"],
+        "review_report_sha256": original["review_report_sha256"],
+        "variants": original["processed_variants"],
+        "source_expected_variants": original["expected_variants"],
+        "source_skipped_variants": original["skipped_variants"],
+        "icon_occurrences": len(origins),
+        "unique_images": len(images),
+        "visible_images": sum(i["visible"] for i in images),
+        "transparent_images": sum(not i["visible"] for i in images),
+        "transparent_occurrences": sum(not r["visible"] for r in origins),
+        "unique_raw_resources": len({r["source_sha256"] for r in origins}),
+        "unique_palettes": len({r["palette_sha256"] for r in origins}),
+        "source_png_files": png_count,
+        "duplicate_png_copies_avoided": png_count - len(images),
+        "deduplication": "Exact file SHA-256; every variant/ID occurrence is retained.",
+        "roms_read": False,
+        "rescanned": False,
+        "assets_reencoded": False,
+        "inputs_modified": False,
+        "scope": "Solo los rangos y la primera paleta del lote; capacidad total y uso en el juego sin confirmar.",
+    }
     catalog = {"summary": summary, "variants": original["results"], "images": images}
-    image_rows = [{k: image[k] for k in ("png_sha256", "file", "width", "height", "visible", "occurrences")}
-                  | {"games": "|".join(image["games"]), "variant_ids": "|".join(image["variant_ids"])}
-                  for image in images]
+    image_rows = [
+        {k: image[k] for k in ("png_sha256", "file", "width", "height", "visible", "occurrences")}
+        | {"games": "|".join(image["games"]), "variant_ids": "|".join(image["variant_ids"])}
+        for image in images
+    ]
     from arcanacart.icon_catalog_gallery import gallery
+
     fields = list(dict.fromkeys(key for r in origins for key in r))
-    payloads.update({"resumen.json": json_bytes(summary), "catalogo.json": json_bytes(catalog),
-                     "imagenes.csv": _csv(image_rows, list(image_rows[0])),
-                     "ocurrencias.csv": _csv(origins, fields), "index.html": gallery(catalog)})
-    if len(payloads) >= 100000 or sum(map(len, payloads.values())) > 256 * 1024 * 1024 or any(
-            len(raw) > 32 * 1024 * 1024 for raw in payloads.values()):
+    payloads.update(
+        {
+            "resumen.json": json_bytes(summary),
+            "catalogo.json": json_bytes(catalog),
+            "imagenes.csv": _csv(image_rows, list(image_rows[0])),
+            "ocurrencias.csv": _csv(origins, fields),
+            "index.html": gallery(catalog),
+        }
+    )
+    if (
+        len(payloads) >= 100000
+        or sum(map(len, payloads.values())) > 256 * 1024 * 1024
+        or any(len(raw) > 32 * 1024 * 1024 for raw in payloads.values())
+    ):
         raise ValueError("El catálogo excede el presupuesto de archivos o tamaño.")
     _publish(out, payloads, state_name=CATALOG_STATE)
     return summary | {"output": str(out), "gallery": str(out / "index.html")}
@@ -373,8 +507,10 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False))
         return 0
     except (OSError, ValueError, KeyError, TypeError, BadZipFile, struct.error, zlib.error, csv.Error) as exc:
-        print(json.dumps({"status": "failed", "error": str(exc), "rescanned": False}, ensure_ascii=False),
-              file=sys.stderr)
+        print(
+            json.dumps({"status": "failed", "error": str(exc), "rescanned": False}, ensure_ascii=False),
+            file=sys.stderr,
+        )
         return 2
 
 

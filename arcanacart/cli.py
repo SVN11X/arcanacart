@@ -313,7 +313,9 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     )
     icons = command("icons", "Extraer el banco documentado de iconos 16x16; no escanea la ROM.")
     icons.add_argument("--rom", type=Path, required=True, help="ROM local exacta (o ZIP con una ROM).")
-    icons.add_argument("--input", type=Path, help="AIR existente opcional: verifica identidad e inventaría candidatos.")
+    icons.add_argument(
+        "--input", type=Path, help="AIR existente opcional: verifica identidad e inventaría candidatos."
+    )
     icons.add_argument("--definition", type=Path, help="Definición explícita para una ROM/variante revisada.")
     icons.add_argument("--first-id", type=number, help="Primer ID dentro del rango documentado.")
     icons.add_argument("--last-id", type=number, help="Último ID inclusivo dentro del rango documentado.")
@@ -452,8 +454,13 @@ def execute(args: argparse.Namespace) -> dict:
         from arcanacart.icons import extract_icons
 
         return extract_icons(
-            args.rom, args.out, source=args.input, definition=args.definition,
-            first_id=args.first_id, last_id=args.last_id, dry_run=dry,
+            args.rom,
+            args.out,
+            source=args.input,
+            definition=args.definition,
+            first_id=args.first_id,
+            last_id=args.last_id,
+            dry_run=dry,
         )
     if cmd == "faces":
         from arcanacart.faces import reconstruct_faces

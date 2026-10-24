@@ -65,7 +65,7 @@ details p{{overflow-wrap:anywhere;font:12px/1.5 monospace}}[hidden]{{display:non
 @media(max-width:500px){{main{{padding:16px}}.filters label:first-child{{display:grid;width:100%}}}}
 </style></head><body><main>
 <p>ARCANACART / {game}</p><h1>Iconos de objetos y armas</h1>
-<p>{summary['icon_occurrences']} IDs · {summary['unique_images']} PNG únicos · 16 × 16 píxeles</p>
+<p>{summary["icon_occurrences"]} IDs · {summary["unique_images"]} PNG únicos · 16 × 16 píxeles</p>
 <p>Los IDs identifican posiciones del banco de iconos. No son nombres ni IDs de objetos.</p>
 <p><a href="icons.csv" download>Índice CSV</a> · <a href="catalog.json" download>Catálogo JSON</a> ·
 <a href="summary.json">Resumen y límites</a> · <a href="definition.json" download>Definición utilizada</a></p>

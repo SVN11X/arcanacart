@@ -10,7 +10,7 @@ import unittest
 
 from arcanacart.icon_catalog_gallery import SCRIPT, gallery
 
-HARNESS = r'''
+HARNESS = r"""
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const request=JSON.parse(fs.readFileSync(0,'utf8'));
 class Element{
@@ -76,46 +76,56 @@ if(request.case==='lazy'){
  assert.equal(list.children.length,201);
 }
 process.stdout.write('ok');
-'''
+"""
 
 
 class CatalogGallery(unittest.TestCase):
     def node_case(self, name):
-        node = shutil.which('node')
+        node = shutil.which("node")
         if not node:
-            self.skipTest('Node unavailable; required only for gallery development tests')
-        result = subprocess.run([node, '-e', HARNESS], input=json.dumps({'script': SCRIPT, 'case': name}),
-                                text=True, capture_output=True, check=False)
+            self.skipTest("Node unavailable; required only for gallery development tests")
+        result = subprocess.run(
+            [node, "-e", HARNESS],
+            input=json.dumps({"script": SCRIPT, "case": name}),
+            text=True,
+            capture_output=True,
+            check=False,
+        )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout, 'ok')
+        self.assertEqual(result.stdout, "ok")
 
     def test_filters_use_the_same_origin_for_game_variant_and_search(self):
-        self.node_case('correlation')
+        self.node_case("correlation")
 
     def test_pagination_search_empty_state_and_reset(self):
-        self.node_case('pagination')
+        self.node_case("pagination")
 
     def test_controls_keep_variants_consistent_with_game(self):
-        self.node_case('controls')
+        self.node_case("controls")
 
     def test_origin_details_progressively_expose_every_origin(self):
-        self.node_case('lazy')
+        self.node_case("lazy")
 
     def test_embedded_data_is_escaped_and_csp_matches_script(self):
-        catalog = {'summary': {'unique_images': 1, 'icon_occurrences': 1, 'variants': 1},
-                   'variants': [{'variant': '</script><img src=x onerror=bad()> & "'}], 'images': []}
+        catalog = {
+            "summary": {"unique_images": 1, "icon_occurrences": 1, "variants": 1},
+            "variants": [{"variant": '</script><img src=x onerror=bad()> & "'}],
+            "images": [],
+        }
         page = gallery(catalog).decode()
-        embedded = re.search(r'<script id="catalog-data" type="application/json">(.*?)</script>', page, re.S)[1]
-        self.assertEqual(json.loads(embedded)['variants'], catalog['variants'])
-        self.assertNotIn('</script>', embedded)
-        self.assertNotIn('<img src=x', page)
+        embedded = re.search(r'<script id="catalog-data" type="application/json">(.*?)</script>', page, re.S)[
+            1
+        ]
+        self.assertEqual(json.loads(embedded)["variants"], catalog["variants"])
+        self.assertNotIn("</script>", embedded)
+        self.assertNotIn("<img src=x", page)
         digest = base64.b64encode(hashlib.sha256(SCRIPT.encode()).digest()).decode()
         self.assertIn("script-src 'sha256-" + digest + "'", page)
-        self.assertNotIn('fetch(', SCRIPT)
+        self.assertNotIn("fetch(", SCRIPT)
         ids = set(re.findall(r'\bid="([^"]+)"', page))
         referenced = set(re.findall(r"getElementById\('([^']+)'\)", SCRIPT))
         self.assertTrue(referenced <= ids)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

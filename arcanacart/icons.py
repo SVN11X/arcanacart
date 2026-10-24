@@ -18,8 +18,12 @@ from arcanacart.schemas import validate
 FORMAT = "arcanacart-item-icon-layout-1"
 ICON_BYTES = 128
 MAX_ICONS = 4096
-FEBUILDER = "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/"
-FE8_DECOMP = "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/"
+FEBUILDER = (
+    "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/"
+)
+FE8_DECOMP = (
+    "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/"
+)
 
 
 def _builtin(game: str, rom_hash: str, table: int, pointer: int, palette_pointer: int, count: int) -> dict:
@@ -96,7 +100,10 @@ def checked_layout(value: dict, rom: dict, data: bytes) -> dict:
         if location is not None and not _integer(location, 0, len(data) - 4):
             raise ValueError("Ubicación de puntero fuera de la ROM.")
     if result["pointer_location"] is not None:
-        if _pointer(data, result["pointer_location"], result["icon_count"] * ICON_BYTES) != result["table_offset"]:
+        if (
+            _pointer(data, result["pointer_location"], result["icon_count"] * ICON_BYTES)
+            != result["table_offset"]
+        ):
             raise ValueError("El puntero de iconos no coincide con la tabla declarada.")
     palette_offset = result["palette_offset"]
     if palette_offset is not None and not _integer(palette_offset, 0, len(data) - 32):
@@ -158,19 +165,20 @@ def extract_icons(
     if definition:
         spec, definition_file_hash = _json_file(definition, 1024 * 1024)
     else:
-        spec = BUILTIN_LAYOUTS.get(rom["sha256"])
-        if spec is None:
+        automatic_spec = BUILTIN_LAYOUTS.get(rom["sha256"])
+        if automatic_spec is None:
             raise ValueError(
                 "La extracción automática requiere la base FE7/FE8 USA exacta. "
                 "Una variante necesita --definition ligada a su SHA-256 y a un rango revisado."
             )
+        spec = automatic_spec
     layout = checked_layout(spec, rom, data)
     low, high = layout["first_id"], layout["first_id"] + layout["icon_count"] - 1
     first_id = low if first_id is None else first_id
     last_id = high if last_id is None else last_id
     if not _integer(first_id, low, high) or not _integer(last_id, first_id, high):
         raise ValueError("Los IDs solicitados exceden el rango documentado de esta definición.")
-    records = []
+    records: list[dict] = []
     source_hash = None
     scan = None
     if source:
@@ -258,37 +266,65 @@ def extract_icons(
             "La apariencia no se ha contrastado con capturas del juego; review permanece unreviewed.",
         ],
     }
-    result = {**summary, "status": "planned" if dry_run else "completed", "dry_run": dry_run,
-              "output": str(out), "gallery": str(out / "index.html")}
+    result = {
+        **summary,
+        "status": "planned" if dry_run else "completed",
+        "dry_run": dry_run,
+        "output": str(out),
+        "gallery": str(out / "index.html"),
+    }
     if dry_run:
         return result
     from arcanacart.icon_gallery import gallery
 
-    payloads.update({
-        "definition.json": json_bytes(layout),
-        "summary.json": json_bytes(summary),
-        "catalog.json": json_bytes({"summary": summary, "icons": rows}),
-        "icons.csv": _csv(rows, list(rows[0])),
-        "index.html": gallery(summary, rows),
-    })
+    payloads.update(
+        {
+            "definition.json": json_bytes(layout),
+            "summary.json": json_bytes(summary),
+            "catalog.json": json_bytes({"summary": summary, "icons": rows}),
+            "icons.csv": _csv(rows, list(rows[0])),
+            "index.html": gallery(summary, rows),
+        }
+    )
     if source:
         inventory = [
-            {"offset": r["offset"], "compression": r["compression"], "stored_bytes": r["compressed_bytes"],
-             "decoded_bytes": r["decompressed_bytes"], "sha256": r["sha256"],
-             "references": len(r["references"]), "classification": "unclassified-air-candidate"}
+            {
+                "offset": r["offset"],
+                "compression": r["compression"],
+                "stored_bytes": r["compressed_bytes"],
+                "decoded_bytes": r["decompressed_bytes"],
+                "sha256": r["sha256"],
+                "references": len(r["references"]),
+                "classification": "unclassified-air-candidate",
+            }
             for r in records
         ]
-        payloads["air-inventory.csv"] = _csv(inventory, ["offset", "compression", "stored_bytes", "decoded_bytes",
-                                                       "sha256", "references", "classification"])
+        payloads["air-inventory.csv"] = _csv(
+            inventory,
+            [
+                "offset",
+                "compression",
+                "stored_bytes",
+                "decoded_bytes",
+                "sha256",
+                "references",
+                "classification",
+            ],
+        )
     out.mkdir(parents=True, exist_ok=True, mode=0o700)
     with workspace_lock(out):
         atomic_json(out / "icons-state.json", {"status": "running"})
         try:
             for name, payload in sorted(payloads.items()):
                 atomic_write(out / name, payload)
-            atomic_json(out / "icons-state.json", {
-                "status": "completed", "artifacts": {name: digest(raw) for name, raw in sorted(payloads.items())}
-            }, force=True)
+            atomic_json(
+                out / "icons-state.json",
+                {
+                    "status": "completed",
+                    "artifacts": {name: digest(raw) for name, raw in sorted(payloads.items())},
+                },
+                force=True,
+            )
         except Exception:
             atomic_json(out / "icons-state.json", {"status": "failed"}, force=True)
             raise

@@ -21,7 +21,10 @@ function matchingImages(images,game,variant,term,showTransparent){
 }
 """
 
-SCRIPT = "'use strict';\n" + FILTER_SCRIPT + """
+SCRIPT = (
+    "'use strict';\n"
+    + FILTER_SCRIPT
+    + """
 const data=JSON.parse(document.getElementById('catalog-data').textContent);
 const game=document.getElementById('game'),variant=document.getElementById('variant');
 const search=document.getElementById('search'),transparent=document.getElementById('transparent');
@@ -79,14 +82,18 @@ document.getElementById('reset').addEventListener('click',()=>{
  game.value='';variant.value='';search.value='';transparent.checked=false;variants();filter();});
 variants();filter();
 """
+)
 
 
 def gallery(catalog: dict) -> bytes:
     summary = catalog["summary"]
-    embedded = json.dumps({"images": catalog["images"], "variants": catalog["variants"]},
-                          ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    embedded = json.dumps(
+        {"images": catalog["images"], "variants": catalog["variants"]},
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("<", "\\u003c")
     script_hash = base64.b64encode(hashlib.sha256(SCRIPT.encode()).digest()).decode()
-    text = f'''<!doctype html><html lang="es"><head><meta charset="utf-8">
+    text = f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' file:; style-src 'unsafe-inline'; script-src 'sha256-{script_hash}'; base-uri 'none'; form-action 'none'">
 <title>ArcanaCart · Catálogo de iconos</title><style>
@@ -105,7 +112,7 @@ details{{margin-top:16px}}details li{{margin-bottom:20px}}details p{{font:12px/1
 details a{{display:block;margin:6px 0}}ol{{padding-left:24px}}[hidden]{{display:none!important}}
 @media(max-width:600px){{main{{padding:16px}}.filters label,.filters select{{width:100%;max-width:100%}}}}
 </style></head><body><main><p>ARCANACART</p><h1>Catálogo de iconos</h1>
-<p>{summary['unique_images']} imágenes únicas · {summary['icon_occurrences']} apariciones · {summary['variants']} variantes</p>
+<p>{summary["unique_images"]} imágenes únicas · {summary["icon_occurrences"]} apariciones · {summary["variants"]} variantes</p>
 <p>Un PNG puede aparecer con distintos IDs. Cada procedencia conserva su variante, raw, paleta, offsets y hashes.</p>
 <nav aria-label="Archivos del catálogo"><a href="imagenes.csv" download>Imágenes CSV</a>
 <a href="ocurrencias.csv" download>Procedencias CSV</a><a href="catalogo.json" download>Catálogo JSON</a>
@@ -121,5 +128,5 @@ details a{{display:block;margin:6px 0}}ol{{padding-left:24px}}[hidden]{{display:
 <button id="previous" type="button">Anterior</button><button id="next" type="button">Siguiente</button></nav>
 <p>Los rangos exportados no confirman la totalidad de recursos ni la capacidad completa de las tablas.</p>
 <noscript>Activa JavaScript para filtrar la galería. Los CSV y JSON conservan todas las procedencias.</noscript>
-</main><script id="catalog-data" type="application/json">{embedded}</script><script>{SCRIPT}</script></body></html>'''
+</main><script id="catalog-data" type="application/json">{embedded}</script><script>{SCRIPT}</script></body></html>"""
     return text.encode("utf-8")
