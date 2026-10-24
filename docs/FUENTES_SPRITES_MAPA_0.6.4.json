@@ -1,0 +1,70 @@
+{
+  "format": "arcanacart-standing-map-sprite-source-evidence-1",
+  "sources": [
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE7U.cs",
+      "bytes": 39638,
+      "sha256": "943364f3340232b038dc4263be2dd705a69e8a3f29aec74b462b56ab29589b93"
+    },
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE8U.cs",
+      "bytes": 41375,
+      "sha256": "832f7f2f997101f3b14ed04087f57cdafebd8cda27f647d3a2ca468e9f8f1ddd"
+    },
+    {
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImageUnitWaitIconFrom.cs",
+      "bytes": 15262,
+      "sha256": "df37f82a5a63757dc297f083592b381e14be289eda66ed59051c7d89b14fb4f1"
+    },
+    {
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/include/unit_icon_data.h",
+      "bytes": 573,
+      "sha256": "98d8bb6fd86640abdb69101b7895d6c0b300020e56b132f1e438b90e916c9435"
+    },
+    {
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/unit_icon_wait_data.c",
+      "bytes": 7162,
+      "sha256": "58c76210518a35d30b00a6860fe2e891d2095ebe00575a32d67685263e1812cd"
+    },
+    {
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/bmudisp.c",
+      "bytes": 38836,
+      "sha256": "8e4c8c28abd223accab346759cd339a093fbbd49651ca36e3ea316371eccdd91"
+    }
+  ],
+  "format_evidence": {
+    "entry_bytes": 8,
+    "pattern_offset": 0,
+    "pattern_bytes": 2,
+    "size_offset": 2,
+    "size_bytes": 2,
+    "sheet_pointer_offset": 4,
+    "sheet_pointer_bytes": 4,
+    "size_codes": {
+      "0": "16x16",
+      "1": "16x32",
+      "2": "32x32"
+    },
+    "fe8_reference_entries": 107
+  },
+  "fe7": {
+    "pointer_locations": [
+      150944
+    ],
+    "reference_palette_start": 1656212
+  },
+  "fe8": {
+    "pointer_locations": [
+      157488,
+      157616,
+      157752,
+      158856,
+      163940,
+      163700
+    ],
+    "reference_palette_start": 5893664
+  },
+  "probe_slot_budget": 128,
+  "probe_budget_is_capacity": false,
+  "real_rom_validation_pending": true
+}
