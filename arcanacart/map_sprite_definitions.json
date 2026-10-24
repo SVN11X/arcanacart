@@ -1,0 +1,1992 @@
+{
+  "capacity_confirmed": false,
+  "definitions": [
+    {
+      "air_sha256": null,
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "f1200d19771b366b6ead15dec0eee4a7785b538d894c069c36f7592321ee799b",
+      "table_offset": 13211392,
+      "table_sha256": "aad6359e0d011d38a22687516a02ec863aba8545be5a43cb3d333eea39070ade",
+      "table_window_sha256": "4b250ae57e79acd4667f5f53686c35015afe9af73fa1c7302fe2e06b76774ff5",
+      "variant": "usa-base",
+      "variant_id": "fe7-base"
+    },
+    {
+      "air_sha256": null,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 106,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "638cda9d9b72657220fbf7e7a500cd3b64d9686c36e8a56fca69d26d13886f2f",
+      "table_offset": 9107584,
+      "table_sha256": "46b3a615a0a54fa76c0bee9d7717fe344c748b16f8e1ff73056ee0c04669d2ab",
+      "table_window_sha256": "17ad63f62739fd50fb709bb7381e05a933455287eb383dd4d477230194a290aa",
+      "variant": "usa-base",
+      "variant_id": "fe8-base"
+    },
+    {
+      "air_sha256": "7009a44ed020ab938b90bd10e8f3bb802708a6fe9697fa3a208ef533bfc3e627",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "b399e43de3fd51ff215ed0efd15bf321d6cd9d0a415d516ed72dea6a0c9fad2e",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "001-fe7uremaster-x-qol-challenge.patch.20230818164709",
+      "variant_id": "fe7-001"
+    },
+    {
+      "air_sha256": "8f40c476ae33aef211b8f226f7c5ab358117ba195a5278bfdf9b5a36591b603b",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "e9136026805b32ad165a6859f76132ffd0f9d6bd5c1ccf10d92c41399375bf67",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "002-fe7uremaster-x-qol-final-paladin-special.patch.20251026165125",
+      "variant_id": "fe7-002"
+    },
+    {
+      "air_sha256": "9b1039d0acd911fb3cd205e34e9973320b78a0bbb73fa2ed076fec642063cb4d",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "75a00308b9ee4d27664af065c643371686fb77c6b9f61db204a40a5fd817ebcf",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "003-fe7uremaster-x-qol-final.patch.20230730120539",
+      "variant_id": "fe7-003"
+    },
+    {
+      "air_sha256": "611f81cf09fcef339263b2ee7ab844fb82b7e74db495f4bcfe38e6cb041a4ecb",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "1fa108a12832d5db230025962516c549092802313d96cabbd21e2867675314dd",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "355779f46ffad74eaa050ad33b559c329ad797b5fb8ea2dbb8b6d29d11e661af",
+      "variant": "004-fe7uremaster.patch.20230114165323",
+      "variant_id": "fe7-004"
+    },
+    {
+      "air_sha256": "04a68f26895f73b7308baf823caea244a03ab2524ee727bb8e50454f60e3a8e5",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "c9650af16c1c0095b20fb4613afd110e603e332f77da97237793498ca0398c93",
+      "table_offset": 13211392,
+      "table_sha256": "82cc49134ab1230fe55aa49ef2441cdb2f91d8188fc39500cee80e178084dd48",
+      "table_window_sha256": "0b519673f4f82ecd34ddf1dcc714b19d7d5b5fda8d79df7d807eb8dbfdbef7d5",
+      "variant": "005-fe7uremaster-x-qol-fun-emblem.patch.20231228165309",
+      "variant_id": "fe7-005"
+    },
+    {
+      "air_sha256": "e67aa020399061ab3f0aeee1568819794289347d717c4f6de24ed310001dd64f",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "d97b34c2c93193478f288304f660cf5d102f0dee1741e291afe5a11c87503484",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "006-antiguo-fe7u-pme-nayru.patch.20260614125706",
+      "variant_id": "fe7-006"
+    },
+    {
+      "air_sha256": "78a7d927b573663a31a94476b8e0292c35e7cc704470f7d683e1423486008517",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "a93be029248b2686f4ca13eb5842c320dad53e3f7ec153273b06d93ff6963dd3",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "007-fe7u-pme-nayru-casual.patch.20260823150604",
+      "variant_id": "fe7-007"
+    },
+    {
+      "air_sha256": "bf88f7ace4e1b00112289f4aceebd09efb79fa34a969b0e95c3d29739308cead",
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 87,
+      "palette_loader_offset": 150680,
+      "palette_loader_sha256": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+      "palettes": {
+        "enemy": {
+          "offset": 1656244,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 1656340,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 1656308,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 1656372,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 1656276,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 1656212,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 1656404,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "4eaf0dd03afb7579623ac88012d9efd2205337ed5289f9da94b16833e6a5d568",
+      "table_offset": 13211392,
+      "table_sha256": "5b803e49624afc37a251182e179ad9c857535f67b7c0add120d38c7cecb95154",
+      "table_window_sha256": "abf765de61c4c1d288674b54a6402a6f3e2bcc7d70ec844bac63900a9e524bd7",
+      "variant": "008-fe7u-pme-nayru.patch.20260823150401",
+      "variant_id": "fe7-008"
+    },
+    {
+      "air_sha256": "f1b240c99303b3cc08896e409f300fa0ab6eb127a74cbb6355eeeffede088ecd",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "b87e33e06392dd61c228de83cd8df3fb440cfa194edb8edc6d049731c65f690c",
+      "table_offset": 16954368,
+      "table_sha256": "a9a55368f8e38f251cbc442a15599e139ccd4bc7f96d1a01f34f1e52f66733d0",
+      "table_window_sha256": "b1098faffc1b7aa43f0307ef22140704bd2c2729caba8180e80885065e39ef1d",
+      "variant": "001-beta-patch",
+      "variant_id": "fe8-001"
+    },
+    {
+      "air_sha256": "a2d33e59a2f59858be9af06091fefc8bfbcf8bfa0006c3b4448396cec623b609",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "9ab47d6c7aabf11c83af55a7b129c919daa11b78b27bad84c79936fd1c31eb2e",
+      "table_offset": 21199184,
+      "table_sha256": "d6e4c0ed0cba52540ba1852101eddfab048c78638428415494532b3a026723e4",
+      "table_window_sha256": "35902741bee6b832df0ada38061f813aaf86b231ade4d47130ce9e1d98031d2e",
+      "variant": "002-sacred-trilogy-full-fixed-growths-no-ai",
+      "variant_id": "fe8-002"
+    },
+    {
+      "air_sha256": "c4d0b59a557456bed3eed9f1829bca46ca4073a230ee7a14135ffdbbb13c0d0d",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "21636affb40f285f3905ee1c5b4768e06cb8f9ab5b9e1af635107853f030208a",
+      "table_offset": 21199184,
+      "table_sha256": "d6e4c0ed0cba52540ba1852101eddfab048c78638428415494532b3a026723e4",
+      "table_window_sha256": "35902741bee6b832df0ada38061f813aaf86b231ade4d47130ce9e1d98031d2e",
+      "variant": "003-sacred-trilogy-full-fixed-growths-with-ai",
+      "variant_id": "fe8-003"
+    },
+    {
+      "air_sha256": "484c89849662a0fc4aaf3eaf257d64a8e8175a44ab2a10ca4bbfdce177947f5d",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "9388f0a4617b35c77e5c06372700e3bb2d0afbe4ada9c0bd8f8ca39c0d452bc0",
+      "table_offset": 21199184,
+      "table_sha256": "d6e4c0ed0cba52540ba1852101eddfab048c78638428415494532b3a026723e4",
+      "table_window_sha256": "35902741bee6b832df0ada38061f813aaf86b231ade4d47130ce9e1d98031d2e",
+      "variant": "004-sacred-trilogy-full-random-growths-no-ai",
+      "variant_id": "fe8-004"
+    },
+    {
+      "air_sha256": "d415de258e17cfeea2d08669d60521be1dc905945232da8f384b90c01ddc41f0",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "89639cbf087b3a563819ed92494ca08f89a805b82030e2ffb85cc2e369fcc5f2",
+      "table_offset": 21199184,
+      "table_sha256": "d6e4c0ed0cba52540ba1852101eddfab048c78638428415494532b3a026723e4",
+      "table_window_sha256": "35902741bee6b832df0ada38061f813aaf86b231ade4d47130ce9e1d98031d2e",
+      "variant": "005-sacred-trilogy-full-random-growths-with-ai",
+      "variant_id": "fe8-005"
+    },
+    {
+      "air_sha256": "3871131f0fc50f0ff7f530526b83cebfecbcf0f9e9e7ef8caab27e3c123b63dd",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "cad2ac6a5210d7746dcb6ec452303686f9a128163ce0679e29445fb82cddbd88",
+      "table_offset": 21290104,
+      "table_sha256": "6dc95efbf19a47e6a020f188d774f5ef9a0dfd4b9830fd9da11a313172519e6c",
+      "table_window_sha256": "d38f387b1cff77bd51b665ded7bd28a728c882260728554be74a403444df3002",
+      "variant": "006-sacred-trilogy-lite-fixed-growths-no-ai",
+      "variant_id": "fe8-006"
+    },
+    {
+      "air_sha256": "9e92c233edc0e4cec780af6e40b1c6e03c6330ff1224f91c8743b5d9bc3d8aaa",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "59a63d5dfe4fa39dabefccab33687573fb2db0b8f67771e9621648409abd154b",
+      "table_offset": 21290104,
+      "table_sha256": "6dc95efbf19a47e6a020f188d774f5ef9a0dfd4b9830fd9da11a313172519e6c",
+      "table_window_sha256": "d38f387b1cff77bd51b665ded7bd28a728c882260728554be74a403444df3002",
+      "variant": "007-sacred-trilogy-lite-fixed-growths-with-ai",
+      "variant_id": "fe8-007"
+    },
+    {
+      "air_sha256": "3e9cc6295407875b349495508a7d26bba6e157c11f0b74e8cfffa41d22e85452",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "211692c591171d16c176c8ac49f92194a3567a1d02fff0a03d558de0cc733bbe",
+      "table_offset": 21290104,
+      "table_sha256": "6dc95efbf19a47e6a020f188d774f5ef9a0dfd4b9830fd9da11a313172519e6c",
+      "table_window_sha256": "d38f387b1cff77bd51b665ded7bd28a728c882260728554be74a403444df3002",
+      "variant": "008-sacred-trilogy-lite-random-growths-no-ai",
+      "variant_id": "fe8-008"
+    },
+    {
+      "air_sha256": "c25433e03b42dfd62f2b983f1202caf4acfe6e8ef7eca3bbe967b71888fc386f",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "29aa486c5519d3163aee374452a147109be809b607cd9837d80e61d4ceeb7eef",
+      "table_offset": 21290104,
+      "table_sha256": "6dc95efbf19a47e6a020f188d774f5ef9a0dfd4b9830fd9da11a313172519e6c",
+      "table_window_sha256": "d38f387b1cff77bd51b665ded7bd28a728c882260728554be74a403444df3002",
+      "variant": "009-sacred-trilogy-lite-random-growths-with-ai",
+      "variant_id": "fe8-009"
+    },
+    {
+      "air_sha256": "bc6386ca40c21553a7deedfbf07fafe3b40e81ef37619d4a81798039225da045",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "28d9b1e9259aba75dda4b2b71f2958f16b9fe52d1bced9331ddb5ffa402e3dd2",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "010-sacred-trilogy-1.0-full",
+      "variant_id": "fe8-010"
+    },
+    {
+      "air_sha256": "94c82c6eb621d756fb56dc1449cafffe72165cf1389ff87c3f5eb37362826609",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "ef1699787c0e8d5a2695cc4c421824457587acfdc5966296cefa64ba977bc89d",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "011-sacred-trilogy-1.0-lite",
+      "variant_id": "fe8-011"
+    },
+    {
+      "air_sha256": "ae358cee2bdae6da92143ff9a663be135cd38f2243e367cfe604221d22b0e669",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "2b8d678d52ff73363851c603666e0f4226816571aa92ab2ec52d4f8716e3acd9",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "012-sacred-trilogy-1.0.1-full",
+      "variant_id": "fe8-012"
+    },
+    {
+      "air_sha256": "0b2fc166a3733fb652cc710b4697f4b9ec5d63f588fae267fa6925f2225b0815",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "9f1d96483f026e06559353a50d31f4b822555ec3783090c7920b8d258b667d1b",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "013-sacred-trilogy-1.0.1-lite",
+      "variant_id": "fe8-013"
+    },
+    {
+      "air_sha256": "728df1d70e38bfc52edbef335ab0bf9da86887781225aabb50494d125e20b83e",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "ac3b924c43c40bca983dde141e7fb693c1b186beaac3bcd33ae0819f8bca2875",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "014-sacred-trilogy-1.1-full",
+      "variant_id": "fe8-014"
+    },
+    {
+      "air_sha256": "ba4f6c484b3ad5f7b9165fa07a55811042e4b93af957df43643ee4cd48f98447",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "6e6ee1d2ca3677180d9f587afa4d86d11060643a2e8bb9768586715a11f73e34",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "015-sacred-trilogy-1.1-lite",
+      "variant_id": "fe8-015"
+    },
+    {
+      "air_sha256": "556268f8d25b5f44c7d168a0529af65f31a2cd089603bb4e3a0723d0c56c0555",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "06fdfad9fa6aa616eecbc0bb8ee9bbfa7140570580c2ec177d882923f1babe8f",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "016-sacred-trilogy-1.2-full",
+      "variant_id": "fe8-016"
+    },
+    {
+      "air_sha256": "55d0689c5056ed670ca5d7d7930ced1885c01ce8ce1927f4f5009744e2df97cc",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "bbf57dab65e484363b49dccdc9cdaede69e3f844d16031716f7b2f959ee6d722",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "017-sacred-trilogy-1.2-lite",
+      "variant_id": "fe8-017"
+    },
+    {
+      "air_sha256": "2199c663554d0471b291f23d027f402e3150529209891c3692f36b8a5c20eb16",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "329567a503d73e43e4574322b957be5c7f2fdbe520987fa0157f356e2268d656",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "018-sacred-trilogy-1.2.1-full",
+      "variant_id": "fe8-018"
+    },
+    {
+      "air_sha256": "d6f8ee0be6bebe68c8a421c825f0bfc8032b06ddb5ec0d6fae0c87d6cb0ab3eb",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "57514e7e3edc1314eb6de68aed07c5d707d604bee6395b2b7875404b4009495e",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "019-sacred-trilogy-1.2.1-lite",
+      "variant_id": "fe8-019"
+    },
+    {
+      "air_sha256": "98544d13ae6f7266c592778cdeaffda798cdcd520932c48cd2f10546eedf28ff",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "497a4273b826989aa2ae2b9bb6525476740971dc638cf4eee37069d3d872155b",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "020-sacred-trilogy-1.2.2-full",
+      "variant_id": "fe8-020"
+    },
+    {
+      "air_sha256": "6a25bdea9e83beda7b4e0074a4b67fc5d430327d918f5ec2d343dfb3e20f7f7b",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "fccfc72c9cf3c856e8a3f3268de37b249b3531af272de55d8c5193d5eb41e78d",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "021-sacred-trilogy-1.2.2-lite",
+      "variant_id": "fe8-021"
+    },
+    {
+      "air_sha256": "fbeeae9416b2cc2e334f032be02edd71260b657dc5333c5207f8f9d8d7f106b2",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "970d83be28f421a55958e572701d08db6a901890c8a50f6244324edad4e1c207",
+      "table_offset": 19115132,
+      "table_sha256": "8bd54d77b4697fc0d6d51dbfd9e94f98e446251975071c06411ad04f86a81992",
+      "table_window_sha256": "01c9c089fbf5b35478c9cc1db2467d6d2f012efc651f2d0de227bb71968a3292",
+      "variant": "022-sacred-trilogy-1.3-full",
+      "variant_id": "fe8-022"
+    },
+    {
+      "air_sha256": "848f551e760857beb1993dc5a9a04631154bc9cb5202d8e3ffad74ff5425a1de",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "f2cb8b4542cc722f07b4ae58ab86494f512ab692df9a30ff0fb02d50fed83a92",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "023-sacred-trilogy-1.3-lite",
+      "variant_id": "fe8-023"
+    },
+    {
+      "air_sha256": "8833fb34fc9271d9f2f2312b4dc66c72b2fe641773a7066b9c35a42362aa69ee",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "199aafbd5f60cdcc5a09b68269f5c04d525ca0720547807575ac9054040dbedc",
+      "table_offset": 19115132,
+      "table_sha256": "8bd54d77b4697fc0d6d51dbfd9e94f98e446251975071c06411ad04f86a81992",
+      "table_window_sha256": "01c9c089fbf5b35478c9cc1db2467d6d2f012efc651f2d0de227bb71968a3292",
+      "variant": "024-sacred-trilogy-1.3.1-full",
+      "variant_id": "fe8-024"
+    },
+    {
+      "air_sha256": "710ef0af13c02cb5df63c87cf9c90e986c0cb873929b4178d1ee0b76063ab398",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 254,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "11934261b5100ec8f567d3e1d90db9af41f011951330b5b4074c784a91597112",
+      "table_offset": 19115132,
+      "table_sha256": "72a0494c0315501638f89574b9aeccd9cf64f6e86f23d09999f65cca13e8d8fc",
+      "table_window_sha256": "b041625e775ff28e6415fef3805822ebbfe7d2796be2ce610e5c57bdc0fc99d9",
+      "variant": "025-sacred-trilogy-1.3.1-lite",
+      "variant_id": "fe8-025"
+    },
+    {
+      "air_sha256": "cd57def6c28db6697aaa37099a9f059ce2f11baf7cd330bade1c18f21478a585",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "497f8ce4c134c9ce234cc8d3a34900f1dd04aed48b9f5738039e1ea52066b560",
+      "table_offset": 19084772,
+      "table_sha256": "69207ab36e97ae3104bb6f4d95730d1d4f8b4ca362327f749110e548a0a2bec1",
+      "table_window_sha256": "cc2e20194cad160eda927668c6231fa35259d43fff6dfbfa14eae9d81c5d1df4",
+      "variant": "026-sacred-trilogy-2.0-full-version",
+      "variant_id": "fe8-026"
+    },
+    {
+      "air_sha256": "ec1427c7cf8836a086ace095813105c62f177eae20e59ce27ff04524ee1fef2a",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "762499230b32954f61ce868325650e7b8773eb540f54d6b73fbc3f5a02fda3cf",
+      "table_offset": 19084772,
+      "table_sha256": "69207ab36e97ae3104bb6f4d95730d1d4f8b4ca362327f749110e548a0a2bec1",
+      "table_window_sha256": "cc2e20194cad160eda927668c6231fa35259d43fff6dfbfa14eae9d81c5d1df4",
+      "variant": "027-sacred-trilogy-2.0-lite-version",
+      "variant_id": "fe8-027"
+    },
+    {
+      "air_sha256": "7ed63ed2351853f85d34a37ee17b0aaa235ea0e2e8b16741c69854d6f4d6e406",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "5e3d3a7f29bfa14797568c4d4ddf2081b05b802ef959277bb2e4696c530ccca5",
+      "table_offset": 19084772,
+      "table_sha256": "69207ab36e97ae3104bb6f4d95730d1d4f8b4ca362327f749110e548a0a2bec1",
+      "table_window_sha256": "cc2e20194cad160eda927668c6231fa35259d43fff6dfbfa14eae9d81c5d1df4",
+      "variant": "028-sacred-trilogy-2.1-full-version",
+      "variant_id": "fe8-028"
+    },
+    {
+      "air_sha256": "87d9834491709a6fa87bdc8a46412b930aaa4fcb6d9b4eaa8cbacdd6e3a8f531",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "6f4d3c3de5f61e4495e5ee94c7d01b4e4e3fd1767ab27de9b10170dbcad3d93c",
+      "table_offset": 19084772,
+      "table_sha256": "69207ab36e97ae3104bb6f4d95730d1d4f8b4ca362327f749110e548a0a2bec1",
+      "table_window_sha256": "cc2e20194cad160eda927668c6231fa35259d43fff6dfbfa14eae9d81c5d1df4",
+      "variant": "029-sacred-trilogy-2.1-lite-version",
+      "variant_id": "fe8-029"
+    },
+    {
+      "air_sha256": "b9ea0f35d54d9838aead33570382605414d00dae06c3eccdd97dbdbf4e9e54b0",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "1fe97f164906fd5ba0f030d50a1525585b41cc9be43a0d91a972076c5a5f6bd7",
+      "table_offset": 19084772,
+      "table_sha256": "440d74090dac3613dfa6ae7b20850ccd2c115ee7e34869f857112dc13db2b591",
+      "table_window_sha256": "9d0b00e70920314980e5ef4c16eb29db25f7d50b5b4305c60eaacd8b75527931",
+      "variant": "030-sacred-trilogy-2.1.1-full-version",
+      "variant_id": "fe8-030"
+    },
+    {
+      "air_sha256": "97d8355378023139d0b3e2857a1a5d67831a9f38e7198105d6171deca7eeac49",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "866b6751c9c0143bf1c4a766c9920f34e0eefb7c87a20bdb7ed68c4f750bd9d2",
+      "table_offset": 19084772,
+      "table_sha256": "279b9a1b3b9ff345092ab88aba227632f5e03b6f4527894efb49e824c5cb70e9",
+      "table_window_sha256": "0c9e965551246a471ada8d988a384afe66a581cc6662d923cba38f0ed522a78f",
+      "variant": "031-sacred-trilogy-2.1.1-lite-version",
+      "variant_id": "fe8-031"
+    },
+    {
+      "air_sha256": "30128f0990117b0b112cc4d2f8f2d2577fba7cecd275ffa344f4e428bbd62c75",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "40395bc10a70c7f9c8f94c7981de91581b5a23517367068009eaf197e8df6f6e",
+      "table_offset": 19084772,
+      "table_sha256": "440d74090dac3613dfa6ae7b20850ccd2c115ee7e34869f857112dc13db2b591",
+      "table_window_sha256": "9d0b00e70920314980e5ef4c16eb29db25f7d50b5b4305c60eaacd8b75527931",
+      "variant": "032-sacred-trilogy-2.1.2-full-version",
+      "variant_id": "fe8-032"
+    },
+    {
+      "air_sha256": "fa8f6cb501a03ba864b457aaf719026c2ab76fc8a8edb4e0c313c9b759977166",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "f83af57693f702d80544215a064b1381b12f2fe7be125dc915fc8c0adbe74d79",
+      "table_offset": 19084772,
+      "table_sha256": "279b9a1b3b9ff345092ab88aba227632f5e03b6f4527894efb49e824c5cb70e9",
+      "table_window_sha256": "0c9e965551246a471ada8d988a384afe66a581cc6662d923cba38f0ed522a78f",
+      "variant": "033-sacred-trilogy-2.1.2-lite-version",
+      "variant_id": "fe8-033"
+    },
+    {
+      "air_sha256": "359dbb27d394b5803f6d38cfb06a226d77ae38329c33e477cdf4a2ef809cd080",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "a665ac03d3c74907ad762f16baafdf6a646acb2136e005debafa16f1db447ca1",
+      "table_offset": 19084772,
+      "table_sha256": "440d74090dac3613dfa6ae7b20850ccd2c115ee7e34869f857112dc13db2b591",
+      "table_window_sha256": "9d0b00e70920314980e5ef4c16eb29db25f7d50b5b4305c60eaacd8b75527931",
+      "variant": "034-sacred-trilogy-2.1.3-full-version",
+      "variant_id": "fe8-034"
+    },
+    {
+      "air_sha256": "81ccd456142d1d93ad260a30e0d0bcf3fad790a94b2121e075a7eee3846bf3c7",
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 253,
+      "palette_loader_offset": 157224,
+      "palette_loader_sha256": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021",
+      "palettes": {
+        "enemy": {
+          "offset": 5893696,
+          "sha256": "6e5e2039d305d27423e4072acae557e88dda6cbd22b22288fe97731acbacdc65"
+        },
+        "fourth": {
+          "offset": 5893792,
+          "sha256": "e5c89ce2abaaa5b8d4749e4c33b6f1978ceb4495f328336d9f681026826e2e35"
+        },
+        "gray": {
+          "offset": 5893760,
+          "sha256": "fa6ef80fbb29fdb904a2776bdb3705d2b50efe30e77d16345c09eec4a8982192"
+        },
+        "light-rune": {
+          "offset": 5893824,
+          "sha256": "c8c946c66b3fbc2b28e5a1a00baa111fcb25222eee16c5c7d2b9cf570ece0368"
+        },
+        "npc": {
+          "offset": 5893728,
+          "sha256": "afdde3d94d691173f4033192e7ad4d05b7e046bd46901234d64fde253530c3f2"
+        },
+        "player": {
+          "offset": 5893664,
+          "sha256": "373fb63b6636ec3baca5efd0893b3111b96ecd5c0f8ca5dec2ec9542580d7ece"
+        },
+        "sepia": {
+          "offset": 5893856,
+          "sha256": "900462d8c63ea3f13574b76daa179d29b578dd8353e36810582c5a69fc1ef1fc"
+        }
+      },
+      "rom_sha256": "196e3743d1a11d2991350814b967b794aef4a582e657c28fa2267e4e51119487",
+      "table_offset": 19084772,
+      "table_sha256": "279b9a1b3b9ff345092ab88aba227632f5e03b6f4527894efb49e824c5cb70e9",
+      "table_window_sha256": "0c9e965551246a471ada8d988a384afe66a581cc6662d923cba38f0ed522a78f",
+      "variant": "035-sacred-trilogy-2.1.3-lite-version",
+      "variant_id": "fe8-035"
+    }
+  ],
+  "format": "arcanacart-standing-map-sprite-definitions-1",
+  "in_game_verified": false,
+  "plan_canonical_sha256": "debf5add63899c827c6bef0b51441e3e7f88ad569a56a2e93854463a4e0effc0",
+  "scope": "Only explicitly reviewed contiguous ranges and statically checked native palette loaders.",
+  "source_report_sha256": "fb574da8faa2f932e365c6b2bb2c1f80daa09bbbdbc11e9edb1f9db479b0909b",
+  "source_state_sha256": "494d7cb0e1db61339f1bb7c17202736cde60cea1f725120b4d459538c7e5d73d",
+  "source_zip_sha256": "d0a95b6e5b037d83d24754732897412764e13f8cbe777e71826fdc59400811c6"
+}

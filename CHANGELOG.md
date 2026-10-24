@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4 — Iconos y sprites de mapa con evidencia revisada
+
+- Incorpora la extracción acotada de iconos de objetos de las bases y las 43 variantes revisadas, su índice portable y su catálogo sin copias repetidas.
+- Añade la revisión y ampliación de las tablas de sprites de mapa en reposo, con identidades ROM/AIR exactas, contextos de acceso y paletas documentadas.
+- Extrae desde el ZIP ampliado auditado: conserva LZ10 y 4bpp, genera tres fotogramas completos con siete paletas y reúne todas las procedencias en una galería local con CSV/JSON.
+- Documenta 9.812 apariciones, 254 hojas 4bpp y 6.923 PNG de hojas/fotogramas en los rangos aprobados. La capacidad total, el uso en el juego y sus tiempos de animación siguen pendientes de confirmar.
+- Corrige los avisos previos de Ruff y las anotaciones de tipos que impedían superar los controles de CI. Mantiene los hashes de ROM, AIR y recursos sobre sus bytes exactos.
+
 ## 0.6.3 — Catálogo de retratos sin copias repetidas
 
 - Añade `Consolidar-Retratos.ps1` para procesar la carpeta o el ZIP de un lote completado. Comprueba los informes, las tablas, los PNG y las paletas antes de publicar una salida nueva.

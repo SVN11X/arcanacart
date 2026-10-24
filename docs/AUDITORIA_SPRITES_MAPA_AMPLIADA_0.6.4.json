@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "format": "arcanacart-independent-standing-map-followup-audit-1",
+  "zip_sha256": "d0a95b6e5b037d83d24754732897412764e13f8cbe777e71826fdc59400811c6",
+  "report_sha256": "fb574da8faa2f932e365c6b2bb2c1f80daa09bbbdbc11e9edb1f9db479b0909b",
+  "state_sha256": "494d7cb0e1db61339f1bb7c17202736cde60cea1f725120b4d459538c7e5d73d",
+  "checks": {
+    "manifest": 1,
+    "artifact_hashes": 1108,
+    "crc": 1109,
+    "previous_packet": 873,
+    "independent_lz": 346,
+    "loader": 45,
+    "loader_instructions": 45,
+    "palette_hashes": 315,
+    "palette_literals": 180,
+    "ranges": 45,
+    "excluded_tail": 45,
+    "table_hash": 45,
+    "entries": 9869,
+    "stored": 9812,
+    "geometry": 9812,
+    "air_inventory": 9617,
+    "csv": 1
+  },
+  "check_count": 43268,
+  "errors": [],
+  "counts": {
+    "roms": 45,
+    "bases": 2,
+    "variants": 43,
+    "sheet_occurrences": 9812,
+    "variant_sheet_occurrences": 9617,
+    "by_game": {
+      "fe7": 792,
+      "fe8": 9020
+    },
+    "unique_stored_sheets": 346,
+    "unique_raw_sheets": 254,
+    "table_entries": 9869
+  },
+  "loader_sha256_by_game": {
+    "fe7": "acaa7972cdb36ad89c85f66582bce4ed79d97f6284158a0e580f32cee3ca5d8d",
+    "fe8": "a0c293796297dea4bd1fe4200a94b7652809f03e279f68858a9c7e7d4ac5a021"
+  },
+  "in_game_appearance_checked": false,
+  "full_roms_read_here": false
+}

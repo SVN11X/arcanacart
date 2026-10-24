@@ -1,0 +1,130 @@
+{
+  "format": "arcanacart-standing-map-sprite-validation-1",
+  "status": "passed",
+  "version": "0.6.4",
+  "date": "2026-10-24",
+  "source_archive": "revision-sprites-mapa-ampliada-20261024-141014-87975f.zip",
+  "catalog_archive": "arcanacart-0.6.4-catalogo-sprites-mapa.zip",
+  "catalog_audit": {
+    "status": "passed",
+    "checks": {
+      "zip_crc": 7674,
+      "zip_paths": 7675,
+      "manifest": 1,
+      "artifact_hashes": 7673,
+      "summary": 1,
+      "source_metadata": 1,
+      "occurrences": 1,
+      "identity": 45,
+      "definitions": 45,
+      "evidence": 90,
+      "palettes": 315,
+      "source_bytes": 9812,
+      "source_hashes": 9812,
+      "origin_metadata": 9812,
+      "render_binding": 9812,
+      "png_hash": 6923,
+      "png_geometry": 6923,
+      "png_visibility": 6923,
+      "raw_hash": 254,
+      "independent_pixel_render": 7112,
+      "frames": 1778,
+      "coverage": 5,
+      "csv": 2,
+      "gallery": 6
+    },
+    "check_count": 92695,
+    "errors": [],
+    "zip_sha256": "86a172095d6fce99e9d282fb5a7f7418c05aa8f2981ebffc0c4c4eb9ed4cdf4d",
+    "files": 7674,
+    "counts": {
+      "roms": 45,
+      "sheet_occurrences": 9812,
+      "unique_raw_sheets": 254,
+      "unique_stored_sheets": 346,
+      "pngs": 6923,
+      "sheet_pngs": 1767,
+      "frame_pngs": 5156,
+      "palette_files": 7,
+      "transparent_occurrences": 54,
+      "by_game": {
+        "fe7": 792,
+        "fe8": 9020
+      }
+    },
+    "browser_layout_checked": false,
+    "in_game_checked": false
+  },
+  "gallery_dom": {
+    "status": "passed",
+    "checks": 45690,
+    "errors": 0,
+    "profiles": 45,
+    "render_sets": 254,
+    "palettes": 7,
+    "pages": 6,
+    "cards_across_palettes": 1778,
+    "origins_accessed": 9812,
+    "numeric_ids_checked": 256,
+    "browser_layout_checked": false
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "total": 464,
+    "passed": 460,
+    "skipped": 4,
+    "failed": 0,
+    "skipped_reason": "Four existing launcher tests require PowerShell on Windows.",
+    "new_backend_tests": 13,
+    "new_gallery_tests": 5
+  },
+  "quality_checks": {
+    "ruff_check": "passed",
+    "ruff_format_check": "passed: 85 files",
+    "mypy": "passed: 47 source files",
+    "build": "passed: sdist and wheel",
+    "doctor": "passed",
+    "feunpack_version": "0.6.4"
+  },
+  "wheel_smoke": {
+    "status": "passed",
+    "wheel_contains_definitions": true,
+    "wheel_module_import": true,
+    "definitions": 45,
+    "sheet_occurrences": 9812,
+    "sdist_contains_guide": true,
+    "cli_help": true
+  },
+  "environment": {
+    "python": "3.12.14",
+    "node": "24.22.1",
+    "platform": "Linux",
+    "ruff": "0.14.0",
+    "mypy": "1.18.2",
+    "build": "1.3.0"
+  },
+  "main_integration": {
+    "target_branch": "main",
+    "remote_main_at_review": "a2823aa48616a3ca31406dff9407e496c1f928b0",
+    "feature_at_review": "1d9ebdfbd2fe19db96d47116e5eabf9b36d01579",
+    "normal_merge_test": "passed without conflicts in isolated clone",
+    "result_tree_equals_feature": true,
+    "remote_changed_by_auditor": false
+  },
+  "ci_baseline_corrections": {
+    "ruff_diagnostics_resolved": 18,
+    "existing_files_formatted": 20,
+    "mypy_diagnostics_resolved": 11,
+    "resource_hashes_unchanged": true
+  },
+  "static_review_sources": [
+    "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImageUnitWaitIconFrom.cs",
+    "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/bmudisp.c"
+  ],
+  "limitations": [
+    "No full ROM or AIR files were available here; their identities come from the locally verified evidence and the existing audited inventory.",
+    "Browser layout and in-game appearance, palette overrides and animation timing remain unverified.",
+    "Only the explicit bounded ranges are approved; reserved capacities, movement sprites and other resource banks remain outside this scope.",
+    "Local checks ran on Python 3.12/Linux. Windows and the other CI matrix versions must run in the repository workflow."
+  ]
+}

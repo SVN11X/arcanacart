@@ -1,4 +1,8 @@
-# ArcanaCart 0.6.3
+# ArcanaCart 0.6.4
+
+Para los sprites de unidades en el mapa, sigue [SPRITES_MAPA_0.6.4.md](SPRITES_MAPA_0.6.4.md):
+extrae los rangos y paletas revisados desde el ZIP de evidencia, conserva todas
+las procedencias y genera una galería local de hojas y fotogramas.
 
 Si ya completaste la extracción de las variantes, continúa con
 [CATALOGO_RETRATOS_0.6.3.md](CATALOGO_RETRATOS_0.6.3.md): reúne los PNG por contenido,

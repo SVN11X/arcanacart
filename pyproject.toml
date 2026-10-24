@@ -23,6 +23,7 @@ feunpack = "arcanacart.cli:legacy_main"
 include = ["arcanacart*", "feunpack*"]
 
 [tool.setuptools.package-data]
+"arcanacart" = ["map_sprite_definitions.json"]
 "arcanacart.schemas" = ["*.json"]
 "arcanacart.disassembly" = ["scripts/*.java"]
 
