@@ -11,6 +11,9 @@ están en [Rangos de iconos revisados](docs/REVISION_ICONOS_VARIANTES_APROBADA_0
 El lote terminado y su navegación portable están documentados en la
 [auditoría de iconos de variantes](docs/AUDITORIA_LOTE_ICONOS_VARIANTES_0.6.4.md).
 
+La [consolidación de iconos](CATALOGO_ICONOS_0.6.4.md) conserva las procedencias
+y reúne los PNG, raw y paletas únicos en una galería local.
+
 ## Evidencia recuperada
 
 El plan `scripts/variantes/iconos/variantes.json` identifica ocho variantes FE7

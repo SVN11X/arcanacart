@@ -187,16 +187,19 @@ def _inspect(row: dict, datos: Path, bases: dict, reviewed: dict | None,
     return result, payloads
 
 
-def _publish(out: Path, payloads: dict[str, bytes]) -> None:
+def _publish(out: Path, payloads: dict[str, bytes], *, state_name: str = STATE) -> None:
+    _relative(state_name)
+    if state_name in payloads:
+        raise ValueError("El estado no debe incluirse como un artefacto de sí mismo.")
     out.mkdir(parents=True, exist_ok=False, mode=0o700)
-    atomic_json(out / STATE, {"status": "running"})
+    atomic_json(out / state_name, {"status": "running"})
     try:
         for name, raw in sorted(payloads.items()):
             atomic_write(out / _relative(name), raw)
-        atomic_json(out / STATE, {"status": "completed", "artifacts": {
+        atomic_json(out / state_name, {"status": "completed", "artifacts": {
             name: digest(raw) for name, raw in sorted(payloads.items())}}, force=True)
     except Exception:
-        atomic_json(out / STATE, {"status": "failed"}, force=True)
+        atomic_json(out / state_name, {"status": "failed"}, force=True)
         raise
 
 
@@ -252,7 +255,7 @@ def review_variants(datos: Path, out: Path, plan_path: Path = DEFAULT_PLAN) -> d
     return {k: v for k, v in report.items() if k != "results"} | {"output": str(out)}
 
 
-def _sealed(source: Path) -> dict[str, bytes]:
+def _sealed(source: Path, *, state_name: str = STATE) -> dict[str, bytes]:
     _safe(source)
     if not source.is_dir():
         raise ValueError("No existe la carpeta de revisión/lote.")
@@ -270,10 +273,14 @@ def _sealed(source: Path) -> dict[str, bytes]:
         if total > 256 * 1024 * 1024:
             raise ValueError("El paquete excede 256 MiB.")
         payloads[name] = raw
-    state = _document(payloads, STATE)
+    return _verify_snapshot(payloads, state_name=state_name)
+
+
+def _verify_snapshot(payloads: dict[str, bytes], *, state_name: str = STATE) -> dict[str, bytes]:
+    state = _document(payloads, _relative(state_name))
     if state.get("status") != "completed" or not isinstance(state.get("artifacts"), dict):
         raise ValueError("La revisión/lote no terminó correctamente.")
-    if set(state["artifacts"]) != set(payloads) - {STATE}:
+    if set(state["artifacts"]) != set(payloads) - {state_name}:
         raise ValueError("Hay archivos adicionales o faltan artefactos.")
     for name, sha in state["artifacts"].items():
         if not _hash(sha) or digest(payloads[name]) != sha:
@@ -376,11 +383,11 @@ def confirm_review(review: Path, out: Path, plan_path: Path = DEFAULT_PLAN) -> d
     return {k: v for k, v in updated.items() if k != "results"} | {"output": str(out)}
 
 
-def pack_variants(source: Path, out: Path) -> dict:
+def pack_variants(source: Path, out: Path, *, state_name: str = STATE) -> dict:
     _safe(out)
     if out.resolve().is_relative_to(source.resolve()):
         raise ValueError("El ZIP debe quedar fuera de la carpeta de entrada.")
-    payloads = _sealed(source)
+    payloads = _sealed(source, state_name=state_name)
     with staged_file(out) as (stream, _):
         with ZipFile(stream, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
             for name, raw in sorted(payloads.items()):
