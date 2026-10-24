@@ -1,0 +1,154 @@
+{
+  "bounded_occurrences": 9224,
+  "distinct_images_in_windows": 400,
+  "distinct_palettes": 1,
+  "distinct_raw_banks_in_windows": 7,
+  "format": "arcanacart-reviewed-variant-icon-evidence-1",
+  "fully_transparent_occurrences": 0,
+  "groups": [
+    {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "count_per_variant": 173,
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 172,
+      "observed_table_offsets": [
+        810660
+      ],
+      "palette_offset": 835236,
+      "variants": [
+        "fe7-001",
+        "fe7-002",
+        "fe7-003",
+        "fe7-005",
+        "fe7-006",
+        "fe7-007",
+        "fe7-008"
+      ]
+    },
+    {
+      "bank_sha256": "0c7a0754e62c61d865189472faeea3401fa8f73ff6807752b7400ecc6bdccf76",
+      "count_per_variant": 173,
+      "first_id": 0,
+      "game": "fe7",
+      "last_id": 172,
+      "observed_table_offsets": [
+        810660
+      ],
+      "palette_offset": 835236,
+      "variants": [
+        "fe7-004"
+      ]
+    },
+    {
+      "bank_sha256": "c7c75e0e6d3d534cb590939f217f59071630edfd6d8df6ccb84915156d4642a1",
+      "count_per_variant": 224,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 223,
+      "observed_table_offsets": [
+        16817304
+      ],
+      "palette_offset": 5871348,
+      "variants": [
+        "fe8-001"
+      ]
+    },
+    {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "count_per_variant": 224,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 223,
+      "observed_table_offsets": [
+        20279696,
+        20370540
+      ],
+      "palette_offset": 5871348,
+      "variants": [
+        "fe8-002",
+        "fe8-003",
+        "fe8-004",
+        "fe8-005",
+        "fe8-006",
+        "fe8-007",
+        "fe8-008",
+        "fe8-009"
+      ]
+    },
+    {
+      "bank_sha256": "df0be95357a8047f5178c539f6cdaac2e48ee4d5d571be9f68d018cbfbc91a8b",
+      "count_per_variant": 224,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 223,
+      "observed_table_offsets": [
+        17248460
+      ],
+      "palette_offset": 5871348,
+      "variants": [
+        "fe8-010",
+        "fe8-011",
+        "fe8-012",
+        "fe8-013"
+      ]
+    },
+    {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "count_per_variant": 224,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 223,
+      "observed_table_offsets": [
+        17248460
+      ],
+      "palette_offset": 5871348,
+      "variants": [
+        "fe8-014",
+        "fe8-015",
+        "fe8-016",
+        "fe8-017",
+        "fe8-018",
+        "fe8-019",
+        "fe8-020",
+        "fe8-021",
+        "fe8-022",
+        "fe8-023",
+        "fe8-024",
+        "fe8-025"
+      ]
+    },
+    {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "count_per_variant": 224,
+      "first_id": 0,
+      "game": "fe8",
+      "last_id": 223,
+      "observed_table_offsets": [
+        17249800
+      ],
+      "palette_offset": 5871348,
+      "variants": [
+        "fe8-026",
+        "fe8-027",
+        "fe8-028",
+        "fe8-029",
+        "fe8-030",
+        "fe8-031",
+        "fe8-032",
+        "fe8-033",
+        "fe8-034",
+        "fe8-035"
+      ]
+    }
+  ],
+  "independent_render_matches": true,
+  "independent_render_slot_comparisons": 1466,
+  "original_rom_hashes_recomputed_here": false,
+  "scope": "Solo FE7 IDs 0..172 y FE8 IDs 0..223. Capacidad completa y bancos adicionales pendientes.",
+  "source_plan_canonical_sha256": "2f3c55073d0e884919ca04a2c85dd211f42034c44a02686077d0509087c95047",
+  "source_report_sha256": "c94433bb5f3c54a8ca33bbcc3cbb81b7e10afb1b4841af545f345fee415d256f",
+  "source_zip_sha256": "7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c",
+  "variants": 43,
+  "zip_members": 306
+}

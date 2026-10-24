@@ -101,7 +101,7 @@ class VariantIcons(unittest.TestCase):
         self.assertEqual(sum(r['game'] == 'fe7' for r in plan['variants']), 8)
         self.assertEqual(sum(r['game'] == 'fe8' for r in plan['variants']), 35)
         self.assertEqual(len({r['rom_sha256'] for r in plan['variants']}), 43)
-        self.assertEqual(plan['reviewed_ranges'], {})
+        self.assertTrue(set(plan['reviewed_ranges']) <= {r['variant_id'] for r in plan['variants']})
 
     def test_identical_prefix_verified_changed_bank_only_candidate_no_scan(self):
         with patch('arcanacart.compression.scan_resources', side_effect=AssertionError('scan')):

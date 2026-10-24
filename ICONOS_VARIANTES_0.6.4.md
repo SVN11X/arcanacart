@@ -5,6 +5,9 @@ No cambia el número de versión. Añade una revisión local y un lote que exige
 definiciones verificadas. No ejecuta el escáner ni repite los retratos o los
 iconos de las bases que ya se exportaron.
 
+La revisión del paquete real de las 43 variantes y los comandos para reutilizarlo
+están en [Rangos de iconos revisados](docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md).
+
 ## Evidencia recuperada
 
 El plan `scripts/variantes/iconos/variantes.json` identifica ocho variantes FE7

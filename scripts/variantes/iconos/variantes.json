@@ -1,6 +1,567 @@
 {
   "format": "arcanacart-item-icon-variant-plan-1",
-  "reviewed_ranges": {},
+  "reviewed_ranges": {
+    "fe7-001": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-001; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-002": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-002; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-003": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-003; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-004": {
+      "bank_sha256": "0c7a0754e62c61d865189472faeea3401fa8f73ff6807752b7400ecc6bdccf76",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-004; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-005": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-005; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-006": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-006; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-007": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-007; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe7-008": {
+      "bank_sha256": "4216b3ec8c9f263dd06c98a1e0b8d1f85ce9c0675a240b1d2224cb887a8aca36",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe7-008; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "a011463a67cef16d12586406d7499fecb1093f603c9b1913a797ee0b812024f4",
+      "last_id": 172,
+      "palette_context_sha256": "9ce7031cafa9943e8bbbc4a180f5836ddeb7adca57b42e98786a72c36999cd26",
+      "palette_offset": 835236,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 810660
+    },
+    "fe8-001": {
+      "bank_sha256": "c7c75e0e6d3d534cb590939f217f59071630edfd6d8df6ccb84915156d4642a1",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-001; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "85911bb9062a8f09f51ca672c860debc5db023cb4b8b41f1b8954753e35c1559",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 16817304
+    },
+    "fe8-002": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-002; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "ea7060c73345e5993057471cfcf40250f0e0bf6d7908d1999ef4a2361292cf66",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20279696
+    },
+    "fe8-003": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-003; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "ea7060c73345e5993057471cfcf40250f0e0bf6d7908d1999ef4a2361292cf66",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20279696
+    },
+    "fe8-004": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-004; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "ea7060c73345e5993057471cfcf40250f0e0bf6d7908d1999ef4a2361292cf66",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20279696
+    },
+    "fe8-005": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-005; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "ea7060c73345e5993057471cfcf40250f0e0bf6d7908d1999ef4a2361292cf66",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20279696
+    },
+    "fe8-006": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-006; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "1b039026594607826fb8b4ede7ded5fb71d06f8b216558aa8694c276c605b7ef",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20370540
+    },
+    "fe8-007": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-007; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "1b039026594607826fb8b4ede7ded5fb71d06f8b216558aa8694c276c605b7ef",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20370540
+    },
+    "fe8-008": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-008; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "1b039026594607826fb8b4ede7ded5fb71d06f8b216558aa8694c276c605b7ef",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20370540
+    },
+    "fe8-009": {
+      "bank_sha256": "b83beaeb2f78949512037524eb433b7c5bffecec06748bab5a06bca616c0d1b7",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-009; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "1b039026594607826fb8b4ede7ded5fb71d06f8b216558aa8694c276c605b7ef",
+      "last_id": 223,
+      "palette_context_sha256": "14f0b66e09a4bb86a08065e6c59c7eab532b52b652442e8b4d2c117af0196d33",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 20370540
+    },
+    "fe8-010": {
+      "bank_sha256": "df0be95357a8047f5178c539f6cdaac2e48ee4d5d571be9f68d018cbfbc91a8b",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-010; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-011": {
+      "bank_sha256": "df0be95357a8047f5178c539f6cdaac2e48ee4d5d571be9f68d018cbfbc91a8b",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-011; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-012": {
+      "bank_sha256": "df0be95357a8047f5178c539f6cdaac2e48ee4d5d571be9f68d018cbfbc91a8b",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-012; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-013": {
+      "bank_sha256": "df0be95357a8047f5178c539f6cdaac2e48ee4d5d571be9f68d018cbfbc91a8b",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-013; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-014": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-014; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-015": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-015; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-016": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-016; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-017": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-017; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-018": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-018; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-019": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-019; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-020": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-020; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-021": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-021; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-022": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-022; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-023": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-023; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-024": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-024; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-025": {
+      "bank_sha256": "8bda430a5acb8fd4f74100b1bdffba910ab8a85d16013e7dcea16351e0000925",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-025; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "bacd5f19e25f7fe7712b092bff9cc4e85bde05e08a5ca63e4aaf10e0829a0e9f",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17248460
+    },
+    "fe8-026": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-026; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-027": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-027; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-028": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-028; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-029": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-029; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-030": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-030; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-031": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-031; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-032": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-032; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-033": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-033; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-034": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-034; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    },
+    "fe8-035": {
+      "bank_sha256": "1f42be9c13c4b44b7547ea779673cf90deb6ee7c9ed9b5a0d747ca998fc6b5ae",
+      "evidence": [
+        "docs/REVISION_ICONOS_VARIANTES_APROBADA_0.6.4.md; variante fe8-035; ZIP SHA256 7d54913acf611056886a9157fd12cf6af1ba5de282b11b766051015e7b06528c; rango acotado, sin confirmar capacidad total."
+      ],
+      "first_id": 0,
+      "icon_context_sha256": "7e8172247598332dac085b697a1bc6ce06d2a31887c75e9655a6a4ffcb591f03",
+      "last_id": 223,
+      "palette_context_sha256": "4dbfb4e7e5fc34c51fd3a06e04dc49c69c09931bfb32c6e11e52246a9b2aa1ff",
+      "palette_offset": 5871348,
+      "palette_sha256": "69152094d5713a952ffb9f91d6f89fb58e49c26309819864b3c244e7fc99552e",
+      "table_offset": 17249800
+    }
+  },
+  "reviewed_source_report_sha256": "c94433bb5f3c54a8ca33bbcc3cbb81b7e10afb1b4841af545f345fee415d256f",
   "scope": "Revisar bancos raw de iconos de 43 variantes identificadas; no heredar limites por nombre o Game Code.",
   "source_comparison_zip_sha256": "b06ea5b773421fa1396c23eaa3cc0c290d21e2dda5c6f790640aa650ab030f35",
   "variants": [

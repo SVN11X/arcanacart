@@ -39,6 +39,8 @@ def _plan(path: Path) -> dict:
         raise ValueError("Plan de variantes inválido.")
     if not isinstance(ranges, dict):
         raise ValueError("Falta reviewed_ranges en el plan.")
+    if "reviewed_source_report_sha256" in value and not _hash(value["reviewed_source_report_sha256"]):
+        raise ValueError("Hash del informe revisado inválido.")
     ids = set()
     for row in rows:
         if (not isinstance(row, dict) or not isinstance(row.get("game"), str)
@@ -278,6 +280,101 @@ def _sealed(source: Path) -> dict[str, bytes]:
     return payloads
 
 
+def confirm_review(review: Path, out: Path, plan_path: Path = DEFAULT_PLAN) -> dict:
+    """Apply an explicit range review to a sealed packet without rereading ROM/AIR."""
+    _safe(plan_path)
+    plan = _plan(plan_path)
+    _destination(out, [review, plan_path])
+    if out.resolve().is_relative_to(review.resolve()):
+        raise ValueError("La confirmación debe quedar fuera de la revisión anterior.")
+    saved = _sealed(review)
+    old_plan = _document(saved, "plan-usado.json")
+    report = _document(saved, "revision.json")
+    pinned_report = plan.get("reviewed_source_report_sha256")
+    if pinned_report is not None and digest(saved["revision.json"]) != pinned_report:
+        raise ValueError("El informe no corresponde al paquete revisado en este parche.")
+    rows = report.get("results")
+    expected_ids = {r["variant_id"] for r in plan["variants"]}
+    if (report.get("format") != REVIEW_FORMAT or report.get("status") != "completed"
+        or old_plan.get("format") != PLAN_FORMAT or old_plan.get("variants") != plan["variants"]
+        or not isinstance(old_plan.get("reviewed_ranges"), dict)
+        or report.get("plan_canonical_sha256") != digest(json_bytes(old_plan))
+        or not isinstance(rows, list) or len(rows) != len(expected_ids)
+        or any(not isinstance(r, dict) or not isinstance(r.get("variant_id"), str) for r in rows)
+        or {r["variant_id"] for r in rows} != expected_ids):
+        raise ValueError("El paquete anterior no corresponde a las identidades del plan.")
+    payloads = {k: v for k, v in saved.items() if k != STATE}
+    results = []
+    by_id = {r["variant_id"]: r for r in rows}
+    by_game = {r["game"]: r for r in BUILTIN_LAYOUTS.values()}
+    for identity in plan["variants"]:
+        vid = identity["variant_id"]
+        previous = by_id[vid]
+        if any(previous.get(k) != v for k, v in identity.items()):
+            raise ValueError("La identidad de la variante cambió: " + vid)
+        recipe = plan["reviewed_ranges"].get(vid)
+        if recipe is None:
+            if vid in old_plan["reviewed_ranges"]:
+                raise ValueError("Se retiró una aprobación; ejecuta una revisión local nueva.")
+            results.append(previous)
+            continue
+        # Explicit recipes pin the precise offsets, ranges and four resource /
+        # access-context hashes. A status change cannot replace this evidence.
+        proof = {k: recipe[k] for k in RANGE_FIELDS if k != "evidence"}
+        if previous.get("status") not in {"pending", "verified"} or any(
+                previous.get(k) != v for k, v in proof.items()):
+            raise ValueError("Falta evidencia del rango aprobado o sus hashes cambiaron: " + vid)
+        original = by_game[identity["game"]]
+        spec = {**original, "rom_sha256": identity["rom_sha256"],
+                "table_offset": recipe["table_offset"], "palette_offset": recipe["palette_offset"],
+                "first_id": 0, "icon_count": recipe["last_id"] + 1}
+        for key in ("pointer_location", "palette_pointer_location"):
+            if previous.get(key) != spec[key]:
+                raise ValueError("Cambió la ubicación del puntero: " + vid)
+        folder = "evidencias/" + vid + "/"
+        if previous.get("evidence_directory") != folder:
+            raise ValueError("Ruta de evidencia incompatible: " + vid)
+        for name, field, length in (
+            ("banco-candidato.bin", "bank_sha256", spec["icon_count"] * ICON_BYTES),
+            ("paleta.bin", "palette_sha256", 32),
+            ("contexto-iconos.bin", "icon_context_sha256", 68),
+            ("contexto-paleta.bin", "palette_context_sha256", 68),
+        ):
+            raw = saved.get(folder + name)
+            if raw is None or len(raw) != length or digest(raw) != recipe[field]:
+                raise ValueError("Los bytes de evidencia no corresponden al rango aprobado: " + vid)
+        for name, field in (("contexto-iconos.bin", "table_offset"), ("contexto-paleta.bin", "palette_offset")):
+            pointer = struct.unpack_from("<I", saved[folder + name], 64)[0]
+            if not 0x08000000 <= pointer < 0x0E000000 or (pointer - 0x08000000) % 0x02000000 != recipe[field]:
+                raise ValueError("El literal del puntero no corresponde al offset aprobado: " + vid)
+        old_definition = dict(spec)
+        old_recipe = old_plan["reviewed_ranges"].get(vid)
+        if old_recipe:
+            old_definition["sources"] = original["sources"] + old_recipe["evidence"]
+        old_name = _relative(previous.get("definition_file"))
+        if _document(saved, old_name) != old_definition:
+            raise ValueError("La definición anterior no corresponde a su evidencia: " + vid)
+        spec["sources"] = original["sources"] + recipe["evidence"]
+        name = "definiciones/" + vid + ".json"
+        payloads.pop(old_name, None)
+        payloads[name] = json_bytes(spec)
+        results.append({**previous, "status": "verified", "reason": "explicit-hash-bound-range-review",
+                        "definition_file": name})
+    counts = {s: sum(r["status"] == s for r in results) for s in ("verified", "pending", "error")}
+    updated = {**report, "counts": counts, "ready_for_full_batch": counts["verified"] == len(results),
+               "results": results, "plan_canonical_sha256": digest(json_bytes(plan)),
+               "source_review_report_sha256": digest(saved["revision.json"]),
+               "reused_sealed_evidence": True, "roms_rehashed": False, "air_files_reread": False,
+               "identity_recheck_required_at_extraction": True}
+    payloads["plan-usado.json"] = json_bytes(plan)
+    payloads["revision.json"] = json_bytes(updated)
+    payloads["revision.csv"] = _csv(results, ["variant_id", "game", "variant", "status", "first_id", "last_id",
+                                            "table_offset", "palette_offset", "reason", "rom_sha256",
+                                            "air_sha256", "error"])
+    _publish(out, payloads)
+    return {k: v for k, v in updated.items() if k != "results"} | {"output": str(out)}
+
+
 def pack_variants(source: Path, out: Path) -> dict:
     _safe(out)
     if out.resolve().is_relative_to(source.resolve()):
@@ -399,6 +496,11 @@ def main(argv: list[str] | None = None) -> int:
     command = commands.add_parser("pack")
     command.add_argument("--input", type=Path, required=True)
     command.add_argument("--out", type=Path, required=True)
+    command = commands.add_parser("confirm")
+    command.add_argument("--review", type=Path, required=True)
+    command.add_argument("--plan", type=Path, default=DEFAULT_PLAN)
+    command.add_argument("--out", type=Path, required=True)
+    command.add_argument("--zip", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "pack":
@@ -411,6 +513,8 @@ def main(argv: list[str] | None = None) -> int:
                     raise ValueError("Guarda el ZIP fuera de su carpeta de entrada.")
             if args.command == "review":
                 result = review_variants(args.datos, args.out, args.plan)
+            elif args.command == "confirm":
+                result = confirm_review(args.review, args.out, args.plan)
             else:
                 result = extract_variants(args.datos, args.review, args.out, args.plan,
                                           only_verified=args.only_verified)
