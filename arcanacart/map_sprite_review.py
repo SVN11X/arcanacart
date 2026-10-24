@@ -46,6 +46,85 @@ def _rom_offset(value: int, data: bytes, length: int) -> int:
     return offset
 
 
+def _entries(data: bytes, offset: int, records: list[dict] | None, root: str, *,
+             first_id: int = 0, slot_limit: int = PROBE_SLOTS,
+             stop_on_boundary: bool = True) -> tuple[list[dict], dict | None, dict[str, bytes]]:
+    """Measure only an explicit table interval; support continuing without replaying its prefix."""
+    if (type(first_id) is not int or type(slot_limit) is not int
+        or not 0 <= first_id < slot_limit <= 256 or offset < 0 or offset > len(data) or offset % 4):
+        raise ValueError("Intervalo de tabla fuera del presupuesto de revisión.")
+    entries: list[dict] = []
+    boundary = None
+    payloads: dict[str, bytes] = {}
+    indexed = {r["offset"]: r for r in records} if records is not None else {}
+    for sprite_id in range(first_id, min(slot_limit, (len(data) - offset) // 8)):
+        position = offset + sprite_id * 8
+        pattern, size_code, pointer = struct.unpack_from("<HHI", data, position)
+        entry = {"sprite_id": sprite_id, "sprite_id_hex": f"0x{sprite_id:02X}",
+                 "entry_offset": position, "pattern": pattern, "size_code": size_code,
+                 "sheet_pointer": pointer, "status": "candidate", "issues": []}
+        if boundary is not None:
+            entry["post_boundary_hint"] = True
+        if pointer == 0:
+            entry["status"] = "reserved"
+            entries.append(entry)
+            if sprite_id and pattern == size_code == 0:
+                if boundary is None:
+                    boundary = {"sprite_id": sprite_id, "reason": "zero-record-heuristic"}
+                if stop_on_boundary:
+                    break
+            continue
+        try:
+            sheet_offset = _rom_offset(pointer, data, 4)
+        except ValueError:
+            # FEBuilder's list heuristic stops at an invalid non-null pointer.
+            # This is not proof of a table end; the full probe window is retained.
+            if boundary is None:
+                boundary = {"sprite_id": sprite_id, "reason": "invalid-pointer-heuristic"}
+            entry["status"] = "boundary-hint"
+            entries.append(entry)
+            if stop_on_boundary:
+                break
+            continue
+        entry["sheet_offset"] = sheet_offset
+        dimensions = SIZE.get(size_code)
+        if dimensions:
+            entry.update(frame_width=dimensions[0], frame_height=dimensions[1],
+                         expected_bytes_for_three_frames=dimensions[2])
+        else:
+            entry["issues"].append("unknown-size-code")
+        try:
+            decoded_bytes, stored_bytes = measure(data, sheet_offset, max_size=MAX_SHEET_BYTES)
+        except LZError as exc:
+            entry["status"] = "unsupported-sheet"
+            entry["issues"].append(str(exc))
+            raw = data[sheet_offset:sheet_offset + 64]
+            name = root + f"cabecera-no-compatible-{sprite_id:02x}.bin"
+            payloads[name] = raw
+            entry.update(header_file=name, header_sha256=digest(raw))
+        else:
+            stored = data[sheet_offset:sheet_offset + stored_bytes]
+            name = "hojas-comprimidas/" + digest(stored) + ".lz10"
+            payloads[name] = stored
+            entry.update(compressed_bytes=stored_bytes, decoded_bytes=decoded_bytes,
+                         stored_file=name, stored_sha256=digest(stored),
+                         decoded_sha256_recomputed=False)
+            if dimensions and decoded_bytes != dimensions[2]:
+                entry["issues"].append("nonstandard-three-frame-size")
+            record = indexed.get(sheet_offset)
+            if record is not None:
+                consistent = (record["compression"] == "lz10" and record["compressed_bytes"] == stored_bytes
+                              and record["decompressed_bytes"] == decoded_bytes)
+                entry.update(air_correlation="metadata-consistent" if consistent else "metadata-mismatch",
+                             air_decoded_sha256=record["sha256"], air_reference_count=len(record["references"]))
+                if not consistent:
+                    entry["issues"].append("air-metadata-mismatch")
+            else:
+                entry["air_correlation"] = "no-existing-candidate" if records is not None else "not-supplied-for-base"
+        entries.append(entry)
+    return entries, boundary, payloads
+
+
 def _inspect(data: bytes, identity: dict, records: list[dict] | None) -> tuple[dict, dict[str, bytes]]:
     """Read known pointers and at most 128 table slots; never scan or decompress."""
     profile = PROFILES[identity["game"]]
@@ -102,65 +181,9 @@ def _inspect(data: bytes, identity: dict, records: list[dict] | None) -> tuple[d
     payloads[name] = window
     result.update(table_window_file=name, table_window_sha256=digest(window),
                   table_window_bytes=len(window))
-    indexed = {r["offset"]: r for r in records} if records is not None else {}
-    for sprite_id in range(len(window) // 8):
-        position = offset + sprite_id * 8
-        pattern, size_code, pointer = struct.unpack_from("<HHI", data, position)
-        entry = {"sprite_id": sprite_id, "sprite_id_hex": f"0x{sprite_id:02X}",
-                 "entry_offset": position, "pattern": pattern, "size_code": size_code,
-                 "sheet_pointer": pointer, "status": "candidate", "issues": []}
-        if pointer == 0:
-            entry["status"] = "reserved"
-            result["entries"].append(entry)
-            if sprite_id and pattern == size_code == 0:
-                result["boundary_hint"] = {"sprite_id": sprite_id, "reason": "zero-record-heuristic"}
-                break
-            continue
-        try:
-            sheet_offset = _rom_offset(pointer, data, 4)
-        except ValueError:
-            # FEBuilder's list heuristic stops at an invalid non-null pointer.
-            # This is not proof of a table end; the full probe window is retained.
-            result["boundary_hint"] = {"sprite_id": sprite_id, "reason": "invalid-pointer-heuristic"}
-            entry["status"] = "boundary-hint"
-            result["entries"].append(entry)
-            break
-        entry["sheet_offset"] = sheet_offset
-        dimensions = SIZE.get(size_code)
-        if dimensions:
-            entry.update(frame_width=dimensions[0], frame_height=dimensions[1],
-                         expected_bytes_for_three_frames=dimensions[2])
-        else:
-            entry["issues"].append("unknown-size-code")
-        try:
-            decoded_bytes, stored_bytes = measure(data, sheet_offset, max_size=MAX_SHEET_BYTES)
-        except LZError as exc:
-            entry["status"] = "unsupported-sheet"
-            entry["issues"].append(str(exc))
-            raw = data[sheet_offset:sheet_offset + 64]
-            name = root + f"cabecera-no-compatible-{sprite_id:02x}.bin"
-            payloads[name] = raw
-            entry.update(header_file=name, header_sha256=digest(raw))
-        else:
-            stored = data[sheet_offset:sheet_offset + stored_bytes]
-            name = "hojas-comprimidas/" + digest(stored) + ".lz10"
-            payloads[name] = stored
-            entry.update(compressed_bytes=stored_bytes, decoded_bytes=decoded_bytes,
-                         stored_file=name, stored_sha256=digest(stored),
-                         decoded_sha256_recomputed=False)
-            if dimensions and decoded_bytes != dimensions[2]:
-                entry["issues"].append("nonstandard-three-frame-size")
-            record = indexed.get(sheet_offset)
-            if record is not None:
-                consistent = (record["compression"] == "lz10" and record["compressed_bytes"] == stored_bytes
-                              and record["decompressed_bytes"] == decoded_bytes)
-                entry.update(air_correlation="metadata-consistent" if consistent else "metadata-mismatch",
-                             air_decoded_sha256=record["sha256"], air_reference_count=len(record["references"]))
-                if not consistent:
-                    entry["issues"].append("air-metadata-mismatch")
-            else:
-                entry["air_correlation"] = "no-existing-candidate" if records is not None else "not-supplied-for-base"
-        result["entries"].append(entry)
+    entries, boundary, sheets = _entries(data, offset, records, root)
+    result.update(entries=entries, boundary_hint=boundary)
+    payloads.update(sheets)
     if result["boundary_hint"] is None:
         result["issues"].append("probe-budget-or-rom-bound-reached")
     result["candidate_sheets"] = sum("stored_file" in e for e in result["entries"])

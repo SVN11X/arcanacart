@@ -133,3 +133,7 @@ parche se comprueba con `git am` y modos de checkout LF/CRLF.
 No se dispone aquí de las ROM completas del usuario; la revisión real de los
 45 archivos queda pendiente del comando anterior. No se ha ejecutado Windows
 PowerShell en el entorno de desarrollo.
+
+La continuación del paquete inicial ya auditado se documenta en
+`COMPLETAR_REVISION_SPRITES_MAPA_0.6.4.md`. Reutiliza ese paquete y recoge únicamente
+la cola pendiente de FE8 y un contexto de código para revisar sus paletas.
