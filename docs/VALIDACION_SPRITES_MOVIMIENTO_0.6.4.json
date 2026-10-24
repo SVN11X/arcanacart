@@ -1,0 +1,74 @@
+{
+  "format": "arcanacart-moving-map-sprite-development-validation-1",
+  "status": "passed",
+  "date": "2026-10-24",
+  "version": "0.6.4",
+  "target_branch": "main",
+  "base_commit": "d10baf5a3861eb7aa564bef7f0b94564e9af4b8c",
+  "tests": {
+    "total": 488,
+    "passed": 484,
+    "skipped": 4,
+    "failed": 0,
+    "new_review_tests": 24,
+    "skips": "Four existing tests require Windows PowerShell.",
+    "synthetic_roster_test": {
+      "roms": 45,
+      "bases": 2,
+      "variants": 43
+    }
+  },
+  "quality_checks": {
+    "ruff": "passed",
+    "ruff_format": "passed: 87 files",
+    "mypy": "passed: 48 source files",
+    "build": "passed: sdist and wheel",
+    "wheel_module_and_cli_smoke": "passed",
+    "sdist_guide_and_validation_records": "passed"
+  },
+  "native_ap_reference_check": {
+    "status": "passed",
+    "source_commit": "04d1edb163d14bd10777a065697e1a9f17be65f2",
+    "motion_blocks": 107,
+    "native_layouts_parsed": 107,
+    "unparsed": [],
+    "frames": 2038,
+    "animations": 538,
+    "animation_count_distribution": {
+      "5": 105,
+      "6": 1,
+      "7": 1
+    },
+    "frame_count_distribution": {
+      "19": 105,
+      "21": 1,
+      "22": 1
+    },
+    "commercial_roms_read": false,
+    "animations_executed": false
+  },
+  "runtime_dependencies": "stdlib only",
+  "limits": {
+    "observed_slots_per_table": 255,
+    "max_sheet_decoded_bytes": 32768,
+    "max_ap_bytes": 131072,
+    "fallback_ap_window_bytes": 16384,
+    "max_frames_per_ap": 512,
+    "max_animations_per_ap": 64,
+    "max_commands_per_ap": 4096,
+    "max_objects_per_frame": 128,
+    "max_rotations_per_frame": 32,
+    "max_packet_bytes": 268435456
+  },
+  "hash_policy": "Canonical JSON only for the repository identity plan; exact bytes for ROM, AIR, resource data and output files.",
+  "local_rom_review_completed": false,
+  "real_variant_ranges_approved": false,
+  "animations_executed": false,
+  "runtime_palettes_approved": false,
+  "limitations": [
+    "The program must run locally to read the new movement tables; the development environment has no full commercial ROM/AIR files.",
+    "The AP source-format check does not establish engine behavior, game timing or actual use of entries in any variant.",
+    "Only known reference locations are examined; lost pointers, modified engines and data outside the observation budget need independent review.",
+    "Local verification used Python 3.12/Linux; Windows-only launcher tests are skipped."
+  ]
+}

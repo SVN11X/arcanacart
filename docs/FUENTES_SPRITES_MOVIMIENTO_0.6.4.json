@@ -1,0 +1,99 @@
+{
+  "format": "arcanacart-moving-map-sprite-source-evidence-1",
+  "date": "2026-10-24",
+  "sources": [
+    {
+      "file": "ImageUnitMoveIconFrom.cs",
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImageUnitMoveIconFrom.cs",
+      "bytes": 24710,
+      "sha256": "fbe5aea63ed7358ace5daf1a33e6960828b4359b59ef87c88b793cec09737342"
+    },
+    {
+      "file": "mu.c",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/mu.c",
+      "bytes": 34542,
+      "sha256": "1a5028faee11b41fdfe89500b7e8e7253a559b91eabd1380861784f7ae9f0a00"
+    },
+    {
+      "file": "mu.h",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/include/mu.h",
+      "bytes": 10095,
+      "sha256": "b5b630ec76cf368e093b546e197dec36d6fc361d5b4760fcaff9a3cf662c74f5"
+    },
+    {
+      "file": "unit_icon_move_data.c",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/unit_icon_move_data.c",
+      "bytes": 9560,
+      "sha256": "31a461a9e061353c785ccfb496abc3511a421a8bc99462b12c2fe1c4036a98ea"
+    },
+    {
+      "file": "const_data_unit_icon_move.s",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/data/const_data_unit_icon_move.s",
+      "bytes": 620355,
+      "sha256": "edb06d8d3b71d6700d1741c611c61ee7a270baff6b12d226431bdb3a5c3dd780"
+    },
+    {
+      "file": "dump_unit_icon_move.py",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/scripts/dump_unit_icon_move.py",
+      "bytes": 3944,
+      "sha256": "579ee1543cd58e1f6c642331dda64dd2da286a4cfce9e7b805991f339d1f6186"
+    },
+    {
+      "file": "U.cs",
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/U.cs",
+      "bytes": 269959,
+      "sha256": "0f30fee1f5a47eb8598928bb8682697b89c61f6c64e53a39a98e2d912856eec2"
+    },
+    {
+      "file": "ImageUtilAP.cs",
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImageUtilAP.cs",
+      "bytes": 14545,
+      "sha256": "a4b2c6ad8362ba6e67b40d6e1ecf2eda16ca3331b42d05e10fa99e5f1cb4525a"
+    },
+    {
+      "file": "ap.c",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/src/ap.c",
+      "bytes": 9886,
+      "sha256": "33651ecb1648481eef0a9f1e9486cb8e523748687f5bd7b5a18cbad112304b27"
+    },
+    {
+      "file": "ap.h",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/include/ap.h",
+      "bytes": 2803,
+      "sha256": "5d5513614f72d7e0c2950fced351aa75b75ba24550db748967c1d628bdab8d46"
+    },
+    {
+      "file": "apdump.py",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/scripts/apdump.py",
+      "bytes": 9688,
+      "sha256": "02587ff020a83088a86663df8eebe93c62bcb27e7b5aeb41972eb516fb70b717"
+    },
+    {
+      "file": "ROMFE7U.cs",
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE7U.cs",
+      "bytes": 39638,
+      "sha256": "943364f3340232b038dc4263be2dd705a69e8a3f29aec74b462b56ab29589b93"
+    },
+    {
+      "file": "ROMFE8U.cs",
+      "url": "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE8U.cs",
+      "bytes": 41375,
+      "sha256": "832f7f2f997101f3b14ed04087f57cdafebd8cda27f647d3a2ca468e9f8f1ddd"
+    },
+    {
+      "file": "unit_icon_data.h",
+      "url": "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2/include/unit_icon_data.h",
+      "bytes": 573,
+      "sha256": "98d8bb6fd86640abdb69101b7895d6c0b300020e56b132f1e438b90e916c9435"
+    }
+  ],
+  "observations": [
+    "Native moving sprite records contain sheet and motion pointers, with an eight-byte stride.",
+    "FE7 reference location is 0x6D574; FE8 documented alternatives are 0x79584, 0x79598, 0xBAC2C and 0xBAC40.",
+    "The native MU code indexes the table with class ID minus one; altered engine indexing remains unverified.",
+    "AP is relative-offset data with OAM, source tile indices and animation commands. Animation count has no explicit header field.",
+    "255 slots is an observation budget, not an approval or capacity.",
+    "The FEBuilder 32-pixel sheet display is an editor convention, not verified runtime frame composition."
+  ],
+  "local_roms_reviewed_here": false
+}

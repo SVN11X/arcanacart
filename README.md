@@ -1,5 +1,10 @@
 # ArcanaCart 0.6.4
 
+Para continuar con los sprites de movimiento, sigue
+[REVISION_SPRITES_MOVIMIENTO_0.6.4.md](REVISION_SPRITES_MOVIMIENTO_0.6.4.md):
+reúne las tablas, hojas LZ10 y datos AP de las dos bases y 43 variantes, con
+hashes y límites explícitos para su revisión independiente.
+
 Para los sprites de unidades en el mapa, sigue [SPRITES_MAPA_0.6.4.md](SPRITES_MAPA_0.6.4.md):
 extrae los rangos y paletas revisados desde el ZIP de evidencia, conserva todas
 las procedencias y genera una galería local de hojas y fotogramas.
