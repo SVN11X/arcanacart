@@ -1,0 +1,76 @@
+{
+  "format": "arcanacart-independent-variant-icon-batch-audit-1",
+  "data_status": "passed",
+  "zip_sha256": "f2f109eecefc05dcf2a7ac2720292ace31bf853869264a0f62889feed2764b99",
+  "files": 18839,
+  "checks": {
+    "zip_paths": 18841,
+    "zip_crc": 18839,
+    "root_manifest": 18840,
+    "batch": 5,
+    "summaries": 86,
+    "identity": 43,
+    "variant_manifest": 18792,
+    "definition": 129,
+    "ranges": 86,
+    "row_identity": 9224,
+    "row_layout": 9224,
+    "resource_hashes": 27672,
+    "raw_geometry": 9224,
+    "png_decode": 400,
+    "independent_render": 9224,
+    "visibility": 9224,
+    "bank_evidence": 43,
+    "counts": 131,
+    "file_coverage": 129,
+    "csv": 46,
+    "air_inventory": 958374,
+    "html": 258,
+    "root_scope": 1
+  },
+  "check_count": 1108835,
+  "errors": [],
+  "counts": {
+    "variants": 43,
+    "occurrences": 9224,
+    "png_files_stored": 9224,
+    "unique_pngs": 400,
+    "unique_pngs_per_game": {
+      "fe7": 179,
+      "fe8": 258
+    },
+    "shared_pngs_between_games": 37,
+    "unique_raws": 400,
+    "unique_palettes": 1,
+    "transparent_occurrences": 0,
+    "air_inventory_rows_contrasted": 479144,
+    "duplicate_png_files_across_variants": 8824
+  },
+  "portability": {
+    "zip_paths": "passed",
+    "absolute_gallery_csv_paths": 43,
+    "root_html_index_present": false,
+    "individual_gallery_references": "passed"
+  },
+  "scope": "FE7 0..172; FE8 0..223; first palette only; full bank capacities unknown.",
+  "limitations": [
+    "ROM and AIR hashes are matched to registered metadata, not recomputed from full source files here.",
+    "External AIR .bin resources are not included and are not rehashed.",
+    "Appearance in a real browser remains pending."
+  ],
+  "navigation_fix_validation": {
+    "source_files": 18839,
+    "output_files": 18840,
+    "source_files_byte_identical": 18837,
+    "changed_metadata_files": [
+      "galerias.csv",
+      "variant-icons-state.json"
+    ],
+    "new_files": [
+      "index.html"
+    ],
+    "relative_html_links_verified": 46,
+    "gallery_rows": 43,
+    "crc_verified": true
+  }
+}

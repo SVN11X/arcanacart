@@ -38,6 +38,7 @@ try {
     if ($Result.status -ne 'completed') { throw 'El lote no confirmo su finalizacion.' }
     Write-Host "Variantes: $($Result.processed_variants); apariciones: $($Result.icon_occurrences); PNG distintos: $($Result.unique_pngs_across_variants)."
     Write-Host "Resultados: $Out"
+    Write-Host "Indice de galerias: $($Result.index)"
     Write-Host "Galerias: $(Join-Path $Out 'galerias.csv')"
     if ($CrearZip) { Write-Host "ZIP para revisar: $($Result.zip.output)" }
     $Result | ConvertTo-Json -Depth 8

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import struct
@@ -400,6 +401,94 @@ def pack_variants(source: Path, out: Path) -> dict:
             "portable_paths": True, "crc_verified": True, "rescanned": False}
 
 
+def _navigation(summary: dict) -> dict[str, bytes]:
+    """Portable navigation; absolute source paths remain provenance metadata."""
+    results = summary.get("results")
+    if (summary.get("format") != "arcanacart-item-icon-variant-batch-1"
+        or summary.get("status") != "completed" or not isinstance(results, list)
+        or not 1 <= len(results) <= 100 or type(summary.get("processed_variants")) is not int
+        or summary["processed_variants"] != len(results)):
+        raise ValueError("Se requiere un lote de variantes terminado.")
+    ids, rows, cards = set(), [], []
+    total = 0
+    for r in results:
+        if not isinstance(r, dict):
+            raise ValueError("Resultado de variante inválido.")
+        vid, game = r.get("variant_id"), r.get("game")
+        if (not isinstance(vid, str) or re.fullmatch(r"fe[78]-[0-9]{3}", vid) is None
+            or vid in ids or game != vid[:3] or r.get("status") != "completed"
+            or not isinstance(r.get("variant"), str)
+            or not isinstance(r.get("gallery"), str)
+            or any(type(r.get(k)) is not int for k in ("first_id", "last_id", "icon_occurrences", "unique_images"))
+            or not 0 <= r["first_id"] <= r["last_id"] <= 65535
+            or r["last_id"] - r["first_id"] + 1 != r["icon_occurrences"]
+            or not 1 <= r["unique_images"] <= r["icon_occurrences"]):
+            raise ValueError("Identidad, rango o conteos de galería inválidos.")
+        ids.add(vid)
+        total += r["icon_occurrences"]
+        row = {k: r[k] for k in ("variant_id", "game", "variant", "first_id", "last_id",
+                                "icon_occurrences", "unique_images")}
+        row.update(gallery=vid + "/index.html", gallery_original=r["gallery"])
+        rows.append(row)
+        cards.append(f'<tr><th scope="row"><a href="{row["gallery"]}">{html.escape(r["variant"])}</a>'
+                     f'<small>{vid}</small></th><td>{game.upper()}</td>'
+                     f'<td>{r["first_id"]}–{r["last_id"]}</td><td>{r["icon_occurrences"]}</td>'
+                     f'<td>{r["unique_images"]}</td></tr>')
+    distinct = summary.get("unique_pngs_across_variants")
+    if (type(summary.get("icon_occurrences")) is not int or summary["icon_occurrences"] != total
+        or type(distinct) is not int or not 1 <= distinct <= total):
+        raise ValueError("Los conteos globales no corresponden a las galerías.")
+    page = f'''<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>ArcanaCart · Iconos por variante</title><style>
+*{{box-sizing:border-box}}body{{margin:0;background:#f1f4fa;color:#18263c;font:16px/1.5 system-ui}}
+main{{max-width:1300px;margin:auto;padding:24px}}h1{{margin-bottom:8px}}a{{color:#204d9b}}
+nav{{display:flex;gap:20px;flex-wrap:wrap;margin:24px 0}}.table{{overflow:auto;background:white}}
+table{{border-collapse:collapse;width:100%;min-width:700px}}caption{{text-align:left;padding:16px;font-weight:bold}}
+td,th{{padding:12px;text-align:left;border-bottom:1px solid #cbd4e2}}thead{{background:#e0e7f2}}
+tbody th{{font-weight:normal;overflow-wrap:anywhere}}small{{display:block;color:#536077}}
+:focus-visible{{outline:3px solid #315fa8;outline-offset:3px}}
+@media(max-width:600px){{main{{padding:16px}}}}
+</style></head><body><main><p>ARCANACART</p><h1>Iconos por variante</h1>
+<p>{len(results)} variantes · {total} apariciones · {distinct} imágenes distintas entre variantes</p>
+<p>Cada fila abre la galería de su variante, con los PNG, raw y paletas de cada ID.</p>
+<nav aria-label="Archivos del lote"><a href="ocurrencias.csv" download>Procedencias CSV</a>
+<a href="galerias.csv" download>Galerías CSV</a><a href="resumen.json">Resumen JSON</a></nav>
+<div class="table" tabindex="0" role="region" aria-label="Galerías de variantes"><table>
+<caption>{len(results)} galerías disponibles</caption><thead><tr><th scope="col">Variante</th>
+<th scope="col">Juego</th><th scope="col">IDs</th><th scope="col">Apariciones</th>
+<th scope="col">PNG distintos</th></tr></thead><tbody>{''.join(cards)}</tbody></table></div>
+<p>Los rangos corresponden a la extracción realizada. No confirman la capacidad total de las tablas.</p>
+</main></body></html>'''
+    return {"index.html": page.encode("utf-8"), "galerias.csv": _csv(rows, list(rows[0]))}
+
+
+def prepare_index(source: Path, out: Path) -> dict:
+    """Copy a sealed existing batch and repair navigation without reencoding assets."""
+    _destination(out, [source])
+    if out.resolve().is_relative_to(source.resolve()):
+        raise ValueError("El nuevo índice debe quedar separado del lote original.")
+    payloads = _sealed(source)
+    summary = _document(payloads, "resumen.json")
+    navigation = _navigation(summary)
+    for result in summary["results"]:
+        vid = result["variant_id"]
+        if vid + "/index.html" not in payloads:
+            raise ValueError("Falta la galería de " + vid)
+        nested = _document(payloads, vid + "/summary.json")
+        if {k: result.get(k) for k in nested} != nested:
+            raise ValueError("La galería no corresponde al resumen del lote: " + vid)
+    payloads.pop(STATE)
+    payloads.update(navigation)
+    _publish(out, payloads)
+    return {"status": "completed", "output": str(out), "index": str(out / "index.html"),
+            "variants": summary["processed_variants"], "icon_occurrences": summary["icon_occurrences"],
+            "unique_pngs_across_variants": summary["unique_pngs_across_variants"],
+            "navigation_portable": True, "icons_exported": False, "assets_reencoded": False,
+            "rescanned": False, "inputs_modified": False}
+
+
 def extract_variants(datos: Path, review: Path, out: Path, plan_path: Path = DEFAULT_PLAN,
                      *, only_verified: bool = False) -> dict:
     _safe(datos)
@@ -470,15 +559,16 @@ def extract_variants(datos: Path, review: Path, out: Path, plan_path: Path = DEF
                    "rescanned": False, "inputs_modified": False}
         atomic_json(out / "resumen.json", summary)
         atomic_write(out / "ocurrencias.csv", _csv(occurrences, list(occurrences[0])))
-        atomic_write(out / "galerias.csv", _csv(results, ["variant_id", "game", "variant", "first_id",
-                                                        "last_id", "icon_occurrences", "unique_images", "gallery"]))
+        for name, raw in _navigation(summary).items():
+            atomic_write(out / name, raw)
         artifacts = {p.relative_to(out).as_posix(): digest(read_bounded(p, 32 * 1024 * 1024))
                      for p in sorted(out.rglob("*")) if p.is_file() and p != out / STATE}
         atomic_json(out / STATE, {"status": "completed", "artifacts": artifacts}, force=True)
     except Exception:
         atomic_json(out / STATE, {"status": "failed"}, force=True)
         raise
-    return {k: v for k, v in summary.items() if k != "results"} | {"output": str(out)}
+    return {k: v for k, v in summary.items() if k != "results"} | {
+        "output": str(out), "index": str(out / "index.html")}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -501,6 +591,10 @@ def main(argv: list[str] | None = None) -> int:
     command.add_argument("--plan", type=Path, default=DEFAULT_PLAN)
     command.add_argument("--out", type=Path, required=True)
     command.add_argument("--zip", type=Path)
+    command = commands.add_parser("index")
+    command.add_argument("--input", type=Path, required=True)
+    command.add_argument("--out", type=Path, required=True)
+    command.add_argument("--zip", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "pack":
@@ -515,6 +609,8 @@ def main(argv: list[str] | None = None) -> int:
                 result = review_variants(args.datos, args.out, args.plan)
             elif args.command == "confirm":
                 result = confirm_review(args.review, args.out, args.plan)
+            elif args.command == "index":
+                result = prepare_index(args.input, args.out)
             else:
                 result = extract_variants(args.datos, args.review, args.out, args.plan,
                                           only_verified=args.only_verified)
