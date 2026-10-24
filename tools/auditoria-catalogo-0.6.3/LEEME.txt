@@ -1,0 +1,74 @@
+ArcanaCart 0.6.3: auditoria independiente del catalogo de retratos
+
+Este parche incorpora el auditor, informe y evidencias de
+auditoria-arcanacart-0.6.3.zip al repositorio, con un lanzador PowerShell.
+Solo anade archivos. La version de ArcanaCart se mantiene en 0.6.3.
+
+Archivos del paquete original conservados sin cambios de contenido:
+- auditar_catalogo.py
+- auditoria-datos.json
+- informe-auditoria-arcanacart-0.6.3.md
+- variantes-verificadas.csv
+
+Este LEEME adapta las instrucciones al uso desde el repositorio.
+El informe y auditoria-datos.json documentan la revision del 23/10/2026.
+La salida de una ejecucion nueva se guarda fuera de esos archivos historicos.
+
+REQUISITOS
+
+- Windows PowerShell 5.1 o PowerShell 7 para el lanzador.
+- Python 3.9 o posterior con Pillow instalado. No se instala ni descarga nada.
+- El ZIP del catalogo y el ZIP del lote original completo.
+- No se necesitan las ROM ni los AIR completos para esta auditoria de archivos.
+
+EJECUCION DESDE POWERSHELL
+
+& {
+    $ErrorActionPreference = 'Stop'
+    Set-Location -LiteralPath 'C:\my_drive\Portafolio\arcanacart'
+    $Catalogo = Join-Path $env:USERPROFILE 'Downloads\catalogo-retratos-20261023-141758-cfd1e9(1).zip'
+    $Lote = Join-Path $env:USERPROFILE 'Downloads\retratos-variantes-20261023-110704-777bef-resultado-20261023-112322-29cdaa.zip'
+
+    & '.\scripts\windows\Auditar-Catalogo-Retratos.ps1' `
+        -CatalogoZip $Catalogo `
+        -LoteOriginalZip $Lote `
+        -Python 'C:\FireEmblem\entorno-arcanacart\Scripts\python.exe' `
+        -OutputParent 'C:\FireEmblem\resultados'
+}
+
+Ajusta Catalogo y Lote si guardaste esos ZIP en otra carpeta.
+Tambien se puede usar el ZIP original del catalogo sin el sufijo (1).
+El auditor comprueba el contenido; no exige esos nombres de archivo.
+
+El lanzador crea una carpeta nueva auditoria-catalogo-FECHA-HORA-SUFIJO
+dentro de OutputParent y escribe auditoria.json. Si no hay discrepancias,
+el JSON indica status passed y el programa devuelve codigo 0.
+Si se detectan discrepancias, indica status failed y devuelve codigo 1.
+Un ZIP ilegible, un archivo requerido ausente u otro error de ejecucion
+tambien detiene el proceso; en ese caso puede no generarse un JSON.
+
+ALCANCE
+
+Lee los dos ZIP y calcula SHA-256 sobre bytes exactos, sin normalizar
+saltos de linea. Comprueba manifiestos, PNG, paletas, CSV, variantes,
+IDs y procedencias. No modifica las entradas, escanea ROM, repite
+extracciones ni comprueba visualmente la galeria en un navegador.
+Los hashes de ROM/AIR se cotejan entre registros disponibles; no se
+recalculan a partir de archivos ROM/AIR que no forman parte de los ZIP.
+
+APLICACION DEL PARCHE
+
+Con el repositorio limpio y el parche descargado:
+
+git apply --check RUTA\arcanacart-0.6.3-auditoria-catalogo.patch
+git am --keep-cr RUTA\arcanacart-0.6.3-auditoria-catalogo.patch
+
+--keep-cr conserva los finales CRLF del CSV historico incluido en el ZIP.
+git apply --check detecta si alguna ruta nueva ya existe antes de aplicar.
+
+VERIFICACION DE ENTREGA
+
+Se prueba la aplicacion de git am en repositorios aislados, incluido uno
+con core.autocrlf=true, y se ejecuta el auditor extraido del parche contra
+ambos ZIP originales. El lanzador se entrega para Windows; no se ejecuta
+PowerShell en el entorno Linux utilizado para preparar el parche.

@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "source_zip_sha256": "499ec0c8bd96e8bea8ed58e00162b07feb1e0415bcd1f082e6fda8b366a99c4e",
+  "catalog_files": 938,
+  "unique_pngs": 400,
+  "unique_raws": 400,
+  "unique_palettes": 1,
+  "origins_preserved": 9224,
+  "all_assets_byte_identical": true,
+  "source_variant_metadata_preserved": 129,
+  "csv_origins": 9224,
+  "png_duplicates_avoided": 8824,
+  "gallery_filter_checks": [
+    {
+      "game": "",
+      "variant": "",
+      "query": "",
+      "images": 400,
+      "occurrences": 9224
+    },
+    {
+      "game": "fe7",
+      "variant": "",
+      "query": "",
+      "images": 179,
+      "occurrences": 1384
+    },
+    {
+      "game": "fe8",
+      "variant": "",
+      "query": "",
+      "images": 258,
+      "occurrences": 7840
+    },
+    {
+      "game": "",
+      "variant": "fe8-001",
+      "query": "",
+      "images": 224,
+      "occurrences": 224
+    },
+    {
+      "game": "fe7",
+      "variant": "fe8-001",
+      "query": "",
+      "images": 0,
+      "occurrences": 0
+    },
+    {
+      "game": "fe7",
+      "variant": "",
+      "query": "0x01",
+      "images": 2,
+      "occurrences": 8
+    },
+    {
+      "game": "",
+      "variant": "",
+      "query": "12",
+      "images": 2,
+      "occurrences": 43
+    }
+  ],
+  "browser_layout_checked": false
+}

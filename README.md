@@ -1,6 +1,14 @@
-# ArcanaCart 0.6.0
+# ArcanaCart 0.6.3
 
-La extracción organizada de retratos empieza en [RECURSOS_0.6.0.md](RECURSOS_0.6.0.md): reconstruye retratos, miniaturas y tarjetas, y recupera sus paletas desde la ROM local.
+Si ya completaste la extracción de las variantes, continúa con
+[CATALOGO_RETRATOS_0.6.3.md](CATALOGO_RETRATOS_0.6.3.md): reúne los PNG por contenido,
+conserva todas sus variantes e IDs y genera una galería local con filtros.
+
+Para las 43 variantes ya comparadas, sigue [RETRATOS_VARIANTES_0.6.2.md](RETRATOS_VARIANTES_0.6.2.md).
+Incluye planes por SHA-256, validación puntual de los componentes, extracción por lotes,
+reanudación verificada y un índice de galerías con ZIP de resultados.
+
+La extracción organizada de retratos de FE7 y FE8 empieza en [RECURSOS_0.6.1.md](RECURSOS_0.6.1.md): reutiliza los bloques existentes, lee los retratos raw de FE8 desde la ROM local y recupera las paletas originales.
 
 Para corregir las vistas grandes de resultados existentes, sigue [REPARAR_0.5.1.md](REPARAR_0.5.1.md).
 

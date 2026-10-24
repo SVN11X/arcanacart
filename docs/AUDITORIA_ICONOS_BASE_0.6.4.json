@@ -1,0 +1,79 @@
+{
+  "format": "arcanacart-real-base-icon-audit-1",
+  "zip_sha256": "acd88505bf1ef97ec6533a20dc2f7a5a9dd1d12f4b4c95489883092c6711bb27",
+  "zip_bytes": 471398,
+  "games": {
+    "fe7": {
+      "ids": 173,
+      "unique_pngs": 171,
+      "unique_raws": 171,
+      "unique_palettes": 1,
+      "transparent": 0,
+      "duplicates_avoided": 2,
+      "first_id": 0,
+      "last_id": 172,
+      "rom_sha256": "f1200d19771b366b6ead15dec0eee4a7785b538d894c069c36f7592321ee799b"
+    },
+    "fe8": {
+      "ids": 224,
+      "unique_pngs": 212,
+      "unique_raws": 212,
+      "unique_palettes": 1,
+      "transparent": 0,
+      "duplicates_avoided": 12,
+      "first_id": 0,
+      "last_id": 223,
+      "rom_sha256": "638cda9d9b72657220fbf7e7a500cd3b64d9686c36e8a56fca69d26d13886f2f"
+    }
+  },
+  "members": 782,
+  "backslash_members": 780,
+  "global": {
+    "occurrences": 397,
+    "png_files_stored": 383,
+    "distinct_png_hashes": 213,
+    "distinct_raw_hashes": 213,
+    "distinct_palettes": 1,
+    "shared_pngs_between_games": 170
+  },
+  "checks": {
+    "paths": 1564,
+    "crc": 782,
+    "batch": 2,
+    "manifest": 782,
+    "summaries": 4,
+    "definition": 4,
+    "ranges": 4,
+    "rows": 794,
+    "hashes": 1191,
+    "sizes": 397,
+    "palette_offset": 397,
+    "png": 397,
+    "independent_render": 397,
+    "visibility": 397,
+    "counts": 6,
+    "files": 6,
+    "csv": 399,
+    "html": 12
+  },
+  "errors": [],
+  "status": "passed",
+  "portability_issue": "780 ZIP member names use backslashes instead of forward slashes; bytes and manifests match after resolving those names only.",
+  "limitations": [
+    "No se recibieron ROM completas; no se recalculan aquí sus hashes ni se releen sus punteros.",
+    "El renderizado de los PNG sí se reconstruyó independientemente desde cada raw y paleta incluidos.",
+    "La apariencia de las galerías en un navegador real continúa pendiente.",
+    "Los bancos exportados no prueban la totalidad de los recursos ni el alcance de las variantes."
+  ],
+  "scope": "Integridad, hashes, CSV, referencias y reconstruccion independiente de pixeles; no verifica ROM completas ni renderizado de la interfaz HTML.",
+  "package_status": "original-zip-needs-portable-repack",
+  "portable_repack_verification": {
+    "files": 782,
+    "payloads_identical": true,
+    "backslash_members": 0,
+    "crc_valid": true,
+    "original_python_posix_extract_missing_canonical_path": true,
+    "portable_python_posix_extract_canonical_path": true,
+    "zip_sha256_in_preparation_environment": "4cc733f6b6f93c461c8c35733000f197cb0917d44b6a81a3d24f5137bc7fdf85"
+  }
+}

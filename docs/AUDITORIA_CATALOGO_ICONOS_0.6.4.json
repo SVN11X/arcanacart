@@ -1,0 +1,127 @@
+{
+  "format": "arcanacart-independent-consolidated-icon-audit-1",
+  "status": "passed",
+  "catalog_zip": "catalogo-iconos-20261024-091707-653da6.zip",
+  "catalog_zip_sha256": "ac90a7a34b03281a32661325ee43b2ef629d39d68131d57a1889cc50f337f179",
+  "source_zip_sha256": "499ec0c8bd96e8bea8ed58e00162b07feb1e0415bcd1f082e6fda8b366a99c4e",
+  "files": 938,
+  "checks": {
+    "zip_structure": 4,
+    "zip_paths": 19778,
+    "zip_crc": 19778,
+    "manifests": 90,
+    "artifact_hashes": 38525,
+    "source_identity": 6,
+    "catalog_metadata": 3,
+    "preserved_metadata": 129,
+    "variant_ranges": 86,
+    "identity": 43,
+    "png_hashes": 400,
+    "png_decode": 400,
+    "image_metadata": 1200,
+    "provenance": 18449,
+    "offsets": 9224,
+    "resource_hashes": 27672,
+    "source_byte_equality": 27672,
+    "raw_geometry": 18448,
+    "independent_pixel_render": 9224,
+    "transparency": 9224,
+    "csv_structure": 4,
+    "csv_content": 2,
+    "coverage": 3,
+    "counts": 14,
+    "html_integrity": 3,
+    "html_references": 5,
+    "reference_comparison": 2
+  },
+  "check_count": 200388,
+  "errors": [],
+  "counts": {
+    "variants": 43,
+    "source_expected_variants": 43,
+    "source_verified_files": 18840,
+    "icon_occurrences": 9224,
+    "unique_images": 400,
+    "visible_images": 400,
+    "transparent_images": 0,
+    "transparent_occurrences": 0,
+    "unique_raw_resources": 400,
+    "unique_palettes": 1,
+    "source_png_files": 9224,
+    "duplicate_png_copies_avoided": 8824,
+    "unique_pngs_per_game": {
+      "fe8": 258,
+      "fe7": 179
+    },
+    "occurrences_per_game": {
+      "fe8": 7840,
+      "fe7": 1384
+    },
+    "shared_pngs_between_games": 37
+  },
+  "reference_byte_identical_files": 935,
+  "expected_metadata_differences": [
+    "catalog-state.json",
+    "catalogo.json",
+    "resumen.json"
+  ],
+  "scope": "43 variants; FE7 IDs 0..172, FE8 IDs 0..223; first icon palette only.",
+  "limitations": [
+    "Full ROM/AIR byte hashes are not recomputed here; source metadata and approved definitions are crosschecked.",
+    "In-game appearance, full capacities and other resource banks remain unverified.",
+    "Real browser presentation remains pending."
+  ],
+  "gallery_functional_review": {
+    "status": "passed",
+    "html_source": "received ZIP",
+    "filter_cases": [
+      {
+        "name": "all",
+        "images": 400,
+        "occurrences": 9224
+      },
+      {
+        "name": "fe7",
+        "images": 179,
+        "occurrences": 1384
+      },
+      {
+        "name": "fe8",
+        "images": 258,
+        "occurrences": 7840
+      },
+      {
+        "name": "variant",
+        "images": 224,
+        "occurrences": 224
+      },
+      {
+        "name": "incompatible",
+        "images": 0,
+        "occurrences": 0
+      },
+      {
+        "name": "hex ID",
+        "images": 2,
+        "occurrences": 8
+      },
+      {
+        "name": "decimal ID",
+        "images": 2,
+        "occurrences": 43
+      },
+      {
+        "name": "outside range",
+        "images": 0,
+        "occurrences": 0
+      }
+    ],
+    "variants_checked": 43,
+    "pages_traversed": 7,
+    "unique_cards": 400,
+    "origin_details_exposed": 9224,
+    "filter_controls_pagination_empty_reset": "passed",
+    "browser_layout_checked": false
+  },
+  "audit_date": "2026-10-24"
+}

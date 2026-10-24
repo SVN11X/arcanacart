@@ -37,6 +37,11 @@ def render_face_gallery(summary: dict, rows: list[dict]) -> str:
             )
         else:
             picture = '<p class="error">' + html.escape(row.get("error", "Sin imagen")) + "</p>"
+        if row.get("raw_blob"):
+            raw_name = html.escape(row["raw_blob"], quote=True)
+            picture += (
+                f'<p><a href="{raw_name}" download>Descargar bloque raw · {row["size_bytes"]} bytes</a></p>'
+            )
         colors = (
             "Paleta RGB555 leída de la ROM verificada"
             if row["colors"] == "rgb555-rom"
@@ -56,7 +61,8 @@ def render_face_gallery(summary: dict, rows: list[dict]) -> str:
             ("portraits", "retratos"),
             ("miniatures", "miniaturas"),
             ("classcards", "tarjetas de clase"),
-            ("unique_classified_blobs", "bloques únicos vinculados"),
+            ("unique_classified_blobs", "bloques del AIR vinculados"),
+            ("unique_raw_rom_blobs", "bloques raw exportados"),
             ("resolved_palettes", "paletas reales"),
         )
     )
@@ -79,7 +85,7 @@ def render_face_gallery(summary: dict, rows: list[dict]) -> str:
         '</style></head><body><main><p class="muted">ARCANACART / EXTRACCIÓN ORGANIZADA</p>'
         "<h1>Retratos reconstruidos</h1><p>Componentes vinculados a una tabla documentada y exportados por ID.</p>"
         '<div class="stats">' + stats + "</div>"
-        "<p>Las imágenes en gris muestran índices, con contraste ajeno a los colores originales. Los nombres de personajes y las animaciones de boca/ojos quedan pendientes. Los ID pueden compartir el mismo bloque. Esta clasificación no cambia tus revisiones manuales anteriores.</p>"
+        "<p>Los colores proceden de las paletas de la ROM cuando está disponible; las imágenes en gris son diagnósticas. Los componentes raw leídos de la ROM se cuentan aparte de los bloques del AIR. Los nombres de personajes y las animaciones de boca/ojos quedan pendientes. Los ID pueden compartir el mismo bloque. Esta clasificación no cambia tus revisiones manuales anteriores.</p>"
         '<p><a href="catalog.csv">Catálogo CSV</a> · <a href="catalog.json">Catálogo JSON</a> · <a href="summary.json">Resumen</a></p>'
         '<div class="filters"><label>Buscar ID, hash u offset <input id="search" type="search" placeholder="0x016, hash, offset…"></label>'
         '<label>Tipo <select id="kind"><option value="">Todos</option><option value="portrait">Retratos</option>'

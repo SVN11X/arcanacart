@@ -1,0 +1,13 @@
+{
+  "format": "arcanacart-face-layout-1",
+  "rom_sha256": "40395bc10a70c7f9c8f94c7981de91581b5a23517367068009eaf197e8df6f6e",
+  "table_offset": 19151772,
+  "pointer_location": 21796,
+  "entry_size": 28,
+  "entry_count": 255,
+  "sources": [
+    "ArcanaCart 0.6.1; rango acotado de exportacion ligado al SHA-256 de esta ROM.",
+    "Diagnostico SHA-256 1fa8efbde47bfdbcce80d7df11ac827b02001361f677d5b2cdd802df49aa54a0; IDs 1..254.",
+    "La lectura local valida cada componente antes de exportar; este rango no afirma el tamano total reservado de la tabla."
+  ]
+}

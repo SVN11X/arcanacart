@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.6.3 — Catálogo de retratos sin copias repetidas
+
+- Añade `Consolidar-Retratos.ps1` para procesar la carpeta o el ZIP de un lote completado. Comprueba los informes, las tablas, los PNG y las paletas antes de publicar una salida nueva.
+- Guarda una copia de cada PNG por SHA-256 y conserva todas las apariciones por juego, variante e ID, con ROM, AIR, offset, bloque y paleta de origen.
+- Incluye una galería local paginada con filtros por juego, tipo, variante e ID; las imágenes transparentes se conservan y quedan ocultas por defecto. Exporta CSV/JSON, paletas únicas, hashes de salida y ZIP opcional.
+- Acepta resultados 0.6.2 y mantiene la identidad de sus planes y la reanudación al actualizar a una corrección compatible de la misma rama de versión.
+
+## 0.6.2 — Retratos de las 43 variantes revisadas
+
+- Corrige el falso aviso «Cambió una definición» cuando Git guarda los planes y definiciones con CRLF en Windows. Su identidad normaliza únicamente CRLF a LF; los hashes de AIR, ROM, recursos y resultados siguen verificando sus bytes exactos. La reanudación conserva su identidad al cambiar solo esos finales de línea.
+- Integra `Extraer-Retratos-Variantes.ps1` y el lote Python en el repositorio, con 43 definiciones vinculadas a los SHA-256 exactos de las ROM y de sus AIR existentes.
+- Comprueba los rangos de exportación FE7 1–228 y FE8 1–254 contra la ROM local antes de generar PNG; valida paletas, datos raw y descompresiones puntuales, sin repetir el escáner.
+- Conserva los 28 IDs vacíos previstos de cuatro variantes FE8 y admite tarjetas de 80×80 en la validación; mantiene intactos los resúmenes originales de ArcanaCart.
+- Reanuda verificando entradas y archivos exportados; conserva intentos anteriores, guarda progreso ante `Ctrl+C` y genera un índice común, CSV/JSON y ZIP de resultados.
+- Documenta 17.291 PNG de componentes previstos, incluidas repeticiones; los rangos propuestos no certifican el tamaño total reservado de las tablas ni la extracción de todos los recursos del juego.
+
+## 0.6.1 — FE8 y componentes sin compresión
+
+- Incorpora el layout de la base FE8 USA exacta, con tabla virtual en `0x8ACBC4`, 172 entradas útiles y comprobación del puntero de código en `0x5524`.
+- Lee componentes raw `00` desde la ROM local verificada; su longitud incluye los cuatro bytes de cabecera. Exporta el payload en `raw-resources`, con hashes, offsets y tamaños trazables.
+- Mantiene separados los bloques identificados del AIR y los bloques raw para conservar el significado de las estadísticas del escaneo LZ10.
+- Añade `-Game fe8` al lanzador Windows. Se esperan 115 retratos, 111 miniaturas y 57 tarjetas en la tabla de esta base; la salida offline informa los pendientes.
+- Conserva los layouts personalizados por hash y la extracción anterior de FE7. No repite el escáner ni modifica resultados existentes.
+
 ## 0.6.0 — Retratos reconstruidos y paletas verificadas
 
 - Añade `faces`: vincula componentes a una tabla documentada, ensambla retratos de 96×80 y exporta miniaturas y tarjetas de clase por ID.

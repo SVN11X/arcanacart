@@ -19,7 +19,7 @@ from arcanacart import graphics
 from arcanacart.cli import main
 from arcanacart.core.io import digest, json_bytes
 from arcanacart.face_gallery import SCRIPT
-from arcanacart.faces import DEFAULT_LAYOUT, reconstruct_faces
+from arcanacart.faces import DEFAULT_LAYOUT, FE8_LAYOUT, FE8_SHA256, reconstruct_faces
 
 
 def literal_lz(raw):
@@ -238,6 +238,108 @@ class FaceExtraction(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertEqual(result["errors"], 2)
 
+    def use_raw_portrait(self, raw=None, *, stored_size=None, type_byte=0):
+        raw = self.raws[0] if raw is None else raw
+        image = bytearray(self.rom.read_bytes())
+        size = len(raw) + 4 if stored_size is None else stored_size
+        block = bytes([type_byte]) + size.to_bytes(3, "little") + raw
+        image[self.offsets[0] : self.offsets[0] + len(block)] = block
+        self.rom.write_bytes(image)
+        self.document["rom"]["sha256"] = digest(image)
+        self.definition["rom_sha256"] = digest(image)
+        self.document["resources"] = [r for r in self.document["resources"] if r["offset"] != self.offsets[0]]
+        self.air.write_bytes(json_bytes(self.document))
+        self.layout.write_bytes(json_bytes(self.definition))
+        return raw, block
+
+    def test_raw_header_includes_itself_and_keeps_air_counts_separate(self):
+        raw, block = self.use_raw_portrait()
+        air_before = self.air.read_bytes()
+        result = self.run_faces(rom_path=self.rom)
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual((result["portraits"], result["miniatures"], result["classcards"]), (2, 2, 1))
+        self.assertEqual(result["unique_classified_blobs"], 2)
+        self.assertEqual(result["unclassified_input_blobs"], 0)
+        self.assertEqual(result["unique_component_blobs"], 3)
+        self.assertEqual(result["raw_rom_components"], 2)
+        self.assertEqual(result["unique_raw_rom_blobs"], 1)
+        self.assertEqual(result["raw_rom_bytes_read"], 4100)
+        self.assertEqual(result["decoded_known_offsets"], 2)
+        self.assertEqual((self.review / "raw-resources" / (digest(raw) + ".bin")).read_bytes(), raw)
+        self.assertEqual(self.air.read_bytes(), air_before)
+        rows = json.loads((self.review / "catalog.json").read_bytes())["resources"]
+        portraits = [r for r in rows if r["kind"] == "portrait"]
+        for row in portraits:
+            self.assertEqual(row["size_bytes"], 4096)
+            self.assertEqual(row["stored_bytes"], 4100)
+            self.assertEqual(row["compressed_bytes"], 0)
+            self.assertEqual(row["compression"], "none")
+            self.assertEqual(row["payload_offset"], self.offsets[0] + 4)
+            self.assertEqual(row["encoded_sha256"], digest(block))
+            self.assertEqual(row["data_origin"], "local-rom-raw")
+            self.assertEqual(row["verification"], "rom-table-and-raw-data")
+        w, h, pixels = decode_png(self.review / "retratos/face-001.png")
+        self.assertEqual((w, h), (96, 80))
+        self.assertEqual(pixels[16 * 4 : 17 * 4], bytes([255, 0, 0, 255]))
+        state = json.loads((self.review / "faces-state.json").read_bytes())
+        self.assertEqual(state["artifacts"][portraits[0]["raw_blob"]], digest(raw))
+        self.assertIn(portraits[0]["raw_blob"], (self.review / "index.html").read_text())
+
+    def test_raw_5120_byte_sheet_is_supported(self):
+        self.use_raw_portrait(b"\x11" * 5120)
+        result = self.run_faces(rom_path=self.rom)
+        self.assertEqual(result["status"], "completed")
+        self.assertEqual(result["raw_rom_bytes_read"], 5124)
+
+    def test_raw_length_that_excludes_header_is_not_silently_accepted(self):
+        self.use_raw_portrait(stored_size=4096)
+        result = self.run_faces(rom_path=self.rom)
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["portraits"], 0)
+        self.assertEqual(result["errors"], 2)
+        self.assertEqual(result["unique_raw_rom_blobs"], 0)
+
+    def test_raw_size_limit_and_unknown_encoding_are_rejected(self):
+        for update in ({"stored_size": 10000}, {"stored_size": 4}, {"type_byte": 0x10}):
+            with self.subTest(update=update):
+                self.use_raw_portrait(**update)
+                out = self.root / ("bad-" + str(len(list(self.root.glob("bad-*")))))
+                result = reconstruct_faces(self.air, out, definition=self.layout, rom_path=self.rom)
+                self.assertEqual(result["status"], "partial")
+                self.assertEqual(result["portraits"], 0)
+                self.assertEqual(result["errors"], 2)
+                self.assertFalse((out / "raw-resources").exists())
+
+    def test_raw_range_must_be_inside_rom(self):
+        self.use_raw_portrait()
+        image = bytearray(self.rom.read_bytes())
+        at = len(image) - 32
+        image[at : at + 4] = b"\0" + (4100).to_bytes(3, "little")
+        for face_id in (1, 2):
+            struct.pack_into("<I", image, self.table + face_id * 28, 0x08000000 + at)
+        self.rom.write_bytes(image)
+        self.document["rom"]["sha256"] = digest(image)
+        self.definition["rom_sha256"] = digest(image)
+        self.air.write_bytes(json_bytes(self.document))
+        self.layout.write_bytes(json_bytes(self.definition))
+        result = self.run_faces(rom_path=self.rom)
+        self.assertEqual(result["errors"], 2)
+        self.assertEqual(result["unique_raw_rom_blobs"], 0)
+
+    def test_fe8_auto_layout_has_pending_counts_without_local_rom(self):
+        self.document["rom"]["sha256"] = FE8_SHA256
+        self.document["rom"]["size_bytes"] = 0x1000000
+        self.air.write_bytes(json_bytes(self.document))
+        result = reconstruct_faces(self.air, self.review)
+        self.assertEqual(result["layout"], FE8_LAYOUT)
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["pending_component_total"], 283)
+        self.assertEqual(
+            result["expected_component_counts"], {"portrait": 115, "miniature": 111, "classcard": 57}
+        )
+        self.assertEqual(result["raw_rom_components"], 0)
+        self.assertEqual(result["generated_component_pngs"], 0)
+
     def test_reference_target_mismatch_stops(self):
         self.document["resources"][0]["references"][0]["target_offset"] += 4
         self.air.write_bytes(json_bytes(self.document))
@@ -294,6 +396,8 @@ class FaceExtraction(unittest.TestCase):
                 "Bypass",
                 "-File",
                 str(script),
+                "-Game",
+                "fe8",
                 "-AirPath",
                 str(self.air),
                 "-RomPath",

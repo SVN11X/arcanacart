@@ -25,6 +25,7 @@ from arcanacart.resource_compare import _checked
 from arcanacart.schemas import validate
 
 FE7_SHA256 = "f1200d19771b366b6ead15dec0eee4a7785b538d894c069c36f7592321ee799b"
+FE8_SHA256 = "638cda9d9b72657220fbf7e7a500cd3b64d9686c36e8a56fca69d26d13886f2f"
 SOURCES = [
     "https://github.com/StanHash/fe7_us/blob/5c8b3c5e254e00f0f3458b9772c27e1a5a326e3b/asm/code_1.s",
     "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ImagePortraitForm.cs",
@@ -38,6 +39,29 @@ DEFAULT_LAYOUT = {
     "entry_count": 229,
     "sources": SOURCES,
 }
+FE8_REFERENCE = (
+    "https://github.com/FireEmblemUniverse/fireemblem8u/blob/04d1edb163d14bd10777a065697e1a9f17be65f2"
+)
+FE8_LAYOUT = {
+    "format": "arcanacart-face-layout-1",
+    "rom_sha256": FE8_SHA256,
+    # GetPortraitData(fid) uses portrait_data + fid - 1. The first real entry
+    # is at 0x8ACBE0; the code's pointer addresses the virtual entry zero.
+    "table_offset": 0x8ACBC4,
+    "pointer_location": 0x5524,
+    "entry_size": 28,
+    "entry_count": 173,
+    "sources": [
+        FE8_REFERENCE + "/src/portrait_data.c",
+        FE8_REFERENCE + "/include/types.h",
+        FE8_REFERENCE + "/src/face.c",
+        FE8_REFERENCE + "/src/bmlib.c",
+        FE8_REFERENCE + "/scripts/compressor.py",
+        "https://github.com/FEBuilderGBA/FEBuilderGBA/blob/8e3557912ddab708d11bf85ad311b41bb6630fd1/FEBuilderGBA/ROMFE8U.cs",
+    ],
+}
+BUILTIN_LAYOUTS = {FE7_SHA256: DEFAULT_LAYOUT, FE8_SHA256: FE8_LAYOUT}
+EXPECTED_COUNTS = {FE8_SHA256: {"portrait": 115, "miniature": 111, "classcard": 57}}
 FIELDS = {0: "portrait", 4: "miniature", 16: "classcard"}
 FOLDERS = {"portrait": "retratos", "miniature": "miniaturas", "classcard": "tarjetas-clase"}
 
@@ -110,6 +134,18 @@ def _render(raw: bytes, kind: str, colors: list[tuple[int, int, int]] | None) ->
     )
 
 
+def _read_raw_component(rom: bytes, offset: int) -> tuple[bytes, str, int]:
+    """FE UnpackRaw: type 00 and a 24-bit stored size INCLUDING its header."""
+    if offset % 4 or offset + 4 > len(rom) or rom[offset] != 0:
+        raise ValueError(
+            "El componente no está en el AIR ni tiene una cabecera raw 00 documentada y alineada."
+        )
+    stored = int.from_bytes(rom[offset + 1 : offset + 4], "little")
+    if not 4 < stored <= 8196 or offset + stored > len(rom):
+        raise ValueError("El tamaño raw incluye 4 bytes de cabecera y debe caber en la ROM y en el límite.")
+    return rom[offset + 4 : offset + stored], digest(rom[offset : offset + stored]), stored
+
+
 def _catalog_csv(rows: list[dict]) -> bytes:
     stream = io.StringIO(newline="")
     fields = (
@@ -121,6 +157,11 @@ def _catalog_csv(rows: list[dict]) -> bytes:
         "size_bytes",
         "compression",
         "compressed_bytes",
+        "data_origin",
+        "payload_offset",
+        "stored_bytes",
+        "encoded_sha256",
+        "raw_blob",
         "table_entry_offset",
         "pointer_location",
         "palette_pointer_location",
@@ -152,11 +193,15 @@ def reconstruct_faces(
     records, scan, _ = _checked(document)
     if "schema_version" in document:
         validate(document)
-    if definition is None and document["rom"]["sha256"] != FE7_SHA256:
+    automatic_layout = BUILTIN_LAYOUTS.get(document["rom"]["sha256"])
+    if definition is None and automatic_layout is None:
         raise ValueError(
-            "El layout automático requiere la base FE7 USA exacta; para otra ROM usa --definition validada."
+            "El layout automático requiere una base FE7/FE8 USA exacta; para otra ROM usa --definition validada."
         )
-    layout = checked_layout(read_json(definition) if definition else dict(DEFAULT_LAYOUT), document["rom"])
+    layout = checked_layout(
+        read_json(definition) if definition else dict(automatic_layout or {}), document["rom"]
+    )
+    expected_counts = EXPECTED_COUNTS.get(document["rom"]["sha256"], {}) if definition is None else {}
     root = resources or source.parent / "resources"
     for path in (source, root, out, *([rom_path] if rom_path else [])):
         _safe(path)
@@ -191,6 +236,8 @@ def reconstruct_faces(
     sizes = {r["sha256"]: r["decompressed_bytes"] for r in records}
     reader = BlobReader(root, sizes, 64 * 1024 * 1024)
     cache: dict[str, bytes] = {}
+    raw_by_offset: dict[int, tuple[bytes, str, int]] = {}
+    raw_data: dict[str, bytes] = {}
     verified_encodings: set[int] = set()
     palette_data: dict[str, bytes] = {}
     rows: list[dict] = []
@@ -220,6 +267,8 @@ def reconstruct_faces(
                         record = by_offset.get(target_offset)
                     elif record is None:
                         continue
+                    if target_offset is None:
+                        raise ValueError("El componente no tiene un offset de origen válido.")
                     row = {
                         "face_id": face_id,
                         "face_id_hex": f"0x{face_id:03X}",
@@ -231,6 +280,9 @@ def reconstruct_faces(
                         "size_bytes": record["decompressed_bytes"] if record else None,
                         "compression": record["compression"] if record else None,
                         "compressed_bytes": record["compressed_bytes"] if record else None,
+                        "data_origin": "air-resource" if record else "local-rom-raw",
+                        "encoded_sha256": record.get("encoded_sha256") if record else None,
+                        "stored_bytes": record["compressed_bytes"] if record else None,
                         "palette_pointer_location": entry + 8,
                         "palette_offset": None,
                         "palette_sha256": None,
@@ -245,22 +297,36 @@ def reconstruct_faces(
                     rows.append(row)
                     entry_rows.append(row)
                     try:
-                        if record is None:
-                            raise ValueError(
-                                "El componente no está en los bloques del AIR; puede estar sin compresión o fuera del escaneo."
+                        if record is None and rom is not None:
+                            if target_offset not in raw_by_offset:
+                                raw_by_offset[target_offset] = _read_raw_component(rom, target_offset)
+                            raw, encoded_hash, stored_bytes = raw_by_offset[target_offset]
+                            hash_ = digest(raw)
+                            row.update(
+                                source_sha256=hash_,
+                                size_bytes=len(raw),
+                                compression="none",
+                                compressed_bytes=0,
+                                payload_offset=target_offset + 4,
+                                stored_bytes=stored_bytes,
+                                encoded_sha256=encoded_hash,
+                                verification="rom-table-and-raw-data",
                             )
-                        hash_ = record["sha256"]
-                        if record["decompressed_bytes"] > 8192 or record["compressed_bytes"] > 32768:
-                            raise ValueError(
-                                "El componente supera los límites del layout estándar de retratos."
-                            )
-                        if hash_ not in cache:
-                            cache[hash_] = reader.read(hash_)
-                        raw = cache[hash_]
+                        elif record is not None:
+                            hash_ = record["sha256"]
+                            if record["decompressed_bytes"] > 8192 or record["compressed_bytes"] > 32768:
+                                raise ValueError(
+                                    "El componente supera los límites del layout estándar de retratos."
+                                )
+                            if hash_ not in cache:
+                                cache[hash_] = reader.read(hash_)
+                            raw = cache[hash_]
+                        else:
+                            raise ValueError("El componente requiere la ROM local o un bloque del AIR.")
                         colors = None
                         if rom is not None:
-                            offset = record["offset"]
-                            if offset not in verified_encodings:
+                            offset = target_offset
+                            if record is not None and offset not in verified_encodings:
                                 end = offset + record["compressed_bytes"]
                                 if end > len(rom) or digest(rom[offset:end]) != record.get("encoded_sha256"):
                                     raise ValueError(
@@ -291,6 +357,9 @@ def reconstruct_faces(
                         name = f"{FOLDERS[kind]}/face-{face_id:03X}.png"
                         atomic_write(out / name, graphics.png(width, height, pixels))
                         row.update(width=width, height=height, png=name, status="generated")
+                        if record is None:
+                            raw_data[hash_] = raw
+                            row["raw_blob"] = f"raw-resources/{hash_}.bin"
                     except (OSError, ValueError) as exc:
                         row.update(status="error", error=str(exc))
                 if not entry_rows:
@@ -299,10 +368,13 @@ def reconstruct_faces(
                 atomic_write(out / "paletas" / (hash_ + ".bin"), raw_palette)
                 w, h, rgba = graphics.swatches(raw_palette)
                 atomic_write(out / "paletas" / (hash_ + ".png"), graphics.png(w, h, rgba))
+            for hash_, raw in raw_data.items():
+                atomic_write(out / "raw-resources" / (hash_ + ".bin"), raw)
             generated = [r for r in rows if r["status"] == "generated"]
             counts = Counter(r["kind"] for r in generated)
             errors = sum(r["status"] == "error" for r in rows)
-            classified_hashes = {r["source_sha256"] for r in generated}
+            classified_hashes = {r["source_sha256"] for r in generated if r["data_origin"] == "air-resource"}
+            pending_counts = {kind: max(0, count - counts[kind]) for kind, count in expected_counts.items()}
             summary = {
                 "format": "arcanacart-face-extraction-1",
                 "tool_version": __version__,
@@ -321,6 +393,13 @@ def reconstruct_faces(
                 "unique_classified_blobs": len(classified_hashes),
                 "unclassified_input_blobs": len(sizes) - len(classified_hashes),
                 "resolved_palettes": len(palette_data),
+                "raw_rom_components": sum(r["data_origin"] == "local-rom-raw" for r in generated),
+                "unique_raw_rom_blobs": len(raw_data),
+                "raw_rom_bytes_read": sum(item[2] for item in raw_by_offset.values()),
+                "unique_component_blobs": len({r["source_sha256"] for r in generated}),
+                "expected_component_counts": expected_counts,
+                "pending_component_counts": pending_counts,
+                "pending_component_total": sum(pending_counts.values()),
                 "components_without_real_palette": sum(
                     r["colors"] == "grayscale-placeholder" for r in generated
                 ),
@@ -339,12 +418,13 @@ def reconstruct_faces(
                     "palette_bytes": 32,
                 },
                 "status": "partial"
-                if errors or entries_without_observed_graphics or rom is None
+                if errors or entries_without_observed_graphics or rom is None or any(pending_counts.values())
                 else "completed",
                 "limitations": [
                     "La clasificación usa campos de una tabla documentada; no asigna nombres de personaje.",
                     "Los PNG en gris usan índices de diagnóstico y no representan los colores originales.",
                     "La lectura opcional de ROM verifica tabla, paletas y descompresiones puntuales; no ejecuta el escáner.",
+                    "Los componentes raw 00 incluyen la cabecera en su tamaño y se exportan aparte del inventario LZ10.",
                     "Esta etapa no reconstruye animaciones de ojos/boca ni identifica todos los recursos del juego.",
                     "Se conservan el AIR, los bloques y las decisiones manuales de la interpretación anterior.",
                 ],

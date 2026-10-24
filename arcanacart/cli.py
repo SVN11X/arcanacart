@@ -311,6 +311,13 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     repair.add_argument(
         "--dry-run", action="store_true", help="Contar páginas pendientes sin modificar la galería."
     )
+    icons = command("icons", "Extraer el banco documentado de iconos 16x16; no escanea la ROM.")
+    icons.add_argument("--rom", type=Path, required=True, help="ROM local exacta (o ZIP con una ROM).")
+    icons.add_argument("--input", type=Path, help="AIR existente opcional: verifica identidad e inventaría candidatos.")
+    icons.add_argument("--definition", type=Path, help="Definición explícita para una ROM/variante revisada.")
+    icons.add_argument("--first-id", type=number, help="Primer ID dentro del rango documentado.")
+    icons.add_argument("--last-id", type=number, help="Último ID inclusivo dentro del rango documentado.")
+    output(icons, force=False)
     faces = command("faces", "Reconstruir retratos, miniaturas y tarjetas desde una tabla documentada.")
     faces.add_argument("--input", type=Path, required=True, help="AIR existente; se reutilizan sus bloques.")
     faces.add_argument("--resources", type=Path, help="Carpeta de bloques SHA256.bin.")
@@ -322,7 +329,7 @@ def build_parser(prog: str = "arcanacart") -> Parser:
     faces.add_argument(
         "--definition",
         type=Path,
-        help="Layout explícito ligado al hash de la ROM; por defecto, base FE7 USA.",
+        help="Layout explícito ligado al hash de la ROM; por defecto, bases FE7/FE8 USA exactas.",
     )
     output(faces, force=False)
     command("layouts", "Mostrar layouts incorporados, campos, tamaños, fuentes y limitaciones.")
@@ -440,6 +447,13 @@ def execute(args: argparse.Namespace) -> dict:
             byte_budget=args.byte_budget,
             pixel_budget=args.pixel_budget,
             dry_run=dry,
+        )
+    if cmd == "icons":
+        from arcanacart.icons import extract_icons
+
+        return extract_icons(
+            args.rom, args.out, source=args.input, definition=args.definition,
+            first_id=args.first_id, last_id=args.last_id, dry_run=dry,
         )
     if cmd == "faces":
         from arcanacart.faces import reconstruct_faces
