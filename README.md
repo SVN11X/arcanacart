@@ -1,5 +1,10 @@
 # ArcanaCart 0.6.4
 
+La revisión de movimiento ya auditada continúa en
+[CATALOGO_MOVIMIENTO_0.6.4.md](CATALOGO_MOVIMIENTO_0.6.4.md): extrae los prefijos
+revisados desde el ZIP, conserva hojas y AP con todas sus procedencias y
+reutiliza las paletas existentes para mostrar las hojas completas de tiles.
+
 Para continuar con los sprites de movimiento, sigue
 [REVISION_SPRITES_MOVIMIENTO_0.6.4.md](REVISION_SPRITES_MOVIMIENTO_0.6.4.md):
 reúne las tablas, hojas LZ10 y datos AP de las dos bases y 43 variantes, con

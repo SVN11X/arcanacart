@@ -1,0 +1,137 @@
+{
+  "format": "arcanacart-independent-moving-review-audit-1",
+  "status": "passed",
+  "source_zip_sha256": "92cf26ffc105a2c76eea1d46dd053b25c1c635240945f4afba7c245fb6270781",
+  "source_report_sha256": "422195ca9a5ca1b396fe0e605db4b670427bf6fa718a78a3ecbb497e18ffa2bc",
+  "source_state_sha256": "92475ef60667cea49d350ec177363d25357a4d79bbc6eae4cdf00e231a1a444f",
+  "checks": {
+    "zip_entries": 1,
+    "zip_paths": 666,
+    "crc": 666,
+    "case_unique": 1,
+    "manifest": 1,
+    "artifact_hashes": 665,
+    "repository_plan": 1,
+    "plan_canonical_hash": 1,
+    "roster": 1,
+    "independent_lz10": 353,
+    "independent_ap": 27,
+    "identities": 45,
+    "locally_verified_identity": 45,
+    "candidate_document": 45,
+    "single_table": 45,
+    "table": 45,
+    "entries": 11475,
+    "sheet_bindings": 9943,
+    "motion_bindings": 9934,
+    "contiguous_approved_prefix": 45,
+    "access_literal": 153,
+    "native_access_context": 153,
+    "air_decoded_hashes": 9714,
+    "csv": 1,
+    "summary_counts": 1
+  },
+  "check_count": 44027,
+  "errors": [],
+  "counts": {
+    "roms": 45,
+    "bases": 2,
+    "variants": 43,
+    "observed_entries": 11475,
+    "bounded_occurrences": 9916,
+    "variant_occurrences": 9690,
+    "unique_stored_sheets_observed": 353,
+    "unique_stored_sheets_approved": 351,
+    "unique_raw_sheets_approved": 256,
+    "unique_ap_snapshots": 27,
+    "post_range_unparsed_windows": 2,
+    "excluded_window_occurrences": 18,
+    "by_game": {
+      "fe7": 891,
+      "fe8": 9025
+    },
+    "approved_range_distribution": {
+      "fe7:1-99": 9,
+      "fe8:1-127": 1,
+      "fe8:1-254": 27,
+      "fe8:1-255": 8
+    }
+  },
+  "unparsed_windows_outside_approved_ranges": [
+    [
+      "fe7-base",
+      198
+    ],
+    [
+      "fe7-base",
+      199
+    ],
+    [
+      "fe7-001",
+      198
+    ],
+    [
+      "fe7-001",
+      199
+    ],
+    [
+      "fe7-002",
+      198
+    ],
+    [
+      "fe7-002",
+      199
+    ],
+    [
+      "fe7-003",
+      198
+    ],
+    [
+      "fe7-003",
+      199
+    ],
+    [
+      "fe7-004",
+      198
+    ],
+    [
+      "fe7-004",
+      199
+    ],
+    [
+      "fe7-005",
+      198
+    ],
+    [
+      "fe7-005",
+      199
+    ],
+    [
+      "fe7-006",
+      198
+    ],
+    [
+      "fe7-006",
+      199
+    ],
+    [
+      "fe7-007",
+      198
+    ],
+    [
+      "fe7-007",
+      199
+    ],
+    [
+      "fe7-008",
+      198
+    ],
+    [
+      "fe7-008",
+      199
+    ]
+  ],
+  "roms_read_here": false,
+  "air_files_read_here": false,
+  "in_game_verified": false
+}

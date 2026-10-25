@@ -4,6 +4,7 @@ include RETRATOS_VARIANTES_0.6.2.md
 include CATALOGO_RETRATOS_0.6.3.md
 include SPRITES_MAPA_0.6.4.md
 include REVISION_SPRITES_MOVIMIENTO_0.6.4.md
+include CATALOGO_MOVIMIENTO_0.6.4.md
 recursive-include docs *.md *.json *.txt
 recursive-include examples *.py *.md *.json *.html
 recursive-include scripts *.py *.java *.ps1

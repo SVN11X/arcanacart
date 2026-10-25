@@ -2,6 +2,7 @@
 
 ## 0.6.4 — Iconos y sprites de mapa con evidencia revisada
 
+- Audita el ZIP de movimiento y fija 45 definiciones para sus prefijos explícitos: 9.916 apariciones, 256 hojas 4bpp y 27 datos AP. Añade un catálogo portable con recursos originales, procedencias y 1.785 PNG de hojas completas, reutilizando las paletas del catálogo de reposo. La composición OAM y la reproducción de animaciones permanecen pendientes; no se repite el escáner ni se leen ROM/AIR para esta exportación.
 - Añade la revisión acotada de sprites de movimiento de las dos bases y 43 variantes: conserva todas las tablas señaladas por los accesos conocidos, hojas LZ10, datos AP y procedencias. Observa hasta 255 posiciones por tabla sin convertir el presupuesto en capacidad aprobada; genera un ZIP verificable para auditoría, sin ejecutar el escáner ni exportar PNG.
 - Incorpora la extracción acotada de iconos de objetos de las bases y las 43 variantes revisadas, su índice portable y su catálogo sin copias repetidas.
 - Añade la revisión y ampliación de las tablas de sprites de mapa en reposo, con identidades ROM/AIR exactas, contextos de acceso y paletas documentadas.
